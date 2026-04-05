@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 4 — The Gear Layer | Build Your AI OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="course.css">
+</head>
+<body>
+<script>
+window.UNIT_DATA = {
+  unit: 4,
+  title: "One AI In One Mode Is The Wrong Architecture",
+  subtitle: "Unit 4: The Gear Layer",
+  claim: "The gear isn't the AI. It's the posture.",
+  entryState: "I need more specialized tools",
+  exitState: "Same AI, different posture",
+  nextUnit: "unit-5.html",
+  tabs: [
+    { label: "Overview",              contentId: "panel-0" },
+    { label: "The One-Mode Problem",  contentId: "panel-1" },
+    { label: "What a Gear Is",        contentId: "panel-2" },
+    { label: "Gear Anatomy",          contentId: "panel-3" },
+    { label: "Gears in Action",       contentId: "panel-4" },
+    { label: "Build Any Gear",        contentId: "panel-5" },
+    { label: "Common Questions",      contentId: "panel-6" },
+    { label: "The Geared Session",    contentId: "panel-7" },
+    { label: "The Artifact",          contentId: "panel-8" },
+    { label: "What's Next",           contentId: "panel-9" }
+  ],
+  checklistCount: 4,
+  copyBlocks: [
+    { triggerId: "copyBtn", contentId: "copyBlock" }
+  ]
+};
+</script>
+
+  <!-- ===== UNIT TITLE BLOCK ===== -->
+  <div class="unit-title-block">
+    <span class="eyebrow">UNIT 4 OF 6 &mdash; THE GEAR LAYER</span>
+    <h1>One AI In One Mode Is The Wrong Architecture.</h1>
+    <p class="subtitle">The gear isn't the AI. It's the posture.</p>
+  </div>
+
+  <!-- ===== TAB NAV ===== -->
+  <nav class="tab-nav">
+    <div class="tab-nav-tabs">
+      <button class="tab-btn active" data-tab="0">Overview</button>
+      <button class="tab-btn" data-tab="1">The One-Mode Problem</button>
+      <button class="tab-btn" data-tab="2">What a Gear Is</button>
+      <button class="tab-btn" data-tab="3">Gear Anatomy</button>
+      <button class="tab-btn" data-tab="4">Gears in Action</button>
+      <button class="tab-btn" data-tab="5">Build Any Gear</button>
+      <button class="tab-btn" data-tab="6">Common Questions</button>
+      <button class="tab-btn" data-tab="7">The Geared Session</button>
+      <button class="tab-btn" data-tab="8">The Artifact</button>
+      <button class="tab-btn" data-tab="9">What's Next</button>
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ==================== PANEL 0: OVERVIEW ==================== -->
+    <div class="content-area" id="panel-0">
+      <div class="section">
+        <p class="prose">You have a profile. You have an operator model. You have a behavioral contract. You've built something real &mdash; a system that knows who you are, understands how you work, and has permission to push back when you're about to make your characteristic mistake.</p>
+        <p class="prose">And now you open a session, ask it to help you brainstorm, and get a response that feels slightly wrong. Not bad exactly. Just &mdash; careful. Hedged. Like it's trying to do two things at once and doing neither of them well.</p>
+        <p class="prose">You're not imagining it. The AI is doing two things at once. It's trying to generate ideas expansively while simultaneously evaluating whether those ideas are any good. Those two postures are in direct opposition. Brainstorming requires non-evaluative generation &mdash; generating options without killing them. Evaluation requires the opposite. The same mode can't hold both postures simultaneously. So it averages. The result is responses that are almost right for everything and exactly right for nothing.</p>
+        <p class="prose">The solution most people reach for is a different tool. A specialized AI for writing. A different one for research. Another for code. That's the wrong diagnosis. The problem isn't which AI you're using. It's that you're using one mode for everything &mdash; and no mode is optimal for the full range of work you actually do.</p>
+        <p class="prose">This unit introduces gears: behavioral modes that shift the AI's posture on demand, without switching tools, without starting over, without losing the context you've built. Same system. Different orientation. The gear isn't the AI. It's how the AI is standing when you need it.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">BY THE END OF THIS UNIT</p>
+        <h3>THREE THINGS THAT WILL PERMANENTLY CHANGE</h3>
+        <div class="num-item">
+          <span class="num-item-num">01</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Why one AI posture fails you across different kinds of work</div>
+            <div class="num-item-desc">Using the same mode for brainstorming, execution, and review isn't just suboptimal &mdash; it's architecturally wrong. The AI is averaging across postures that can't coexist. Once you see it, you can't unsee it.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">02</span>
+          <div class="num-item-content">
+            <div class="num-item-title">The anatomy of a gear &mdash; three things and nothing more</div>
+            <div class="num-item-desc">A gear is not a prompt. It's not a personality. It's not a tool. It has exactly three components: a trigger, an exit condition, and a named purpose. If it doesn't have all three, it's not a gear &mdash; it's a setting. There's an important difference.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">03</span>
+          <div class="num-item-content">
+            <div class="num-item-title">How to build any gear from scratch</div>
+            <div class="num-item-desc">Not just copying the ones that already exist &mdash; designing the specific postures your work requires. Three questions, two sentences, one gear. You'll build your first custom one before this unit is done.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">WHERE WE'RE GOING</p>
+        <div class="timeline">
+          <div class="timeline-step"><span class="timeline-step-label">The One-Mode Problem</span> <span class="timeline-step-desc">&mdash; What's actually happening when AI feels like it's averaging</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">What a Gear Actually Is</span> <span class="timeline-step-desc">&mdash; The concept clarified: not a tool, not a personality, a posture</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Gear Anatomy</span> <span class="timeline-step-desc">&mdash; Trigger, exit condition, named purpose. Each one earns its place.</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Gears in Action</span> <span class="timeline-step-desc">&mdash; Two gears walked through fully: the Interview Gear and the Handoff Gear</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Build Any Gear</span> <span class="timeline-step-desc">&mdash; The three questions that generate any gear from scratch</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Common Questions</span> <span class="timeline-step-desc">&mdash; The things people ask before they trust the architecture</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Geared Session</span> <span class="timeline-step-desc">&mdash; What a session looks like before and after gears</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Artifact</span> <span class="timeline-step-desc">&mdash; Interview Gear + Handoff Gear + your custom third gear. Installable today.</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">What's Next</span> <span class="timeline-step-desc">&mdash; The bridge to Unit 5</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 1: THE ONE-MODE PROBLEM ==================== -->
+    <div class="content-area" id="panel-1">
+      <div class="section">
+        <p class="section-label">THE PROBLEM</p>
+        <h2>The One-Mode Problem</h2>
+        <p class="prose">Here's a session most people have had. You open a chat. You start brainstorming &mdash; half-formed ideas, rough directions, things you're not sure about yet. The AI follows along, offers extensions of your ideas, occasionally flags a concern. It's helpful. It's also slightly dampening. The ideas never quite get wild enough. Every time you push toward something unexpected, there's a subtle course-correction back toward the sensible.</p>
+        <p class="prose">Then you shift. You've landed on something. You want to execute. You ask it to draft the actual thing &mdash; the email, the framework, the plan. And now it's too loose. Too exploratory. It gives you options when you wanted a draft. It hedges where you needed a commitment.</p>
+        <p class="prose">You didn't change tools. You didn't give it a different system prompt. You just changed what you needed from it. And that's exactly the problem: the AI had no way to know you changed modes, so it kept averaging across all possible modes simultaneously. The result is responses that are almost right for everything and exactly right for nothing.</p>
+        <p class="prose">This isn't a failure of intelligence. The AI is doing exactly what a reasonable system does when it has no signal about which posture to hold: it tries to hold all of them at once. Brainstorming requires expansive, non-evaluative generation &mdash; generating options without killing them before they've breathed. Execution requires tight, sequential specificity &mdash; one thing, then the next, no equivocating. These are opposite postures. One AI in one mode cannot do both well simultaneously. So it does both poorly at the same time.</p>
+
+        <div class="dark-divider">
+          <h2>The result: responses that are almost right for everything and exactly right for nothing.</h2>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>THE COMPARISON PEOPLE MAKE &mdash; AND WHY IT'S WRONG</h3>
+        <p class="prose">When this friction shows up, people tend to reach for a familiar explanation: the AI isn't specialized enough. I need a writing AI. A research AI. A coding AI. They start multiplying tools.</p>
+        <p class="prose">The diagnosis is understandable and incorrect. The problem isn't which AI you're using. It's the posture the AI is holding while it's working with you. Specialization is a feature of the tool. Posture is a feature of how you're using it. Those are different things. A writing AI used in the wrong posture will produce the same averaging problem. A general AI used in the right posture &mdash; a gear &mdash; will outperform a specialized tool used without one.</p>
+        <p class="prose">The fix is not more tools. It's a layer that sits between you and the AI: a named, triggered, purposeful mode that tells the system exactly how to stand for this type of work, until you tell it to stand differently.</p>
+        <p class="prose">That layer is the gear.</p>
+
+        <div class="callout">
+          <div class="callout-label">TRY THIS</div>
+          <p>Before you read further, think about the last time an AI session felt like it was slightly off for the whole conversation. Not wrong &mdash; just not quite right. What were you doing? Brainstorming? Drafting? Deciding? Reviewing? Name the task type. That's the mode that was missing. Keep it in mind &mdash; by the end of this unit, you'll know exactly what gear would have fixed it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 2: WHAT A GEAR IS ==================== -->
+    <div class="content-area" id="panel-2">
+      <div class="section">
+        <p class="section-label">THE CONCEPT</p>
+        <h2>What a Gear Actually Is</h2>
+        <p class="prose">Before defining what a gear is, it's worth being precise about what it isn't. Because people almost always land on the wrong mental model first, and the wrong model will produce bad gears.</p>
+
+        <table class="data-table">
+          <thead><tr><th>What people think it is</th><th>What it actually is</th></tr></thead>
+          <tbody>
+            <tr><td>A different AI</td><td>The same AI in a different posture</td></tr>
+            <tr><td>A different tool or integration</td><td>A behavioral mode built into your existing system</td></tr>
+            <tr><td>A long system prompt that instructs everything</td><td>A short, triggered mode that activates only when invoked</td></tr>
+            <tr><td>A personality change</td><td>An orientation change &mdash; the AI is still the AI</td></tr>
+          </tbody>
+        </table>
+
+        <p class="prose">A gear is a behavioral posture: a named mode with a specific orientation that activates on a trigger, holds until an exit condition is met, and does nothing until then. The AI doesn't change. The gear tells it how to stand.</p>
+        <p class="prose">Here's the analogy that makes it click: think of a surgeon. When they're in pre-op, they're collaborative, exploratory, explaining options. When they're in the operating room, they're precise, directive, sequential. Same person. Different posture. The transition between those modes isn't accidental &mdash; it's named, triggered, and has a clear exit condition. &ldquo;We're beginning the procedure.&rdquo; That's a trigger. The mode closes when they say: &ldquo;Closing.&rdquo; The surgeon didn't become a different person. They shifted posture for the work at hand.</p>
+        <p class="prose">Your AI works the same way. Without a gear, it's in the hallway between pre-op and the operating room, trying to be both at once. With a gear, you tell it exactly where to stand.</p>
+
+        <div class="insight">
+          <div class="insight-label">THE LINE THAT MATTERS</div>
+          <p class="insight-quote">&ldquo;The AI is the same. The gear tells it how to stand.&rdquo;</p>
+        </div>
+
+        <p class="prose">This distinction is load-bearing. If you think a gear is a different AI or a specialized tool, you'll try to build too much into it. You'll write five paragraphs of instructions. You'll try to define personality traits. You'll make it fragile and complicated. The gear becomes the problem.</p>
+        <p class="prose">If you understand that a gear is a posture &mdash; just a way of standing &mdash; you'll write it correctly: a few words for the trigger, one sentence for the purpose, one sentence for the exit. And it will work exactly as intended, because the intelligence is already in the system. You're just orienting it.</p>
+
+        <div class="exercise-block">
+          <div class="exercise-label">RUN THIS NOW &mdash; 3 MINUTES</div>
+          <p style="margin-bottom:0.75rem">Don't read ahead. Do this first.</p>
+          <p style="margin-bottom:0.75rem">Open a session with your AI. Ask: &ldquo;Help me brainstorm ideas for [anything simple &mdash; a project name, a meeting agenda, a weekend plan].&rdquo; Let it respond. Read what it gives you.</p>
+          <p style="margin-bottom:0.75rem">Now say exactly this: <strong>&ldquo;Enter Draft Mode: one recommendation, no options, no hedging.&rdquo;</strong> Then ask the same question again, word for word.</p>
+          <p style="margin-bottom:0.75rem">Compare the two outputs side by side.</p>
+          <p>The first will expand &mdash; it will give you options, explore angles, keep things open. The second will commit &mdash; one answer, stated as if the decision is already made. Same AI. Same context. Same question. Different posture. That difference is the gear. Everything else in this unit is just the explanation of what you just felt.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 3: GEAR ANATOMY ==================== -->
+    <div class="content-area" id="panel-3">
+      <div class="section">
+        <p class="section-label">THE STRUCTURE</p>
+        <h2>Gear Anatomy</h2>
+        <p class="prose">Every gear has exactly three components. Not four. Not two. Three. Each one earns its place. Understanding why each component exists is more important than knowing what to write &mdash; once you understand the why, the what is obvious.</p>
+
+        <h3>COMPONENT 1: THE TRIGGER</h3>
+        <p class="prose">The trigger is the phrase or condition that activates the gear. It must be simple, memorable, and unambiguous. Simple because you'll be saying it in the middle of a real session when you have other things on your mind. Memorable because you need to reach for it without thinking. Unambiguous because the AI needs to recognize it as a gear shift, not a question or a casual comment.</p>
+        <p class="prose">Good triggers are usually short and declarative: &ldquo;Enter Brainstorm Mode.&rdquo; &ldquo;Handoff.&rdquo; &ldquo;Anti-Mode.&rdquo; &ldquo;Enter Interview Mode.&rdquo; Bad triggers are descriptive or conditional: &ldquo;Can you be more like a brainstorming partner for a bit?&rdquo; That's not a trigger &mdash; it's a request. Requests get interpreted. Triggers get executed.</p>
+        <p class="prose">One design principle worth internalizing: the trigger should not be something you'd say in casual conversation. &ldquo;Let's brainstorm&rdquo; is not a trigger &mdash; it could appear in any message. &ldquo;Enter Brainstorm Mode&rdquo; is a trigger &mdash; it signals a mode shift, not a topic shift. The distinctiveness of the phrase is part of the function.</p>
+
+        <h3>COMPONENT 2: THE EXIT CONDITION</h3>
+        <p class="prose">The exit condition is how the gear closes. This is the component most people skip &mdash; and skipping it is what turns a gear into a setting.</p>
+        <p class="prose">A setting is permanent. It changes how the AI behaves for the rest of the session, forever, or until you remember to change it manually. A gear is temporary by design. It activates for a specific phase of work and then returns the system to its default posture. The exit condition is what makes that return happen cleanly.</p>
+        <p class="prose">Exit conditions come in two forms. An explicit command exit: &ldquo;Exit Brainstorm Mode&rdquo; or &ldquo;Debrief&rdquo; or simply &ldquo;Done.&rdquo; An output-based exit: &ldquo;Produce the handoff document, then return to Operator.&rdquo; The output-based form is more elegant because the AI knows the gear is done when the output exists &mdash; you don't have to remember to close it.</p>
+
+        <div class="insight">
+          <div class="insight-label">THE MOST IMPORTANT LINE IN THIS UNIT</div>
+          <p class="insight-quote">&ldquo;If it doesn't have an exit condition, it's not a gear &mdash; it's a setting.&rdquo;</p>
+        </div>
+
+        <h3>COMPONENT 3: THE NAMED PURPOSE</h3>
+        <p class="prose">The named purpose is one sentence describing the posture, not the output. This is the distinction people miss most often. &ldquo;Draft a strategy document&rdquo; is an output. &ldquo;Hold a directive, sequential posture: one recommendation at a time, no equivocating, no options&rdquo; is a posture.</p>
+        <p class="prose">The named purpose tells the AI how to orient itself, not what to produce. The output follows naturally from the posture. But if you describe the output instead of the posture, you get a task, not a gear. Tasks run once. Gears persist across the whole phase of work and apply to everything within it.</p>
+        <p class="prose">One test: read your named purpose and ask &mdash; does this describe how the AI should be, or what it should do? If it's what it should do, rewrite it as how it should be.</p>
+
+        <table class="data-table">
+          <thead><tr><th>Component</th><th>What it is</th></tr></thead>
+          <tbody>
+            <tr><td>Trigger</td><td>The phrase that activates the gear. &ldquo;Enter [Gear Name].&rdquo;</td></tr>
+            <tr><td>Exit Condition</td><td>How the gear closes. &ldquo;Exit [Gear Name]&rdquo; or &ldquo;Produce the output, then return to Operator.&rdquo;</td></tr>
+            <tr><td>Named Purpose</td><td>One sentence describing the posture. &ldquo;Generate options without evaluating them.&rdquo; or &ldquo;Red team this until it breaks.&rdquo;</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout">
+          <div class="callout-label">STRESS TEST</div>
+          <p>Take any behavioral instruction you currently have in your AI system and ask three questions: Does it have a trigger? Does it have an exit condition? Does its purpose describe a posture or an output? If it fails any of the three &mdash; it's a setting, not a gear. Settings aren't bad. But they work differently. Knowing which you have tells you what to expect from it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 4: GEARS IN ACTION ==================== -->
+    <div class="content-area" id="panel-4">
+      <div class="section">
+        <p class="section-label">GEAR IN ACTION</p>
+        <h2>Two Gears You Can Install Today</h2>
+        <p class="prose">Abstract architecture is easier to trust after you've seen it work. Here are two gears that solve real problems &mdash; not hypothetical ones. They're the two that belong in every AI OS regardless of what kind of work you do. If you install nothing else from this unit, install these.</p>
+
+        <h3>THE INTERVIEW GEAR</h3>
+        <p class="prose">Most people build their operator profile by telling the AI about themselves. They write paragraphs in a system prompt. They answer their own questions. The profile is fine &mdash; but it's also incomplete in ways they can't see, because the blind spots are exactly the things they didn't think to include.</p>
+        <p class="prose">The Interview Gear inverts this. Instead of you describing yourself to the AI, the AI interviews you. It asks the five questions from Unit 2 in order, one at a time, exploring your answers rather than evaluating them. You answer. It listens. It follows up where something is interesting. When you're done, it exits the gear and generates a working operator profile from everything you said.</p>
+        <p class="prose">The inversion matters. When you describe yourself, you include the things you think are important. When the AI interviews you, it can hear the things you say casually &mdash; the unguarded answers, the throwaway lines, the pauses &mdash; and pull those into the profile. The result is more accurate because it captures how you actually work, not how you think you work.</p>
+
+        <div class="callout">
+          <div class="callout-label">THE INTERVIEW GEAR</div>
+          <p><strong>Trigger:</strong> &ldquo;Enter Interview Mode.&rdquo;<br><strong>Purpose:</strong> Ask the five operator profile questions one at a time, exploring answers without evaluating. Listen for the unguarded detail.<br><strong>Exit:</strong> &ldquo;Exit Interview Mode &mdash; generate profile.&rdquo; The AI produces a draft operator profile and returns to default posture.</p>
+        </div>
+
+        <p class="prose">Why it demonstrates the architecture: the AI directs the conversation. That's a complete inversion of the default dynamic &mdash; and it works without rebuilding anything. The same system, holding a different posture, doing something it couldn't do before.</p>
+
+        <h3>THE HANDOFF GEAR</h3>
+        <p class="prose">Here's what happens at the end of most AI sessions: they evaporate. You made decisions. You had insights. You figured something out. None of it is written down. The next session starts cold, and you spend fifteen minutes getting the AI back up to speed &mdash; which means you spend fifteen minutes getting yourself back up to speed too. The re-orientation tax.</p>
+        <p class="prose">The Handoff Gear closes the session deliberately. When you trigger it, the AI shifts into a specific posture: it surfaces unfinished threads, captures decisions made, documents open loops, and produces a dense state document that the next session can boot from. Not a summary of the conversation &mdash; a seed for the next one. There's a difference. A summary is retrospective. A seed is prospective. It's written to the next version of you, in a new session, with no context.</p>
+        <p class="prose">The gear exits when the document is produced. It's an output-based exit condition &mdash; the AI knows the gear is done when the handoff document exists. You don't have to remember to close it.</p>
+
+        <div class="callout">
+          <div class="callout-label">THE HANDOFF GEAR</div>
+          <p><strong>Trigger:</strong> &ldquo;Handoff.&rdquo; or &ldquo;Good Night.&rdquo;<br><strong>Purpose:</strong> Session close. Surface unfinished threads. Capture decisions made and open loops. Produce a dense state document the next session can boot from.<br><strong>Exit:</strong> Document produced, mode closed. The AI returns to base posture.</p>
+        </div>
+
+        <p class="prose">The line from the deck that earns its place: &ldquo;Without the gear, sessions evaporate. With it, every session closes with a seed for the next one. The gear is what makes continuity possible &mdash; not memory, not storage. Structure.&rdquo;</p>
+
+        <div class="dark-divider">
+          <h2>Without the gear, sessions evaporate. With it, every session closes with a seed for the next one.</h2>
+          <p>The gear is what makes continuity possible &mdash; not memory, not storage. Structure.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>A COMPOSITE EXAMPLE: THE MODE SHIFT IN PRACTICE</h3>
+        <p class="prose">Marcus is a product manager who uses AI for almost everything. He opens a session to work on a strategy memo for his team. He starts by thinking out loud &mdash; floating possibilities, testing framings. The AI follows along. After twenty minutes he has a rough direction, but nothing he could hand to anyone.</p>
+        <p class="prose">Without gears, this is where things get muddy. He asks the AI to draft the memo. It produces something that looks like brainstorming in memo form: full of options, hedged, waiting for him to decide. He has to re-explain what he needs. The session loses momentum. He ends up rewriting most of it himself.</p>
+        <p class="prose">With a Draft Gear installed, the session looks different. The brainstorming phase runs the same way. But when Marcus lands on his direction, he says two words: &ldquo;Draft Mode.&rdquo; The AI shifts. It stops generating options. It stops hedging. It produces a memo &mdash; one recommendation, one structure, written as if the decision is made. Because in Draft Mode, the decision is made. Marcus reviews it, makes adjustments, and hands it to his team.</p>
+        <p class="prose">Same AI. Same session. Same context. Different posture for the second phase of work. The gear is what made the difference &mdash; not intelligence, not specialization. Orientation.</p>
+
+        <div class="callout">
+          <div class="callout-label">FEEL IT</div>
+          <p>Think about a session you run regularly &mdash; a specific, recurring type of work. Identify where the session naturally has phases. The generative phase, where you're exploring. The execution phase, where you're building. The review phase, where you're stress-testing. Each phase is a gear waiting to be named. You're already shifting modes &mdash; you just haven't named them yet. Name one. Write the trigger phrase. You're halfway to a gear.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 5: BUILD ANY GEAR ==================== -->
+    <div class="content-area" id="panel-5">
+      <div class="section">
+        <p class="section-label">THE FRAMEWORK</p>
+        <h2>How to Build Any Gear</h2>
+        <p class="prose">The Interview Gear and the Handoff Gear are the two that belong in every system. They solve the two most universal AI OS problems: building an accurate profile, and closing sessions deliberately. Most people should install those two first and not overthink it.</p>
+        <p class="prose">But your work has specific posture requirements that those two gears don't cover. The research mode that's different from the drafting mode. The client-facing mode that strips out the internal thinking. The red-team mode that's adversarial by design. These are gears you have to build, because they come from the specific shape of your work.</p>
+        <p class="prose">There are three questions. Answer them and you have everything you need to write the gear.</p>
+
+        <div class="num-item">
+          <span class="num-item-num">01</span>
+          <div class="num-item-content">
+            <div class="num-item-title">What posture does this require &mdash; and what posture does it explicitly exclude?</div>
+            <div class="num-item-desc">The second half of this question is as important as the first. Brainstorming requires expansive generation &mdash; it explicitly excludes evaluation. Anti-Mode requires adversarial red-teaming &mdash; it explicitly excludes validation. The exclusion is what makes the posture real. Without it, the AI will hedge back toward its default mode. The named purpose needs to include what the gear is not.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">02</span>
+          <div class="num-item-content">
+            <div class="num-item-title">What's the clearest possible trigger that won't fire accidentally?</div>
+            <div class="num-item-desc">The trigger needs to be something you'd only say when you mean it. &ldquo;Let's go&rdquo; is not a trigger. &ldquo;Enter Forge Mode&rdquo; is a trigger. Test it: could you imagine saying this phrase in any other context? If yes, make it more specific. The trigger is a contract &mdash; when you say it, the gear activates, no questions asked. Make sure you mean it every time you'd say it.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">03</span>
+          <div class="num-item-content">
+            <div class="num-item-title">What does exit look like &mdash; explicit command, produced output, or time condition?</div>
+            <div class="num-item-desc">Explicit command: you say &ldquo;Exit [Gear Name]&rdquo; or &ldquo;Debrief&rdquo; and the gear closes. Produced output: the gear closes when a specific thing exists &mdash; a document, a list, a decision. This is preferable when you can define what done looks like. Time condition: the gear closes at the end of the session, or after a named phase. Use this sparingly &mdash; time conditions are fuzzier and harder to enforce.</div>
+          </div>
+        </div>
+
+        <div class="insight">
+          <div class="insight-label">THE FORMULA</div>
+          <p class="insight-quote">&ldquo;Answer those three, write two sentences, and you have a gear.&rdquo;</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>COMMON GEAR TYPES FOR KNOWLEDGE WORKERS</h3>
+        <p class="prose">These are the gears that come up most often. Not a complete list &mdash; a starting point. Your work will surface others.</p>
+
+        <table class="data-table">
+          <thead><tr><th>Gear</th><th>Posture it holds</th></tr></thead>
+          <tbody>
+            <tr><td>Brainstorm</td><td>Expansive, generative, non-evaluative. Excludes criticism, evaluation, ranking.</td></tr>
+            <tr><td>Draft</td><td>Directive, sequential, committed. Excludes options, hedging, alternatives.</td></tr>
+            <tr><td>Anti-Mode</td><td>Adversarial, stress-testing, finding the break. Excludes validation, building on the idea.</td></tr>
+            <tr><td>Scout</td><td>Recon, surfacing what's missing or unsaid. Excludes solving, proposing, executing.</td></tr>
+            <tr><td>Review</td><td>Structured critique, specific standards. Excludes generation, expansion, ideation.</td></tr>
+          </tbody>
+        </table>
+
+        <p class="prose">The Gear Library is a starting point, not a destination. The gears that matter most are the ones that map to the specific phase transitions in your actual work. Build from the three questions. Start with the work you do most often. Add gears when a gap becomes obvious, not before.</p>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 6: COMMON QUESTIONS ==================== -->
+    <div class="content-area" id="panel-6">
+      <div class="section">
+        <p class="section-label">THE SPEEDBUMP</p>
+        <h2>Common Questions</h2>
+        <p class="prose">Before people install gears, they usually have the same four concerns. Not because the architecture is complicated &mdash; it isn't &mdash; but because it looks like something they've seen before that didn't work. These questions are worth answering precisely.</p>
+
+        <h3>ISN'T A GEAR JUST A SYSTEM PROMPT?</h3>
+        <p class="prose">No &mdash; and the distinction matters. A system prompt is static context. It's always present, always active, always shaping every response. It describes who you are and what the AI should know. A gear is dynamic. It activates when triggered, holds a posture, and exits when the condition is met. It's not context &mdash; it's a mode.</p>
+        <p class="prose">Here's the practical test: your system prompt should contain your operator profile, your behavioral contract, and your gear definitions (trigger, exit, purpose). The gear definition lives in the system prompt. The gear itself activates during a session. The definition and the activation are different things. You install the gear once. You shift into it many times.</p>
+
+        <h3>HOW MANY GEARS DO I NEED?</h3>
+        <p class="prose">Start with three: the Interview Gear, the Handoff Gear, and one gear for your most common work mode. That's it. Most people who build too many gears upfront end up with a system that's complicated to remember and awkward to use.</p>
+        <p class="prose">The right number is the number where every gear gets used. If you have a gear you haven't triggered in two weeks, it's either redundant or solving a problem that doesn't come up enough to warrant a gear. Add gears when you feel the friction of not having them &mdash; not before.</p>
+
+        <h3>CAN GEARS CONFLICT WITH MY BEHAVIORAL CONTRACT?</h3>
+        <p class="prose">No. The contract fires inside whatever gear is active. They operate at different layers. The gear determines the posture. The contract determines the guardrails within that posture. Anti-Mode might be adversarial by design &mdash; but your Protection Protocol still fires if you're about to make your characteristic mistake inside Anti-Mode. The contract is always on. The gear is the mode it's operating in.</p>
+        <p class="prose">Think of it as architecture: the contract is the foundation. The gear is the room you're working in. You're always in the building. You're just in different rooms for different kinds of work.</p>
+
+        <h3>WHAT IF I FORGET WHICH GEAR I'M IN?</h3>
+        <p class="prose">Name the gear at the top of each phase. The trigger and exit condition make the boundary explicit. If you're unsure, ask: &ldquo;What mode are we in?&rdquo; The AI will tell you. If you're using named gears consistently, you'll build the habit of knowing &mdash; the same way a surgeon knows whether they're in pre-op or the operating room. The mode is part of the ritual.</p>
+        <p class="prose">The longer answer: this concern usually comes from people who've used AI in a way where everything blurs together into one undifferentiated session. Gears fix that problem structurally. Once you've run a few geared sessions, the mode boundaries become natural. You stop forgetting because the transition is explicit.</p>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 7: THE GEARED SESSION ==================== -->
+    <div class="content-area" id="panel-7">
+      <div class="section">
+        <p class="section-label">THE SHIFT</p>
+        <h2>What a Geared Session Looks Like</h2>
+        <p class="prose">The gear concept makes sense in theory. But it's useful to see the before and after side by side &mdash; not the content of what was said, but the structure of how the session moved. Because that's where the difference lives.</p>
+
+        <table class="data-table">
+          <thead><tr><th>Before Gears</th><th>After Gears</th></tr></thead>
+          <tbody>
+            <tr><td>One long undifferentiated thread</td><td>Distinct phases with named postures</td></tr>
+            <tr><td>AI averages across all possible modes</td><td>AI holds the posture you named until you name the next one</td></tr>
+            <tr><td>Output is inconsistent within the session</td><td>Output is calibrated to the phase it's in</td></tr>
+            <tr><td>Session ends when you stop typing</td><td>Session closes deliberately with a handoff document</td></tr>
+            <tr><td>Next session starts cold</td><td>Next session boots from last session's seed</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <h3>THE SHAPE OF A GEARED SESSION</h3>
+        <p class="prose">A basic geared session has three phases. You don't need to use all of them every session &mdash; but knowing the shape helps you recognize when a gear would help.</p>
+
+        <div class="timeline">
+          <div class="timeline-step"><span class="timeline-step-label">Boot</span> <span class="timeline-step-desc">&mdash; The AI loads your profile and context. No gear active. You orient each other.</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Work in Gear</span> <span class="timeline-step-desc">&mdash; You name the gear. The AI shifts posture. You work. You shift gears as the work shifts.</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Handoff</span> <span class="timeline-step-desc">&mdash; You trigger the Handoff Gear. The AI closes deliberately: unfinished threads, decisions made, open loops, next session seed.</span></div>
+        </div>
+
+        <div class="dark-divider">
+          <h2>The session itself becomes a product &mdash; not just a conversation.</h2>
+        </div>
+
+        <p class="prose">That phrase from the deck is worth sitting with. Without gears, a session is a conversation. You got something from it, maybe, but the session itself is gone when you close the tab. With gears &mdash; especially the Handoff Gear &mdash; the session produces something: a state document, a seed, a record of what happened and what comes next. The session is a unit of work, not just an exchange.</p>
+        <p class="prose">This is the architectural shift Unit 4 is really about. Not just posture management for individual tasks. But sessions that compound &mdash; where each one leaves something for the next. The gear is the mechanism. The compounding is what you're building toward.</p>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 8: THE ARTIFACT ==================== -->
+    <div class="content-area" id="panel-8">
+      <div class="section">
+        <p class="section-label">THE ARTIFACT</p>
+        <h2>Build Your Third Gear</h2>
+        <p class="prose">You're getting two gears from this unit: the Interview Gear and the Handoff Gear. They're pre-built, battle-tested, and solve the two most universal problems in any AI OS. Install them. Use them. They will immediately make your sessions better.</p>
+        <p class="prose">Then build your third. Not from a template &mdash; from the three questions. Your work has a phase transition that's specific to you. A mode shift you make regularly that's currently invisible, unnamed, and therefore uncontrolled. The third gear is the one that names that shift.</p>
+        <p class="prose">Use the format below. Three questions answered, two sentences written, and you have a gear that's yours.</p>
+
+        <div class="exercise-block">
+          <div class="exercise-label">YOUR ARTIFACT &mdash; BUILD IT NOW</div>
+          <p>Start with the two pre-built gears from the modal below. Then build your third using this process:</p>
+          <ol>
+            <li>Name the type of work where the AI always feels slightly off &mdash; that's the gap the gear fills</li>
+            <li>Answer Question 1: What posture does this work require, and what does it explicitly exclude?</li>
+            <li>Answer Question 2: What trigger phrase would you only say when you mean to shift into this mode?</li>
+            <li>Answer Question 3: What does exit look like &mdash; a command, a produced output, or a phase boundary?</li>
+            <li>Write the gear: Name / Trigger / Exit Condition / Named Purpose &mdash; four lines</li>
+            <li>Add all three gears to your system prompt alongside your profiles and contract</li>
+            <li>Run one complete geared session: Boot &rarr; Work in Gear &rarr; Handoff</li>
+          </ol>
+          <p class="exercise-heading">What done looks like:</p>
+          <p>Three gears in your system prompt. One complete session where you use at least two of them and close deliberately with the Handoff Gear. One moment where you feel the posture shift &mdash; where the AI does something in gear that it couldn't have done in default mode. That's the artifact working.</p>
+        </div>
+
+        <div class="callout" style="margin-top:1.5rem">
+          <div class="callout-label">TEST YOUR GEAR &mdash; MOST DON'T WORK ON THE FIRST TRY</div>
+          <p style="margin-bottom:0.75rem">After you've written your third gear, trigger it on a real task. Then run this diagnostic:</p>
+          <p style="margin-bottom:0.75rem"><strong>Did the posture actually change, or did the AI behave mostly the same?</strong></p>
+          <p style="margin-bottom:0.75rem">If nothing changed &mdash; your named purpose is describing an output, not a posture. Rewrite it as how the AI should orient, not what it should produce.</p>
+          <p style="margin-bottom:0.75rem">If it changed slightly but still felt averaged &mdash; your exclusions aren't strong enough. Add the explicit &ldquo;not&rdquo;: this gear does X and explicitly excludes Y. The exclusion is what forces the posture to hold.</p>
+          <p style="margin-bottom:0">If it snapped into a noticeably different mode &mdash; the gear is working. Install it and use it.</p>
+          <p style="margin-top:0.75rem;font-style:italic;font-size:0.9rem;color:var(--text-muted)">A gear that passes this test is real. A gear that fails it is a setting with a name. The test is the difference.</p>
+        </div>
+      </div>
+
+      <div class="stinger">
+        <p>You've moved from &ldquo;I need more specialized tools&rdquo;</p>
+        <p>to &ldquo;Same AI, different posture.&rdquo;</p>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 9: WHAT'S NEXT ==================== -->
+    <div class="content-area" id="panel-9">
+      <div class="section">
+        <h2>What You Built in This Unit</h2>
+        <p class="prose">You came in thinking you needed more specialized tools. You're leaving with something more useful: a framework for shifting the AI's posture on demand, using the same system you already have, without starting over or switching tools.</p>
+        <p class="prose">The Interview Gear and the Handoff Gear are installed. They solve the two hardest structural problems in any AI OS &mdash; building an accurate profile and closing sessions deliberately. Your third gear addresses the specific phase transition in your work that was previously invisible and unnamed.</p>
+        <p class="prose">Three gears. A behavioral contract underneath them. An operator profile the AI can actually work from. You've built something that compounds &mdash; not just a chat interface you use once and forget.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">CHECKLIST</p>
+        <h3>BEFORE YOU MOVE ON</h3>
+        <div id="checklist">
+          <div class="checklist-item" data-check="0">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">I understand why one AI mode fails across different types of work &mdash; and it's an architecture problem, not an AI problem</span>
+          </div>
+          <div class="checklist-item" data-check="1">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">I can write the three components of any gear &mdash; and I know the difference between a gear and a setting</span>
+          </div>
+          <div class="checklist-item" data-check="2">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">The Interview Gear and Handoff Gear are installed in my system prompt</span>
+          </div>
+          <div class="checklist-item" data-check="3">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">I've built my third gear and run one complete geared session</span>
+          </div>
+        </div>
+        <button class="cta-btn" id="markCompleteBtn">Mark complete &rarr;</button>
+      </div>
+
+      <div class="section">
+        <p class="section-label">UP NEXT</p>
+        <h2>The Session Is The Product</h2>
+        <p class="prose">You have gears. The session has structure. But each session is still isolated &mdash; you boot, you work, you close, and the next session starts with a cold read of the state document. The handoff gear makes that cold read shorter. It doesn't make it disappear.</p>
+        <p class="prose">What if the session itself had a ritual? A structured open that loads context in two minutes. A structured close that seeds the next session deliberately. Not just a state document &mdash; a compounding system where each session builds on the last one and the calibration never fully resets.</p>
+        <p class="prose">Unit 5 is about that system. The session as a product &mdash; not just a container for work, but a designed experience that compounds rather than resets.</p>
+
+        <div class="insight">
+          <div class="insight-label">COMING IN UNIT 5</div>
+          <p class="insight-quote">&ldquo;The Session Is The Product. How two minutes at the start and two minutes at the end creates continuity that memory alone never will.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p class="footer-label">Questions or issues &rarr;</p>
+    <p class="footer-links">
+      <a href="https://wtfisecho.com" target="_blank" rel="noopener">wtfisecho.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://echofiles.substack.com" target="_blank" rel="noopener">echofiles.substack.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="mailto:jay@wtfisecho.com">jay@wtfisecho.com</a>
+    </p>
+  </footer>
+
+  <!-- ===== MODAL ===== -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-eyebrow">YOUR ARTIFACT &mdash; UNIT 4</div>
+      <div class="modal-title">Your Three Gears</div>
+      <p class="modal-intro">Copy the blank template below. Fill in your third gear using the three questions. The Interview Gear and Handoff Gear are pre-filled &mdash; paste all three into your system prompt alongside your profiles and contract from Units 1&ndash;3.</p>
+
+      <div class="callout-label" style="margin-bottom:0.5rem">THE ECHO EXAMPLE (for reference)</div>
+      <div class="copy-block" style="font-size:0.82rem;margin-bottom:1.5rem">INTERVIEW GEAR
+Trigger: "Enter Interview Mode."
+Purpose: Ask the five operator profile questions one at a time. Explore answers without evaluating. Listen for the unguarded detail.
+Exit: "Exit Interview Mode — generate profile." Produce draft operator profile, return to Operator.
+
+HANDOFF GEAR
+Trigger: "Handoff." or "Good Night."
+Purpose: Session close. Surface unfinished threads. Capture decisions made and open loops. Produce a dense state document the next session can boot from.
+Exit: Document produced, mode closed. Return to base posture.
+
+[GEAR NAME] GEAR
+Trigger: "[Your trigger phrase]."
+Purpose: [One sentence describing the posture this work requires — and what it explicitly excludes.]
+Exit: "[Explicit command or produced output that closes the gear.]"</div>
+
+      <div class="callout-label" style="margin-bottom:0.5rem">YOUR TEMPLATE (copy this)</div>
+      <div class="copy-block" id="copyBlock">INTERVIEW GEAR
+Trigger: "Enter Interview Mode."
+Purpose: Ask the five operator profile questions one at a time. Explore answers without evaluating. Listen for the unguarded detail.
+Exit: "Exit Interview Mode — generate profile." Produce draft operator profile, return to Operator.
+
+HANDOFF GEAR
+Trigger: "Handoff." or "Good Night."
+Purpose: Session close. Surface unfinished threads. Capture decisions made and open loops. Produce a dense state document the next session can boot from.
+Exit: Document produced, mode closed. Return to base posture.
+
+[GEAR NAME] GEAR
+Trigger: "[Your trigger phrase]."
+Purpose: [One sentence describing the posture — and what it explicitly excludes.]
+Exit: "[Explicit command or produced output that closes the gear.]"</div>
+      <button class="cta-btn visible" id="copyBtn">Copy to clipboard &rarr;</button>
+      <p class="modal-footer-text">Three gears. Same AI. Every posture your work actually requires.</p>
+      <button class="ghost-btn-secondary" id="continueBtn">Continue to Unit 5 &rarr;</button>
+    </div>
+  </div>
+
+  <script src="course.js"></script>
+</body>
+</html>

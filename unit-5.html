@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 5 — The Session Layer | Build Your AI OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="course.css">
+</head>
+<body>
+<script>
+window.UNIT_DATA = {
+  unit: 5,
+  title: "The Session Is The Product",
+  subtitle: "Unit 5: The Session Layer",
+  claim: "Two minutes at the start and two minutes at the end creates continuity that memory alone never will.",
+  entryState: "It forgets everything",
+  exitState: "I close the loop, it compounds",
+  nextUnit: "unit-6.html",
+  tabs: [
+    { label: "Overview",                  contentId: "panel-0" },
+    { label: "The Evaporation Problem",   contentId: "panel-1" },
+    { label: "What a Session Ritual Is",  contentId: "panel-2" },
+    { label: "The Opening Protocol",      contentId: "panel-3" },
+    { label: "The Closing Protocol",      contentId: "panel-4" },
+    { label: "The Recognition Moment",    contentId: "panel-5" },
+    { label: "The Compounding Effect",    contentId: "panel-6" },
+    { label: "The Artifact",              contentId: "panel-7" },
+    { label: "What's Next",              contentId: "panel-8" }
+  ],
+  checklistCount: 4,
+  copyBlocks: [
+    { triggerId: "copyBtn", contentId: "copyBlock" }
+  ]
+};
+</script>
+
+  <!-- ===== UNIT TITLE BLOCK ===== -->
+  <div class="unit-title-block">
+    <span class="eyebrow">UNIT 5 OF 6 &mdash; THE SESSION LAYER</span>
+    <h1>The Session Is The Product.</h1>
+    <p class="subtitle">Two minutes at the start and two minutes at the end creates continuity that memory alone never will.</p>
+  </div>
+
+  <!-- ===== TAB NAV ===== -->
+  <nav class="tab-nav">
+    <div class="tab-nav-tabs">
+      <button class="tab-btn active" data-tab="0">Overview</button>
+      <button class="tab-btn" data-tab="1">The Evaporation Problem</button>
+      <button class="tab-btn" data-tab="2">What a Session Ritual Is</button>
+      <button class="tab-btn" data-tab="3">The Opening Protocol</button>
+      <button class="tab-btn" data-tab="4">The Closing Protocol</button>
+      <button class="tab-btn" data-tab="5">The Recognition Moment</button>
+      <button class="tab-btn" data-tab="6">The Compounding Effect</button>
+      <button class="tab-btn" data-tab="7">The Artifact</button>
+      <button class="tab-btn" data-tab="8">What's Next</button>
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ==================== PANEL 0: OVERVIEW ==================== -->
+    <div class="content-area" id="panel-0">
+      <div class="section">
+        <p class="prose">You have a profile. You have a behavioral contract. You have gears. You've built the infrastructure for a real AI OS &mdash; a system that knows who you are, has permission to push back, and can shift its posture on demand. By any measure, you're miles ahead of where you started.</p>
+        <p class="prose">And then you close the tab.</p>
+        <p class="prose">The next morning you open a new session. The profile is there &mdash; it loads from your system prompt. The contract is there. The gears are there. But the session itself starts cold. The context from yesterday is gone. The half-formed insight you were working toward, the decision you almost made, the thread you meant to pull &mdash; all of it is inaccessible unless you deliberately reconstructed it. Which you probably didn't. Which means you start over. Again.</p>
+        <p class="prose">This is the evaporation problem. And it's the last structural gap in your AI OS. Not because the AI forgot &mdash; but because you never gave it a mechanism to remember. Memory features don't solve it. Better prompts don't solve it. The only thing that solves it is a ritual: a structured open and a structured close that make every session a deliberate link in a chain, rather than an isolated event that starts and ends and vanishes.</p>
+        <p class="prose">This unit introduces that ritual. Two minutes at the start. Two minutes at the end. That's the whole thing. But the difference between sessions that evaporate and sessions that compound &mdash; that's entirely in those four minutes.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">BY THE END OF THIS UNIT</p>
+        <h3>THREE THINGS THAT WILL PERMANENTLY CHANGE</h3>
+        <div class="num-item">
+          <span class="num-item-num">01</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Why sessions evaporate without a ritual</div>
+            <div class="num-item-desc">Every session that doesn't close properly is a session that doesn't compound. The cost is invisible but cumulative &mdash; a tax on every unritualized hour you've spent with AI. Once you see the math, you can't unsee it.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">02</span>
+          <div class="num-item-content">
+            <div class="num-item-title">The difference between a habit and a ritual</div>
+            <div class="num-item-desc">A habit is something you do. A ritual is a structural container that does something to you. The opening protocol doesn't just prompt the AI &mdash; it orients you. That distinction changes how you build it and whether it sticks.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">03</span>
+          <div class="num-item-content">
+            <div class="num-item-title">How to build the Opening and Closing Protocols</div>
+            <div class="num-item-desc">Three questions at open. Three questions at close. Each one earns its place. You'll have both protocols installed and tested before this unit is done &mdash; and your first ritualized session running before you open Unit 6.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">WHERE WE'RE GOING</p>
+        <div class="timeline">
+          <div class="timeline-step"><span class="timeline-step-label">The Evaporation Problem</span> <span class="timeline-step-desc">&mdash; What's actually happening when a session closes and context disappears</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">What a Session Ritual Is</span> <span class="timeline-step-desc">&mdash; Habit vs. ritual, and why the distinction matters for whether this actually works</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Opening Protocol</span> <span class="timeline-step-desc">&mdash; Three questions that orient the entire session in under two minutes</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Closing Protocol</span> <span class="timeline-step-desc">&mdash; Three questions that crystallize the session so the next one doesn't start cold</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Recognition Moment</span> <span class="timeline-step-desc">&mdash; The reframe that makes the ritual feel obvious in retrospect</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Compounding Effect</span> <span class="timeline-step-desc">&mdash; What changes when sessions connect instead of evaporate</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Artifact</span> <span class="timeline-step-desc">&mdash; Opening Protocol + Closing Protocol, installable and testable today</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 1: THE EVAPORATION PROBLEM ==================== -->
+    <div class="content-area" id="panel-1">
+      <div class="section">
+        <h2>The Cost Is Invisible But Cumulative</h2>
+        <p class="prose">Here is what happens when you don't close a session deliberately. You've been working on something &mdash; a strategy, a document, a decision. The AI has been calibrating to the problem in real time, building context as the conversation develops. By the end of a good session, it has a working model of the problem that took an hour to build. You close the tab. That model is gone.</p>
+        <p class="prose">The next session starts from your system prompt, which is good. But your system prompt is a profile, not a state document. It knows who you are. It doesn't know where you were. It doesn't know what you decided yesterday, what you're still uncertain about, what the next logical move is. So you re-explain. Not all of it &mdash; you don't have the patience for that &mdash; but enough. And you lose ten minutes and some fidelity in the process. Every time.</p>
+        <p class="prose">This is the re-orientation tax. Every knowledge worker using AI pays it. Every session. Every context switch. It's invisible because each individual instance feels small &mdash; a few minutes, a little friction, a slightly lower ceiling on what the session can accomplish. But it accumulates. And it compounds in the wrong direction: the more you use AI, the more tax you pay, because you have more sessions to restart.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">WHAT'S ACTUALLY HAPPENING</p>
+        <h3>TWO FAILURE MODES, NOT ONE</h3>
+
+        <div class="demo-cards">
+          <div class="demo-card">
+            <div class="demo-card-header muted">FAILURE MODE 1</div>
+            <div class="demo-card-body italic">You close the tab. The context is lost. The next session starts from zero, requiring you to re-explain your goals, constraints, and current state.</div>
+            <div class="demo-card-footer">The AI has to relearn what you already taught it.</div>
+          </div>
+          <div class="demo-card highlighted">
+            <div class="demo-card-header accent">FAILURE MODE 2 (WORSE)</div>
+            <div class="demo-card-body bold">The AI never accumulates understanding across sessions. It just answers your prompts in isolation, rather than building a continuous working model of your work.</div>
+            <div class="demo-card-footer accent">Progress is linear and isolated. It should be compounding.</div>
+          </div>
+        </div>
+
+        <p class="prose">The second failure mode is harder to see because the AI still gives you useful responses. It's not broken. It's just not building. Every session is a fresh start &mdash; capable but amnesiac, helpful but disconnected from the arc of what you're actually trying to do. The profile helps. The contract helps. But without a closing ritual, the session itself evaporates and takes everything it built with it.</p>
+      </div>
+
+      <div class="dark-divider">
+        <h2>You Are Paying a Tax on Every Unritualized Session.</h2>
+        <p>The tax is small per session. Across a month of daily AI work, it's hours of re-orientation, dozens of decisions re-explained, and a system that resets instead of compounds. The ritual doesn't eliminate AI's memory limitations. It routes around them.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">BREAK THE LOOP ONCE</p>
+        <div class="exercise-block">
+          <div class="exercise-label">FORCED EXPERIENCE &mdash; 10 MINUTES, REAL TASK</div>
+          <p>You're going to feel the difference, not think about it. This takes about 10 minutes and requires a real task &mdash; something you actually need to work on, not a practice run.</p>
+
+          <p class="exercise-heading">Step 1 &mdash; Start cold</p>
+          <ol>
+            <li>Open a new AI session.</li>
+            <li>Ask: &ldquo;Help me make progress on [your real task].&rdquo;</li>
+            <li>Work for 3&ndash;5 minutes.</li>
+            <li>Stop. Close the tab.</li>
+          </ol>
+
+          <p class="exercise-heading">Step 2 &mdash; Restart cold</p>
+          <ol>
+            <li>Open a new session. Try to continue the same task.</li>
+            <li>Notice: what do you have to re-explain? What did you forget? How long does it take to get back to where you were?</li>
+            <li>Stop.</li>
+          </ol>
+
+          <p class="exercise-heading">Step 3 &mdash; Now run the ritual</p>
+          <ol>
+            <li>Use the Opening Protocol (skip ahead to that tab if you need to, then come back).</li>
+            <li>Do the same task again for 3&ndash;5 minutes.</li>
+            <li>Run the Closing Protocol. Save the state document &mdash; even just copied into a note.</li>
+          </ol>
+
+          <p class="exercise-heading">Step 4 &mdash; Restart seeded</p>
+          <ol>
+            <li>Open a new session. Paste the state document.</li>
+            <li>Continue the task.</li>
+          </ol>
+
+          <p class="exercise-heading">Compare the two restarts</p>
+          <p>One restarted from memory. One restarted from structure. That difference &mdash; in speed, in friction, in how quickly you're back at full depth &mdash; is the entire unit. Everything else in these tabs is explanation. This is the thing itself.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 2: WHAT A SESSION RITUAL IS ==================== -->
+    <div class="content-area" id="panel-2">
+      <div class="section">
+        <h2>A Ritual Is Not a Habit</h2>
+        <p class="prose">The distinction matters more than it sounds. A habit is something you do. It's automatic, repeated, often unconscious. Opening a new chat window and typing a prompt is a habit. Checking AI for quick answers is a habit. Habits are useful, but they don't create structure &mdash; they just create repetition.</p>
+        <p class="prose">A ritual is something that does something to you. It's a deliberate structure that forces a shift in posture, attention, or orientation. The difference between sitting down at a desk and sitting down at a desk with a specific three-question sequence you run before you open the chat window &mdash; that's the difference between a habit and a ritual. The habit gets you to the desk. The ritual gets you oriented at the desk.</p>
+        <p class="prose">This distinction matters for the session protocol because the temptation is to treat it as a habit: something you do quickly before getting to the real work. That framing makes it easy to skip when you're rushed, easy to do sloppily when you're distracted, and easy to abandon when it stops feeling useful. Rituals are harder to skip because they're structural, not behavioral &mdash; they exist not just in your routine but in your system prompt, in your state document, in the explicit architecture of how your AI OS operates.</p>
+
+        <p class="section-label">THE CONCEPT</p>
+
+        <div class="comparison">
+          <div class="comparison-card">
+            <div class="card-label">HABIT</div>
+            <div class="card-content muted">Something you do.</div>
+            <div class="card-caption">Automatic, unthinking repetition. Opening a new chat window and typing a prompt. Useful, but creates no structure.</div>
+          </div>
+          <div class="comparison-card accented">
+            <div class="card-label">RITUAL</div>
+            <div class="card-content">Something that does something to you.</div>
+            <div class="card-caption">A deliberate structure that forces calibration. The opening protocol doesn't just prompt the AI &mdash; it orients you before the AI even responds.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>THE SHAPE OF THE RITUAL</h3>
+        <p class="prose">The session ritual has exactly two components: an Opening Protocol and a Closing Protocol. Each takes about two minutes. Together, they bracket the working session &mdash; the opening sets target and context, the closing crystallizes decisions and seeds the next session.</p>
+
+        <div class="timeline">
+          <div class="timeline-step"><span class="timeline-step-label">Opening Protocol (2 mins)</span> <span class="timeline-step-desc">&mdash; Three questions that set the target, load the context, and declare the starting gear</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Geared Work</span> <span class="timeline-step-desc">&mdash; The actual session, in whatever gears the work requires</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Closing Protocol (2 mins)</span> <span class="timeline-step-desc">&mdash; Three questions that crystallize the session and seed the next one</span></div>
+        </div>
+
+        <p class="prose">Notice what this doesn't include: a detailed review, a project summary, an extended debrief. Two minutes each means the questions have to be surgical. They are. We'll walk through each one.</p>
+
+        <div class="insight">
+          <div class="insight-label">THE STRUCTURAL CLAIM</div>
+          <p class="insight-quote">&ldquo;The session ritual is a structural container that forces calibration at open and close. It turns a blank text box into a continuous workspace.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 3: THE OPENING PROTOCOL ==================== -->
+    <div class="content-area" id="panel-3">
+      <div class="section">
+        <h2>Two Minutes That Change the Entire Session</h2>
+        <p class="prose">The opening protocol is not a warmup. It's not a greeting. It's not context-setting for the AI's benefit. It's an orientation sequence that runs before real work begins &mdash; and it's as much for you as it is for the system.</p>
+        <p class="prose">Without a deliberate open, what happens is this: you start typing. You might paste something in from a previous session if you remembered to save it. You might just pick up where you think you left off. The AI responds based on your first prompt, which is often reactive &mdash; whatever was most on your mind when you opened the window. The session drifts into shape rather than being directed into shape. You might get good work done, but the session will cover less coherent ground than one that started with a clear target.</p>
+        <p class="prose">The three questions of the Opening Protocol are designed to prevent exactly that drift. They take about two minutes. They set three things: the target for the session, the current state of the system, and the gear you're starting in. Once those three things are declared, the session has a shape before it begins.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE THREE QUESTIONS</p>
+        <h3>THE OPENING PROTOCOL</h3>
+
+        <div class="num-item">
+          <span class="num-item-num">01</span>
+          <div class="num-item-content">
+            <div class="num-item-title">What is the most important thing to accomplish today?</div>
+            <div class="num-item-desc">Sets the target. Not everything you want to do &mdash; the single most important thing. This question forces prioritization before the session begins, which means the session has a north star. If the session drifts, you have something to navigate back to.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">02</span>
+          <div class="num-item-content">
+            <div class="num-item-title">What is the current state of my AI OS?</div>
+            <div class="num-item-desc">Loads the context. This is where you paste or reference the state document from your last Closing Protocol. If you have one, this is a two-second paste. If you don't, this question exposes the cost of not closing properly &mdash; and that exposure is instructive.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">03</span>
+          <div class="num-item-content">
+            <div class="num-item-title">What gear am I starting in?</div>
+            <div class="num-item-desc">Sets the posture. You built gears in Unit 4. Here's where they connect to the session ritual. Declaring your starting gear before you begin means the AI is already oriented when the work starts &mdash; you're not discovering the right posture mid-session.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>WHAT THIS LOOKS LIKE IN PRACTICE</h3>
+        <p class="prose">Here is an actual opening sequence from an ECHO session. Jay is building a course unit &mdash; this is the session that produced the wall-of-text source for the unit you're reading right now.</p>
+
+        <div class="demo-cards">
+          <div class="demo-card">
+            <div class="demo-card-header muted">WITHOUT OPENING PROTOCOL</div>
+            <div class="demo-card-body italic">&ldquo;Okay, I need to write Unit 5. The session is the product. Let me think about how to structure this...&rdquo;
+
+Twenty minutes later: session has drifted into three different structural approaches, none committed to. The AI has been helpful but unfocused because the target was never declared.</div>
+            <div class="demo-card-footer">Session covers ground. Doesn't earn it.</div>
+          </div>
+          <div class="demo-card highlighted">
+            <div class="demo-card-header accent">WITH OPENING PROTOCOL</div>
+            <div class="demo-card-body bold">&ldquo;Target: wall-of-text source for Unit 5. State: [handoff doc pasted]. Gear: FORGE &mdash; build mode, high velocity, V0.1 bias.&rdquo;
+
+The AI is oriented before the first real prompt. The session has a shape. The first response is already aimed at the target instead of exploring what the target might be.</div>
+            <div class="demo-card-footer accent">Session earns ground from the first message.</div>
+          </div>
+        </div>
+
+        <p class="prose">The difference isn't dramatic from the outside. From the inside, it's the difference between a session that builds deliberately and one that assembles itself by accident. Both can produce good work. Only one produces work that compounds.</p>
+
+        <div class="insight">
+          <div class="insight-label">THE SHIFT</div>
+          <p class="insight-quote">&ldquo;This two-minute ritual orients the entire session. You are no longer reacting. You are directing.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 4: THE CLOSING PROTOCOL ==================== -->
+    <div class="content-area" id="panel-4">
+      <div class="section">
+        <h2>The Session Doesn't Evaporate &mdash; It Crystallizes</h2>
+        <p class="prose">If the Opening Protocol is about direction, the Closing Protocol is about crystallization. The work you did in the session exists right now &mdash; in the conversation, in the AI's working context, in your own head. The Closing Protocol is how you capture it before it evaporates when you close the tab.</p>
+        <p class="prose">This is the Handoff Gear from Unit 4, running as a deliberate protocol. If you built that gear, you already have the mechanism. The Closing Protocol is what ensures you actually trigger it at the end of every session, rather than when you remember to. The three questions produce a state document &mdash; a dense, scannable brief that the next session's Opening Protocol can load in seconds.</p>
+        <p class="prose">The three questions are not a review. They're not a summary. They're an extraction: pull the things that need to survive the session end and get them into a form the next session can use. Everything else can stay in the conversation history. These three things cannot be allowed to evaporate.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE THREE QUESTIONS</p>
+        <h3>THE CLOSING PROTOCOL</h3>
+
+        <div class="num-item">
+          <span class="num-item-num">01</span>
+          <div class="num-item-content">
+            <div class="num-item-title">What did I decide?</div>
+            <div class="num-item-desc">Locks in progress. Decisions made mid-session are the most likely thing to get relitigated in the next session &mdash; not because you changed your mind, but because you forgot the reasoning. Write the decision and one sentence of why. That's enough to stop the relitigation loop.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">02</span>
+          <div class="num-item-content">
+            <div class="num-item-title">What is still open?</div>
+            <div class="num-item-desc">Captures unresolved threads. The things you were working toward but didn't land, the questions you raised but didn't answer, the next logical moves that exist in your head right now but will be gone tomorrow. This is the single most important question in the protocol for the continuity of complex work.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">03</span>
+          <div class="num-item-content">
+            <div class="num-item-title">What does the next session need to know?</div>
+            <div class="num-item-desc">Creates the seed for the next opening. Not a full debrief &mdash; a specific, targeted brief. What context, state, or framing would make the next session start at 80% rather than 0%? Write that. The next version of you will thank you.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>THE PRODUCT OF THE CLOSING PROTOCOL</h3>
+        <p class="prose">What the Closing Protocol produces is a state document. Not a journal entry, not a summary &mdash; a functional brief that the next session can boot from. Here is what one looks like from an actual ECHO session:</p>
+
+        <div class="callout">
+          <div class="callout-label">EXAMPLE STATE DOCUMENT (from a real session)</div>
+          <div class="copy-block" style="margin-top:0.5rem">DECISIONS:
+- Tab structure locked at 9 tabs. Not negotiable.
+- Worked example uses ECHO, not a composite character.
+- Recognition Moment gets its own tab — it's a beat, not a footnote.
+
+OPEN:
+- GPT reviewer pass not yet run. Run after wall-of-text v1.
+- Artifact modal format: side-by-side cards vs. stacked — decide after seeing v1.
+- Unit 6 teaser: still TBD, use course arc placeholder for now.
+
+NEXT SESSION NEEDS:
+- Wall-of-text v1 written and ready for review.
+- Jay's feedback on prose density and worked example quality.
+- Claude Code prompt ready to build unit-5.html from source.</div>
+        </div>
+
+        <p class="prose">That document is about 100 words. It takes under two minutes to produce at session close. The next session loads it in the Opening Protocol (question 2: current state of AI OS) and starts with full context in about 30 seconds. The re-orientation tax drops from ten minutes to thirty seconds. That's the math.</p>
+
+        <div class="insight">
+          <div class="insight-label">THE RESULT</div>
+          <p class="insight-quote">&ldquo;This produces the state document. The session doesn't evaporate &mdash; it crystallizes.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 5: THE RECOGNITION MOMENT ==================== -->
+    <div class="content-area" id="panel-5">
+      <div class="section">
+        <h2>The Problem Was Never the AI's Memory</h2>
+        <p class="prose">There's a moment, usually about a week after you start running the ritual consistently, where the frustration you used to feel about AI just... stops. Not because the AI got better at remembering. Not because some feature improved. But because you stopped expecting it to do something it was never designed to do.</p>
+        <p class="prose">The frustration with AI memory is real and widespread. People complain about it constantly &mdash; they open a session, the AI doesn't know where they were, they have to re-explain everything. The frustration is valid. The diagnosis is wrong. The AI isn't failing at memory. It's succeeding at isolation. Each session is designed to be self-contained. The failure was treating self-contained sessions like they should be continuous &mdash; and then being frustrated when they weren't.</p>
+        <p class="prose">When you're treating every session like a first date, you keep showing up and re-introducing yourself, wondering why the relationship isn't deepening. The ritual stops the first-date loop. You stop introducing yourself. You arrive with context, declare your target, and get to work. The relationship deepens because you stopped asking the AI to remember you and started building the structure that makes remembering unnecessary.</p>
+        <p class="prose">There's a deeper reframe underneath this one. What you're actually doing when you run the ritual isn't creating a better habit &mdash; you're moving responsibility for state out of your head and into the system. Your brain was never designed to hold the exact context of where a project was fourteen sessions ago. That's not a memory failure; that's just not what brains are for. The state document takes that load off you. The opening protocol handles the re-load. You stop spending cognitive bandwidth on &ldquo;where were we&rdquo; and spend it entirely on &ldquo;what's next.&rdquo;</p>
+        <p class="prose">Some AI systems handle this automatically &mdash; they maintain a live state layer, read it at session open, write to it at close, without you doing anything. If you're running a system like that, the ritual is already running. For everyone else, the state document is the mechanism. Either way, the principle is the same: the work of holding context between sessions belongs in the system, not in your head.</p>
+
+        <div class="pull-quote-large">
+          <blockquote>&ldquo;The problem was never the AI's memory. The problem was that I was treating every session like a first date.&rdquo;</blockquote>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE REFRAME</p>
+        <h3>WHAT ACTUALLY CHANGED</h3>
+        <p class="prose">The ritual doesn't fix the AI. It fixes the workflow around the AI. The AI gets better at working with you &mdash; not because it remembers, but because you seed it correctly. The difference is significant:</p>
+
+        <div class="comparison">
+          <div class="comparison-card">
+            <div class="card-label">BEFORE THE RITUAL</div>
+            <div class="card-content muted">Expecting the AI to maintain continuity.</div>
+            <div class="card-caption">Relying on the AI's memory, which doesn't exist across sessions. Frustrated when sessions feel disconnected.</div>
+          </div>
+          <div class="comparison-card accented">
+            <div class="card-label">AFTER THE RITUAL</div>
+            <div class="card-content">Building structures that create continuity.</div>
+            <div class="card-caption">The state document bridges the gap. The frustration disappears because the expectation was corrected, not the AI.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">FEEL IT</p>
+        <div class="exercise-block">
+          <div class="exercise-label">FORCED EXPERIENCE &mdash; THE TEXTURE DIFFERENCE</div>
+          <p>Think of two specific sessions &mdash; one where you had to re-explain everything at the start, and one where you dropped straight into the work. If you can't recall a ritualized session yet, use this as a mental simulation:</p>
+
+          <ol>
+            <li><strong>Cold-start texture:</strong> The first ten minutes are spent catching the AI up. You're summarizing, re-framing, explaining context you already covered last time. There's friction before there's flow. The ceiling of what you can accomplish is lower because some of the session was spent on setup.</li>
+            <li><strong>Seeded-session texture:</strong> You paste the state document. The AI is already oriented. The first substantive exchange is about the work itself, not about where you are in the work. The session starts at 80% instead of 0%. There's more time for the hard thinking.</li>
+          </ol>
+
+          <p class="exercise-heading">The question</p>
+          <p>Which sessions have you been running? What would your last month of AI work look like if every session had started seeded instead of cold? That's the compounding effect. That's what the ritual is for.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 6: THE COMPOUNDING EFFECT ==================== -->
+    <div class="content-area" id="panel-6">
+      <div class="section">
+        <h2>Sessions That Connect Instead of Evaporate</h2>
+        <p class="prose">Compounding is one of those concepts everyone knows from finance and almost nobody applies anywhere else. The principle is simple: when gains build on previous gains instead of starting from zero each time, the curve bends upward. The work done in session three is faster than session one, not because you got better at prompting, but because session three started from where session two ended.</p>
+        <p class="prose">Without the ritual, every session is isolated. You start from your profile and your contract &mdash; which is valuable &mdash; but the work context is gone. You're not building on what you built. You're rebuilding it, slightly differently, and then building on top of that. Progress is linear at best. Often it's circular &mdash; covering the same ground across multiple sessions because the thread was never deliberately carried forward.</p>
+        <p class="prose">With the ritual, each session is a link in a chain. The closing protocol produces the state document. The opening protocol loads it. The session starts from the close of the previous one. Over a week of work, the difference is dramatic: the seventh session starts from six previous sessions of built context rather than from zero. The AI doesn't get smarter. You get smarter at deploying it. The calibration compounds.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE BEFORE AND AFTER</p>
+
+        <div class="comparison">
+          <div class="comparison-card">
+            <div class="card-label">WITHOUT RITUAL</div>
+            <div class="card-content muted">Sessions are isolated events.</div>
+            <div class="card-caption">Each session starts from zero. Progress is linear. The AI OS is a tool you pick up and put down &mdash; useful but disconnected.</div>
+          </div>
+          <div class="comparison-card accented">
+            <div class="card-label">WITH RITUAL</div>
+            <div class="card-content">Sessions are a compounding sequence.</div>
+            <div class="card-caption">Open &rarr; Work &rarr; Close &rarr; Seed. Each session builds on the last. The AI OS becomes a system, not a tool.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>WHAT COMPOUNDS, SPECIFICALLY</h3>
+        <p class="prose">Three things get better with each ritualized session:</p>
+
+        <div class="num-item">
+          <span class="num-item-num">01</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Context depth</div>
+            <div class="num-item-desc">Each state document is richer than the last because it's built on the decisions and open threads of previous sessions. By session ten, the AI is working from a context that took ten sessions to build &mdash; and it loads in under a minute.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">02</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Decision quality</div>
+            <div class="num-item-desc">Decisions from previous sessions don't get relitigated. The Closing Protocol locks them in. Each new session inherits the decisions of previous ones and builds from them rather than redebating them. The thinking gets more sophisticated because it's cumulative.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">03</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Speed of calibration</div>
+            <div class="num-item-desc">The AI calibrates to you faster in each session because the opening protocol gives it more accurate context. The re-orientation tax drops from minutes to seconds. Sessions start at full speed.</div>
+          </div>
+        </div>
+
+        <div class="insight">
+          <div class="insight-label">THE BEHAVIORAL LOCK</div>
+          <p class="insight-quote">&ldquo;Once you feel a seeded session, you won't want to start cold again. The ritual doesn't rely on discipline. It relies on contrast.&rdquo;</p>
+        </div>
+      </div>
+
+      <div class="dark-divider">
+        <h2>The AI OS Becomes a System, Not a Tool.</h2>
+        <p>A tool is something you pick up when you need it and put down when you don't. A system is something that runs continuously, builds state, and compounds over time. The ritual is the mechanism that turns the former into the latter. It's four minutes per session. The return on those four minutes is everything above.</p>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 7: THE ARTIFACT ==================== -->
+    <div class="content-area" id="panel-7">
+      <div class="section">
+        <h2>Build Your Session Ritual</h2>
+        <p class="prose">The artifact for this unit is the simplest in the course and the most structurally important. You're installing two protocols &mdash; an Opening Protocol and a Closing Protocol &mdash; that will bracket every AI session you run from here on out. Copy the template below and add it to your system prompt, after your profiles and behavioral contract.</p>
+        <p class="prose">The ECHO example shows you what a live implementation looks like. Jay's ECHO installation runs these as named protocols with specific trigger phrases &mdash; &ldquo;Good Morning&rdquo; for the open, &ldquo;Good Night&rdquo; for the close. Yours can be simpler. The content matters more than the naming convention.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">YOUR ARTIFACT</p>
+        <h3>THE SESSION RITUAL PROTOCOLS</h3>
+        <p class="prose">Click the button below to open the full artifact. Copy the blank template, fill in any customizations you need, and paste it into your system prompt.</p>
+        <button class="cta-btn visible" id="openModalBtn">Open your artifact &rarr;</button>
+      </div>
+
+      <div class="section">
+        <p class="section-label">NOW USE IT</p>
+        <h3>YOUR ONE ACTION BEFORE UNIT 6</h3>
+
+        <div class="num-item">
+          <span class="num-item-num">01</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Run your first ritualized session</div>
+            <div class="num-item-desc">Pick a real task you need to accomplish today &mdash; not a practice task, not something trivial. A real piece of work you would have done anyway.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">02</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Use the Opening Protocol</div>
+            <div class="num-item-desc">Spend exactly two minutes answering the three opening questions before you start. If you don't have a state document from a previous session, answer question two with your best summary of where you currently are.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">03</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Use the Closing Protocol</div>
+            <div class="num-item-desc">Spend exactly two minutes answering the three closing questions when you finish. Save the output somewhere you can find it. That's your state document.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">04</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Compare the experience</div>
+            <div class="num-item-desc">Notice the difference between this session and the last unritualized one. The comparison is the learning. You can't abstract this &mdash; you have to feel the texture difference.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">VALIDATION</p>
+        <h3>IF YOU DON'T FEEL IT, IT DIDN'T WORK</h3>
+
+        <div class="qa-block">
+          <p class="qa-q"><span class="qa-q-label">If your second session didn't start faster:</span></p>
+          <p class="qa-a">Your closing protocol is weak. The state document didn't capture enough. Go back and be more specific about decisions and open threads.</p>
+        </div>
+        <div class="qa-block">
+          <p class="qa-q"><span class="qa-q-label">If you still had to re-explain context:</span></p>
+          <p class="qa-a">Your state document is incomplete. &ldquo;What does the next session need to know?&rdquo; is the question that most people answer too briefly. It needs to be dense enough that a cold read gives full context.</p>
+        </div>
+        <div class="qa-block">
+          <p class="qa-q"><span class="qa-q-label">If the difference felt small:</span></p>
+          <p class="qa-a">You're not working on something complex enough. The ritual's value scales with the complexity of the work. A simple task has low re-orientation cost. A strategy session or multi-week project has enormous re-orientation cost &mdash; and that's where the ritual pays off most visibly.</p>
+        </div>
+        <div class="qa-block">
+          <p class="qa-q"><span class="qa-q-label">When this works correctly:</span></p>
+          <p class="qa-a">The second session feels unfairly fast. You're at full depth in under a minute. That feeling is not a trick. That's the system working.</p>
+        </div>
+      </div>
+
+      <div class="stinger">
+        <p>You've moved from &ldquo;It forgets everything&rdquo;</p>
+        <p>to &ldquo;I close the loop, it compounds.&rdquo;</p>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 8: WHAT'S NEXT ==================== -->
+    <div class="content-area" id="panel-8">
+      <div class="section">
+        <h2>What You Built in This Unit</h2>
+        <p class="prose">You came in with the evaporation problem &mdash; sessions that closed without crystallizing, context that disappeared, a system that restarted instead of compounding. You're leaving with the ritual that fixes it: two minutes at the start, two minutes at the end, six questions that connect every session to the last one and seed the next one.</p>
+        <p class="prose">The Opening Protocol sets the target, loads the context, and declares the starting posture. The Closing Protocol locks in decisions, captures open threads, and produces the state document that makes the next session start at 80% instead of 0%. Together, they turn isolated sessions into a compounding sequence. The AI OS stops being a tool you pick up and put down, and starts being a system that builds.</p>
+        <p class="prose">Five units in. You have a profile, a contract, gears, and now a session ritual. The architecture is complete. What you're building is portable &mdash; it moves with you, lives in your system prompt, runs on any AI. That portability is what Unit 6 is about.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">CHECKLIST</p>
+        <h3>BEFORE YOU MOVE ON</h3>
+        <div id="checklist">
+          <div class="checklist-item" data-check="0">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">I understand why sessions evaporate &mdash; and that the fix is structural, not behavioral</span>
+          </div>
+          <div class="checklist-item" data-check="1">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">I know the difference between a habit and a ritual &mdash; and why that distinction matters for whether this sticks</span>
+          </div>
+          <div class="checklist-item" data-check="2">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">The Opening Protocol and Closing Protocol are installed in my system prompt</span>
+          </div>
+          <div class="checklist-item" data-check="3">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">I've run one complete ritualized session and produced my first state document</span>
+          </div>
+        </div>
+        <button class="cta-btn" id="markCompleteBtn">Mark complete &rarr;</button>
+      </div>
+
+      <div class="section">
+        <p class="section-label">UP NEXT</p>
+        <h2>This Travels With You</h2>
+        <p class="prose">You've built something real. A profile that captures your wiring. A contract that gives the AI permission to intervene. Gears that shift its posture on demand. A ritual that turns isolated sessions into compounding ones. Five units of architecture, living in a system prompt you can carry anywhere.</p>
+        <p class="prose">The question Unit 6 addresses is portability: what happens when you change tools, change employers, change contexts? The profile you built is yours. The contract is yours. The gears and the ritual are yours. They live in a document, not in a platform. That's the design choice that makes everything else durable.</p>
+        <p class="prose">Unit 6 is about understanding and leveraging that portability &mdash; so that everything you've built in this course travels with you, runs on any AI, and doesn't require rebuilding every time something changes.</p>
+
+        <div class="insight">
+          <div class="insight-label">COMING IN UNIT 6</div>
+          <p class="insight-quote">&ldquo;This Travels With You. How to make your AI OS portable, durable, and independent of any single tool or platform.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p class="footer-label">Questions or issues &rarr;</p>
+    <p class="footer-links">
+      <a href="https://wtfisecho.com" target="_blank" rel="noopener">wtfisecho.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://echofiles.substack.com" target="_blank" rel="noopener">echofiles.substack.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="mailto:jay@wtfisecho.com">jay@wtfisecho.com</a>
+    </p>
+  </footer>
+
+  <!-- ===== MODAL ===== -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-eyebrow">YOUR ARTIFACT &mdash; UNIT 5</div>
+      <div class="modal-title">Your Session Ritual</div>
+      <p class="modal-intro">Copy the blank template below and paste it into your system prompt, after your profiles and behavioral contract from Units 1&ndash;4. The ECHO example shows you what a live implementation looks like &mdash; it's not meant to be copied verbatim.</p>
+
+      <div class="callout-label" style="margin-bottom:0.5rem">THE ECHO EXAMPLE (for reference)</div>
+      <div class="copy-block" style="font-size:0.82rem;margin-bottom:1.5rem">OPENING PROTOCOL ("Good Morning")
+01. What is the most important thing to accomplish today?
+    -> Sets the target. One thing, not a list.
+02. What is the current state of my AI OS?
+    -> Load state from previous session's closing doc.
+03. What gear am I starting in?
+    -> Declare posture before work begins.
+
+CLOSING PROTOCOL ("Good Night")
+01. What did I decide?
+    -> Lock decisions. One sentence of reasoning per decision.
+02. What is still open?
+    -> Capture unresolved threads. Explicit parking.
+03. What does the next session need to know?
+    -> Write the seed for the next opening. Dense, scannable.
+
+Output: State document. Saved. Next session loads it at open.</div>
+
+      <div class="callout-label" style="margin-bottom:0.5rem">YOUR TEMPLATE (copy this)</div>
+      <div class="copy-block" id="copyBlock">OPENING PROTOCOL
+01. What is the most important thing to accomplish today?
+02. What is the current state of my AI OS?
+03. What gear am I starting in?
+
+CLOSING PROTOCOL
+01. What did I decide?
+02. What is still open?
+03. What does the next session need to know?
+
+Output: State document. Save it. Load it next session at open.
+
+TEST:
+Does the open orient the session?
+Does the close seed the next session?
+If both are true: you have a ritual. Your sessions will now compound.</div>
+      <button class="cta-btn visible" id="copyBtn">Copy to clipboard &rarr;</button>
+      <p class="modal-footer-text">Two protocols. Six questions. Four minutes per session. Everything compounds from here.</p>
+      <button class="ghost-btn-secondary" id="continueBtn">Continue to Unit 6 &rarr;</button>
+    </div>
+  </div>
+
+  <script src="course.js"></script>
+</body>
+</html>

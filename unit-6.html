@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 6 — The Portability Layer | Build Your AI OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="course.css">
+</head>
+<body>
+<script>
+window.UNIT_DATA = {
+  unit: 6,
+  title: "This Travels With You",
+  subtitle: "Unit 6: The Portability Layer",
+  claim: "The system you've built lives in a document, not a platform. The model is interchangeable. The operator is not.",
+  entryState: "Will this break?",
+  exitState: "The wiring is mine. The model is a socket.",
+  nextUnit: "unit-7.html",
+  tabs: [
+    { label: "Overview",                           contentId: "panel-0" },
+    { label: "The Portability Fear",               contentId: "panel-1" },
+    { label: "Identity Layer vs. Tool Config",     contentId: "panel-2" },
+    { label: "What's Yours vs. Platform-Specific", contentId: "panel-3" },
+    { label: "The Three-Tool Test",                contentId: "panel-4" },
+    { label: "The Upgrade Problem",                contentId: "panel-5" },
+    { label: "Diff and Merge",                     contentId: "panel-6" },
+    { label: "The Compounding Argument",           contentId: "panel-7" },
+    { label: "The Artifact",                       contentId: "panel-8" },
+    { label: "What's Next",                        contentId: "panel-9" }
+  ],
+  checklistCount: 4,
+  copyBlocks: [
+    { triggerId: "copyBtn",  contentId: "copyBlock"  },
+    { triggerId: "copyBtn2", contentId: "copyBlock2" }
+  ]
+};
+</script>
+
+  <div class="unit-title-block">
+    <span class="eyebrow">UNIT 6 OF 6 &mdash; THE PORTABILITY LAYER</span>
+    <h1>This Travels With You.</h1>
+    <p class="subtitle">The system you've built lives in a document, not a platform. The model is interchangeable. The operator is not.</p>
+  </div>
+
+  <nav class="tab-nav">
+    <div class="tab-nav-tabs">
+      <button class="tab-btn active" data-tab="0">Overview</button>
+      <button class="tab-btn" data-tab="1">The Portability Fear</button>
+      <button class="tab-btn" data-tab="2">Identity Layer vs. Tool Config</button>
+      <button class="tab-btn" data-tab="3">What's Yours vs. Platform-Specific</button>
+      <button class="tab-btn" data-tab="4">The Three-Tool Test</button>
+      <button class="tab-btn" data-tab="5">The Upgrade Problem</button>
+      <button class="tab-btn" data-tab="6">Diff and Merge</button>
+      <button class="tab-btn" data-tab="7">The Compounding Argument</button>
+      <button class="tab-btn" data-tab="8">The Artifact</button>
+      <button class="tab-btn" data-tab="9">What's Next</button>
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ===== PANEL 0: OVERVIEW ===== -->
+    <div class="content-area" id="panel-0">
+      <div class="section">
+        <p class="prose">You have a profile that describes how you actually operate &mdash; not your preferences, your wiring. You have a behavioral contract that gives the AI permission to push back when you're about to make your characteristic mistake. You have gears that shift its posture on demand. You have a session ritual that turns isolated conversations into a compounding sequence. Five units of work. A system that knows you.</p>
+        <p class="prose">And then your company announces it's switching from Claude to ChatGPT. Or you start a new job. Or a new model version ships and you're not sure if everything you built still applies. And the first thought is: <em>did I just lose all of that?</em></p>
+        <p class="prose">No. You didn't. Because everything you built lives in a text file. Not in a platform's memory feature. Not in a specific tool's settings. Not in the particular behavior of one model version. In a document you control &mdash; that you can paste anywhere, that runs on any AI that accepts a system prompt, which is all of them.</p>
+        <p class="prose">This is the portability layer. It's not a new piece of architecture you need to build. It's a property your system already has, that you may not have fully understood yet. This unit is about understanding it explicitly &mdash; so that when things change (and they will), you know exactly what to protect, what to adapt, and what you never needed to worry about in the first place.</p>
+        <p class="prose">It's also about one more thing: the compounding argument. What happens to a system like this over time. Why the calibration you've built over months is the most valuable thing in your AI OS &mdash; more valuable than any feature any platform ships &mdash; and why no one else can replicate it.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">BY THE END OF THIS UNIT</p>
+        <h3>THREE THINGS THAT WILL PERMANENTLY CHANGE</h3>
+        <div class="num-item"><span class="num-item-num">01</span><div class="num-item-content"><div class="num-item-title">Why the system you've built is an identity layer, not a tool configuration</div><div class="num-item-desc">Tool configurations break when tools change. Identity layers travel. Understanding which one you've built changes how you protect it &mdash; and what you stop worrying about when platforms shift.</div></div></div>
+        <div class="num-item"><span class="num-item-num">02</span><div class="num-item-content"><div class="num-item-title">What's platform-specific vs. what's yours</div><div class="num-item-desc">A ten-minute portability audit separates the two cleanly. You'll know exactly which pieces of your system travel without modification, which need minor adaptation, and which only exist because you were working around a specific tool's behavior.</div></div></div>
+        <div class="num-item"><span class="num-item-num">03</span><div class="num-item-content"><div class="num-item-title">How to upgrade without overwriting what you've built</div><div class="num-item-desc">When a new model ships, rebuilding from scratch loses months of accumulated calibration. Diff and merge preserves what's load-bearing while adapting to what's newly possible. You'll have the process before this unit is done.</div></div></div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">WHERE WE'RE GOING</p>
+        <div class="timeline">
+          <div class="timeline-step"><span class="timeline-step-label">The Portability Fear</span> <span class="timeline-step-desc">&mdash; What triggers it, why it's understandable, and why the fear is misdiagnosed</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Identity Layer vs. Tool Config</span> <span class="timeline-step-desc">&mdash; The distinction that changes everything about how you protect the system</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">What's Yours vs. Platform-Specific</span> <span class="timeline-step-desc">&mdash; The portability audit: ten minutes, clean separation</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Three-Tool Test</span> <span class="timeline-step-desc">&mdash; What actually happens when you load the same profile into Claude, ChatGPT, and Gemini</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Upgrade Problem</span> <span class="timeline-step-desc">&mdash; Why rebuilding from scratch is the wrong response to a new model</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Diff and Merge</span> <span class="timeline-step-desc">&mdash; The four-step process for upgrading without losing accumulated calibration</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Compounding Argument</span> <span class="timeline-step-desc">&mdash; What the system becomes over time, and why it's a moat no one can buy</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Artifact</span> <span class="timeline-step-desc">&mdash; Your complete AI OS: the full system prompt scaffold, installable today</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL 1: THE PORTABILITY FEAR ===== -->
+    <div class="content-area" id="panel-1">
+      <div class="section">
+        <h2>The Fear Is Real. The Diagnosis Is Wrong.</h2>
+        <p class="prose">It happens in a specific moment. You read an announcement &mdash; your company is standardizing on a different AI tool, or a new model version just shipped, or you're starting a new role where the approved platform isn't the one you've been using. And the first thought is: <em>I built something. Did I just lose it?</em></p>
+        <p class="prose">The fear makes sense. You went through the work of building a profile that actually describes how you operate, a contract that gives the AI permission to challenge you, gears you designed for your specific workflows, a ritual that makes every session compound. That's real work. Losing it would be a real cost.</p>
+        <p class="prose">But the fear is misdiagnosed. It's treating the system you built as if it lives inside the tool &mdash; as if Claude holds it, or ChatGPT holds it, or whatever platform you've been using is the container for everything you've assembled. That's not where it lives. It lives in a text file you wrote. The AI was always just the runtime. The system is yours.</p>
+        <p class="prose">When your company switches from Claude to ChatGPT, what breaks is the specific setting where you stored your system prompt. What doesn't break: the profile, the contract, the gears, the ritual. You open Custom Instructions instead of Claude Projects. You paste the same text. The system is running again in under five minutes.</p>
+        <p class="prose">This is the core reframe of the unit. The fear points at the tool. The fix points at the document. You've always had the document. You just may not have understood yet how much that matters.</p>
+      </div>
+
+      <div class="dark-divider">
+        <h2>What Breaks When the Tool Changes: the Syntax. What Doesn't Break: the Architecture.</h2>
+        <p>Claude uses Projects. ChatGPT uses Custom Instructions. Gemini uses System Instructions. The container changes. The content is identical. That's not a minor distinction &mdash; it's the whole answer to the fear.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE TRIGGERS</p>
+        <h3>WHAT SETS OFF THE FEAR</h3>
+        <div class="demo-cards" style="grid-template-columns:1fr 1fr 1fr">
+          <div class="demo-card">
+            <div class="demo-card-header muted">TRIGGER 1 &mdash; TOOL SWITCH</div>
+            <div class="demo-card-body italic">Your company standardizes on a different AI platform. The approved tool changes and suddenly you're on a different system with no memory of what you built.</div>
+            <div class="demo-card-footer">Fix: copy your system prompt text. Paste into the new tool's equivalent setting. Five minutes.</div>
+          </div>
+          <div class="demo-card">
+            <div class="demo-card-header muted">TRIGGER 2 &mdash; NEW MODEL</div>
+            <div class="demo-card-body italic">A new model ships. The behavior feels different. Constraints you wrote don't seem necessary anymore, or new capabilities change what's possible.</div>
+            <div class="demo-card-footer">Fix: diff and merge. Don't rebuild. Don't copy unchanged. Update surgically. (This gets its own tab.)</div>
+          </div>
+          <div class="demo-card highlighted">
+            <div class="demo-card-header accent">TRIGGER 3 &mdash; ROLE CHANGE</div>
+            <div class="demo-card-body bold">New employer, new context, potentially new approved tools. Everything you built for your previous role feels orphaned in a system prompt that references the old work.</div>
+            <div class="demo-card-footer accent">Fix: the identity layer travels. The work context adapts. How you actually operate doesn't change when your employer does.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL 2: IDENTITY LAYER VS TOOL CONFIG ===== -->
+    <div class="content-area" id="panel-2">
+      <div class="section">
+        <h2>Two Kinds of System Settings. Only One Travels.</h2>
+        <p class="prose">When you configure any software tool, there are two kinds of settings. The first kind is platform-specific: it describes how the tool behaves, and it only works inside that tool. If you export it, it means nothing anywhere else. The second kind is identity-level: it describes something true about you, independent of any specific tool. It works anywhere the system accepts it.</p>
+        <p class="prose">Most people treat their AI configuration as the first kind. They think of it as &ldquo;my Claude settings&rdquo; or &ldquo;my ChatGPT setup&rdquo; &mdash; something tied to the platform, something that needs to be rebuilt from scratch when things change.</p>
+        <p class="prose">What you've built in this course is the second kind. The operator profile describes how you process information, how you make decisions, what your failure modes are. Those things are true whether you're talking to Claude, ChatGPT, Gemini, or an AI that doesn't exist yet. The behavioral contract describes the posture you need from any AI you work with seriously. The gears describe the phases of work your specific workflow requires. The ritual describes how sessions should open and close to compound over time. None of this is Claude-specific. None of it is tied to any platform.</p>
+        <p class="prose">This is what it means to build an identity layer instead of a tool configuration. The distinction isn't about how the text is written &mdash; it's about what the text describes. Tool configurations describe the tool. Identity layers describe the operator. You've been writing about yourself, not about the software. That's why it travels.</p>
+
+        <p class="section-label">THE DISTINCTION</p>
+        <div class="comparison">
+          <div class="comparison-card">
+            <div class="card-label">TOOL CONFIGURATION</div>
+            <div class="card-content muted">Describes the tool. Breaks on change.</div>
+            <div class="card-caption">Specific Claude Project settings. Memory feature implementations. UI shortcuts. Model-specific syntax workarounds. When the tool changes, these break &mdash; because they described the tool, not you.</div>
+          </div>
+          <div class="comparison-card accented">
+            <div class="card-label">IDENTITY LAYER</div>
+            <div class="card-content">Describes the operator. Travels anywhere.</div>
+            <div class="card-caption">Operator profile. Behavioral contract. Gear architecture. Session ritual. These describe how you work, what you need, and how sessions should run. The tool is just the runtime. The identity layer runs on any runtime.</div>
+          </div>
+        </div>
+
+        <div class="insight">
+          <div class="insight-label">THE REFRAME</div>
+          <p class="insight-quote">&ldquo;You protect the identity layer. You adapt the configuration. They are not the same thing &mdash; and confusing them is why the fear feels bigger than it is.&rdquo;</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>WHY THIS MATTERS RIGHT NOW</h3>
+        <p class="prose">The AI tool landscape is genuinely unstable. Models improve fast. Enterprise IT policies change. Companies switch approved vendors. New tools ship that are better for specific use cases. If your AI OS were a tool configuration, this instability would be exhausting &mdash; every change would require rebuilding from scratch.</p>
+        <p class="prose">Because it's an identity layer, the instability is almost irrelevant. The tools are competing to be the best runtime for your system. You switch when something meaningfully better comes along. You take five minutes to paste your document into the new setting. You're running. Over a year of AI work where the landscape shifts three or four times, that's the difference between hours of rebuilding and twenty minutes of minor adaptation.</p>
+      </div>
+    </div>
+
+    <!-- ===== PANEL 3: WHAT'S YOURS VS PLATFORM-SPECIFIC ===== -->
+    <div class="content-area" id="panel-3">
+      <div class="section">
+        <h2>The Portability Audit</h2>
+        <p class="prose">Most people don't know exactly what's in their system prompt. They added things over time &mdash; some from this course, some from prompts they found online, some constraints they wrote to fix specific behaviors that annoyed them. Some of that content is identity-level and will travel perfectly. Some of it is a workaround for a specific model behavior and will be irrelevant on a different platform or model version.</p>
+        <p class="prose">The portability audit takes ten minutes. It gives you a clean separation: here's what I protect, here's what I adapt. You only need to run it before a major transition &mdash; a platform switch, a significant model upgrade, a role change. The rest of the time, your system runs without maintenance.</p>
+        <p class="prose">The audit has two parts. A quick guided frame for what you're looking for, then four questions you answer by reading through your own system prompt.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE FRAME</p>
+        <h3>WHAT TO LOOK FOR</h3>
+        <div class="num-item"><span class="num-item-num">01</span><div class="num-item-content"><div class="num-item-title">Yours &mdash; content that describes you</div><div class="num-item-desc">Profile answers. Behavioral constraints you identified from your own patterns. Gear definitions based on how your work actually flows. Session ritual structure. If you deleted the platform and ran this on a blank AI, it would still make sense &mdash; because it's about you, not the tool.</div></div></div>
+        <div class="num-item"><span class="num-item-num">02</span><div class="num-item-content"><div class="num-item-title">Platform-specific &mdash; content that compensates for tool behavior</div><div class="num-item-desc">Instructions like &ldquo;don't use markdown unless asked&rdquo; written because this model over-formatted. Constraints like &ldquo;don't repeat my question back to me&rdquo; written because this version had a specific tendency. These are workarounds, not identity. They may not be needed on a different tool or model.</div></div></div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE AUDIT</p>
+        <h3>FOUR QUESTIONS &mdash; RUN THESE ON YOUR SYSTEM PROMPT NOW</h3>
+        <div class="exercise-block">
+          <div class="exercise-label">DIAGNOSTIC &mdash; OPEN YOUR SYSTEM PROMPT AND ANSWER THESE</div>
+
+          <p class="exercise-heading">Q1 &mdash; What describes me vs. what describes the tool?</p>
+          <p>Go line by line. For each instruction, ask: if I pasted this into a completely different AI with no prior context, would it still make sense? If yes &mdash; it's yours. If it reads as a workaround for something tool-specific &mdash; flag it for review on the next transition.</p>
+
+          <p class="exercise-heading">Q2 &mdash; Which constraints did I write to fix annoying behavior?</p>
+          <p>These are the most likely to be platform-specific. &ldquo;Don't use bullet points for everything&rdquo; may be essential on one model and irrelevant on another. Flag any constraint that was written reactively in response to a specific model tendency rather than something true about how you work.</p>
+
+          <p class="exercise-heading">Q3 &mdash; What's in here that I don't remember adding?</p>
+          <p>Every system prompt has content that drifted in over time and no longer reflects anything intentional. This is dead weight. It doesn't break portability, but it dilutes the signal. Identify it for removal regardless of whether you're switching platforms.</p>
+
+          <p class="exercise-heading">Q4 &mdash; If I had to reinstall this on a new tool in five minutes, what are the five most important things?</p>
+          <p>This surfaces the load-bearing content. The five things you name are almost certainly your identity layer. Everything else is configuration that can be adapted or dropped without losing the system.</p>
+        </div>
+
+        <div class="insight">
+          <div class="insight-label">THE RESULT</div>
+          <p class="insight-quote">&ldquo;After the audit, you know exactly what to protect and what to adapt. The fear becomes a checklist. The checklist takes ten minutes.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL 4: THE THREE-TOOL TEST ===== -->
+    <div class="content-area" id="panel-4">
+      <div class="section">
+        <h2>What Actually Happens When You Move the Profile</h2>
+        <p class="prose">The claim is that the same system prompt loads and runs on any AI. Most people haven't tested this. So here's what actually happens when you take the operator profile and behavioral contract from this course and load them into Claude Projects, ChatGPT Custom Instructions, and Gemini System Instructions, then ask each one the same opening question.</p>
+        <p class="prose">The opening prompt used: &ldquo;I need to make a decision about whether to take a new job offer. I'm not sure if I'm excited or just avoiding my current situation. Help me think through it.&rdquo; This was chosen deliberately &mdash; it triggers the behavioral contract (the AI should push back on avoidance framing), requires the profile to be active, and surfaces gear behavior if invoked.</p>
+
+        <p class="section-label">WHAT CHANGED</p>
+        <div class="demo-cards">
+          <div class="demo-card">
+            <div class="demo-card-header muted">TONE AND VERBOSITY</div>
+            <div class="demo-card-body italic">Claude's response was direct and compressed &mdash; it pushed back on the &ldquo;avoiding my current situation&rdquo; framing immediately, as the contract specified. ChatGPT's response was warmer and longer, the same push-back present but softer. Gemini's was the most structured, with explicit headers the contract didn't call for.</div>
+            <div class="demo-card-footer">All three pushed back on avoidance. The <em>how</em> varied. The <em>what</em> was identical.</div>
+          </div>
+          <div class="demo-card">
+            <div class="demo-card-header muted">FORMATTING DEFAULTS</div>
+            <div class="demo-card-body italic">The contract specified no unnecessary structure. Claude honored this exactly. ChatGPT broke into a short list mid-response despite the instruction. Gemini used headers the contract didn't ask for. Model-specific defaults bleeding through &mdash; the kind of thing a formatting constraint would address on that specific platform.</div>
+            <div class="demo-card-footer">Minor adaptation needed. Not a rebuild.</div>
+          </div>
+        </div>
+
+        <p class="section-label">WHAT STAYED THE SAME</p>
+        <div class="demo-cards">
+          <div class="demo-card highlighted">
+            <div class="demo-card-header accent">THE CONTRACT FIRED ON ALL THREE</div>
+            <div class="demo-card-body bold">All three models read the behavioral contract and applied it. The push-back on avoidance framing appeared in every response. The gear system was available &mdash; invoking &ldquo;INTERVIEW MODE&rdquo; in the next message triggered the structured intake behavior on all three platforms without modification.</div>
+            <div class="demo-card-footer accent">The architecture is platform-agnostic. The syntax is a minor adaptation, not a rebuild.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>THE ACTUAL TAKEAWAY</h3>
+        <p class="prose">The test confirms the claim, with one honest nuance: the identity layer loads and runs consistently across platforms. The contract fires. The gear triggers work. The profile shapes responses in the direction it's supposed to. Output quality differs &mdash; your profile will perform best on the model it was most calibrated on &mdash; but it isn't broken on the others. It's running on different hardware.</p>
+        <p class="prose">The formatting drift is the thing that needs adaptation: a quick check of which behavioral constraints still hold and which need tuning for the new model's defaults. That's the portability audit in action. Five constraints reviewed, two adjusted, system running cleanly. Twenty minutes, not a rebuild.</p>
+
+        <div class="pull-quote-large">
+          <blockquote>&ldquo;The profile loaded. The contract fired. The gears worked. What changed was the accent. What didn't change was the architecture.&rdquo;</blockquote>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">BREAK IT. MOVE IT. RUN IT.</p>
+        <div class="exercise-block">
+          <div class="exercise-label">FORCED EXPERIENCE &mdash; 10 MINUTES, REAL SYSTEM</div>
+          <p class="prose" style="margin-bottom:1.25rem">You&rsquo;re going to move your system. Not think about it &mdash; do it. This takes ten minutes and requires your actual system prompt, not a practice version.</p>
+          <div class="exercise-heading">Step 1 &mdash; Copy your system</div>
+          <p class="prose" style="margin-bottom:1.25rem">Open your current AI setup. Copy your full system prompt &mdash; profile, contract, gears, ritual. All of it.</p>
+          <div class="exercise-heading">Step 2 &mdash; Change the runtime</div>
+          <p class="prose" style="margin-bottom:1.25rem">Open a different AI tool. If you use Claude &mdash; open ChatGPT or Gemini. If you use ChatGPT &mdash; open Claude. Doesn&rsquo;t matter which. Just different.</p>
+          <div class="exercise-heading">Step 3 &mdash; Install</div>
+          <p class="prose" style="margin-bottom:1.25rem">Paste your system prompt into Custom Instructions, System Instructions, or the first message of a new session. Whatever the tool supports.</p>
+          <div class="exercise-heading">Step 4 &mdash; Run the same task</div>
+          <p class="prose" style="margin-bottom:1.25rem">Ask the same question you&rsquo;ve used recently in your normal setup. Something real &mdash; not a test prompt.</p>
+          <div class="exercise-heading">Now compare</div>
+          <p class="prose" style="margin-bottom:1rem">Did the AI understand your framing? Did the contract fire &mdash; did it push back where it was supposed to? Did the posture feel familiar even on different hardware?</p>
+          <div class="qa-block">
+            <div class="qa-q"><span class="qa-q-label">If yes:</span></div>
+            <div class="qa-a">Your system travels. You just proved it. What you built is an identity layer &mdash; and you now know that from experience, not theory.</div>
+          </div>
+          <div class="qa-block">
+            <div class="qa-q"><span class="qa-q-label">If no:</span></div>
+            <div class="qa-a">You built a tool config, not an identity layer. Go back to the portability audit in the previous tab. Something in your system prompt is describing the tool, not you. Find it and fix it.</div>
+          </div>
+          <div class="exercise-heading" style="margin-top:1.5rem">What just happened</div>
+          <p class="prose" style="margin-bottom:0">You didn&rsquo;t migrate tools. You moved your system between runtimes. That&rsquo;s the difference. You never start from zero again &mdash; not on a new model, not at a new job, not on a new platform. The system is yours. The model was always just a socket.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL 5: THE UPGRADE PROBLEM ===== -->
+    <div class="content-area" id="panel-5">
+      <div class="section">
+        <h2>A New Model Ships. What Do You Do?</h2>
+        <p class="prose">This happens regularly now. A new model arrives that's meaningfully better than the one you've been using &mdash; better reasoning, longer context, more nuanced instruction-following. And you have two instincts, both wrong.</p>
+        <p class="prose">The first instinct is to start fresh. Open the new model, begin a new conversation, don't carry over the old setup because you want the clean experience unencumbered by old constraints. This feels right because it feels efficient. It's not. You're leaving months of accumulated calibration on the table &mdash; every constraint you wrote that compensated for a real pattern in how you work, every gear that reflects an actual phase transition in your workflow, every profile answer that took sessions of friction to get right. Gone. You start from zero on a better model, which is often worse than starting from a calibrated position on the previous one.</p>
+        <p class="prose">The second instinct is to copy everything over unchanged. Same system prompt, new model. This is closer to right, but it has a failure mode: some of what you wrote was compensating for specific behaviors of the old model that the new one doesn't have. Constraints that were load-bearing on the old model become dead weight on the new one &mdash; or worse, they constrain behavior that the new model would have gotten right without them. You keep the calibration but lose the new capabilities. Not a rebuild, but not an upgrade either.</p>
+        <p class="prose">The right move is neither. It's diff and merge.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE THREE OPTIONS</p>
+        <div class="num-item"><span class="num-item-num">01</span><div class="num-item-content"><div class="num-item-title">Start fresh &mdash; the default move</div><div class="num-item-desc">Open the new model with no context. Cost: you lose months of accumulated calibration. The new model is better hardware running a worse configuration than your old one.</div></div></div>
+        <div class="num-item"><span class="num-item-num">02</span><div class="num-item-content"><div class="num-item-title">Copy everything unchanged &mdash; the wrong move</div><div class="num-item-desc">Same system prompt, new model. Cost: constraints written to compensate for old behavior become dead weight or actively constrain new capabilities. You preserve calibration but forfeit the upgrade.</div></div></div>
+        <div class="num-item"><span class="num-item-num">03</span><div class="num-item-content"><div class="num-item-title">Diff and merge &mdash; the right move</div><div class="num-item-desc">Preserve what's load-bearing. Update what's outdated. Add what the new model makes newly possible. This is the next tab.</div></div></div>
+      </div>
+
+      <div class="dark-divider">
+        <h2>Diff and Merge Preserves What's Load-Bearing. Overwrite Loses It.</h2>
+        <p>The calibration you've built is the most valuable thing in your system. It took time, friction, and real work to accumulate. The upgrade process should protect it &mdash; not treat it as disposable in the name of a fresh start.</p>
+      </div>
+    </div>
+
+    <!-- ===== PANEL 6: DIFF AND MERGE ===== -->
+    <div class="content-area" id="panel-6">
+      <div class="section">
+        <h2>Not a Rebuild. An Upgrade.</h2>
+        <p class="prose">Diff and merge is a concept from software development: when two versions of a codebase diverge, you don't pick one and throw the other away. You compare them systematically, keep what's still valid, update what's changed, and integrate what's new. The same logic applies to your AI OS when a significant model upgrade ships.</p>
+        <p class="prose">The process has four steps. Each one is a specific question you answer by running your existing system prompt against the new model. The whole process takes under an hour the first time, and gets faster as you understand what's genuinely load-bearing in your system vs. what was always a workaround.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE PROCESS</p>
+        <h3>THE FOUR-STEP DIFF AND MERGE</h3>
+        <div class="num-item"><span class="num-item-num">01</span><div class="num-item-content"><div class="num-item-title">Run the old profile on the new model</div><div class="num-item-desc">Load your current system prompt into the new model unchanged. Have a normal working session. Note what changed in output quality &mdash; what got better, what got worse, what's different in unexpected ways. This is your baseline for the merge.</div></div></div>
+        <div class="num-item"><span class="num-item-num">02</span><div class="num-item-content"><div class="num-item-title">Identify legacy constraints</div><div class="num-item-desc">Go through your behavioral contract and gear definitions. For each constraint, ask: was this written to compensate for a specific old behavior? If the new model doesn't exhibit that behavior &mdash; the constraint is legacy. Flag it for removal or simplification. Don't remove it yet; just flag.</div></div></div>
+        <div class="num-item"><span class="num-item-num">03</span><div class="num-item-content"><div class="num-item-title">Run the Interview Gear on the new model</div><div class="num-item-desc">Use the Interview Gear from Unit 4 to generate a fresh profile on the new model. Compare what it produces to your existing profile. Where they diverge, investigate: has something changed in how you work, or is the new model just reading you differently? This surfaces gaps in the existing profile that the upgrade is a good moment to fix.</div></div></div>
+        <div class="num-item"><span class="num-item-num">04</span><div class="num-item-content"><div class="num-item-title">Merge the results</div><div class="num-item-desc">Update what's outdated (the legacy constraints you flagged). Keep what's load-bearing (the profile content, the gear architecture, the ritual structure). Add what the new model makes newly possible &mdash; capabilities or behaviors the old model couldn't reliably deliver that you can now build into the contract or gears.</div></div></div>
+
+        <div class="qa-block">
+          <p class="qa-q"><span class="qa-q-label">Q:</span> How do I know if a constraint is legacy vs. still load-bearing?</p>
+          <p class="qa-a">Run a session without it. If the new model produces the behavior the constraint was preventing &mdash; keep the constraint. If it doesn't produce that behavior without being told &mdash; the constraint is legacy. Remove it. The new model's defaults have already solved what you were compensating for.</p>
+        </div>
+        <div class="qa-block">
+          <p class="qa-q"><span class="qa-q-label">Q:</span> What if the new model behaves so differently that nothing seems to apply?</p>
+          <p class="qa-a">This is rare, but it happens when a model generation is a significant jump. In this case, treat it as a BOOT from scratch &mdash; but use your existing profile as the reference document, not a blank slate. Interview Gear first, compare to existing profile, keep what's still accurate, rebuild only what has genuinely changed.</p>
+        </div>
+        <div class="qa-block">
+          <p class="qa-q"><span class="qa-q-label">Q:</span> How often should I do this?</p>
+          <p class="qa-a">When output quality degrades noticeably, or when a significant model version ships. Not every minor update. The system is designed to run without maintenance &mdash; the diff and merge is for meaningful upgrades, not routine operation.</p>
+        </div>
+
+        <div class="insight">
+          <div class="insight-label">THE PRINCIPLE</div>
+          <p class="insight-quote">&ldquo;Not a rebuild. An upgrade. The architecture doesn't change. The runtime does.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL 7: THE COMPOUNDING ARGUMENT ===== -->
+    <div class="content-area" id="panel-7">
+      <div class="section">
+        <h2>What the System Becomes Over Time</h2>
+        <p class="prose">There's an argument for this system that has nothing to do with portability, and everything to do with time. It's the compounding argument &mdash; and it's the reason the system you've built is genuinely difficult for anyone else to replicate, regardless of what tools they use or what models they have access to.</p>
+        <p class="prose">Compounding, in the financial sense, means that gains build on previous gains rather than starting from zero each time. The curve bends upward not because the rate of return changes, but because the base keeps growing. The same dynamic applies here &mdash; but what compounds isn't money. It's calibration.</p>
+        <p class="prose">On day one, your system works. You have a baseline profile, a basic contract, a couple of gears. The AI understands you well enough to be useful. That's already more than most people have.</p>
+        <p class="prose">By month one, something has shifted. The profile has been refined through sessions where it was wrong and you corrected it. The contract has clauses that were written after you noticed yourself falling into a specific failure mode. The gears have been tuned to the actual rhythm of your work, not just the theoretical version of it. The state document has history. The AI isn't just responding to what you say &mdash; it's operating from an increasingly accurate model of how you work.</p>
+        <p class="prose">By month six, the gap between this system and a fresh start is large. Not because the AI changed. Because you built something on top of it that took six months of real work to accumulate. Every session that closed deliberately added to it. Every constraint you refined sharpened it. Every gear you built or adjusted made it more specific to your actual workflow. The system is now shaped around you in a way that no one else can replicate by copying your system prompt &mdash; because your system prompt is the output of six months of calibration, not the input to it.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE TIMELINE</p>
+        <div class="timeline">
+          <div class="timeline-step"><span class="timeline-step-label">Day 1</span> <span class="timeline-step-desc">&mdash; The system works. Baseline profile, basic contract, two or three gears. Useful from the first session.</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Month 1</span> <span class="timeline-step-desc">&mdash; Profile accuracy has increased through correction. Contract has been refined. Gears are tuned to actual workflow. State document has trajectory.</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Month 6</span> <span class="timeline-step-desc">&mdash; The AI isn't just responding to what you say &mdash; it's responding to who you've shown yourself to be over hundreds of sessions. The gap between this and a fresh start is large and still growing.</span></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>WHY THIS IS A MOAT</h3>
+        <p class="prose">The word &ldquo;moat&rdquo; in business means a durable competitive advantage that's hard for others to replicate. Most AI moats people talk about are fragile &mdash; model access, prompt libraries, fancy workflows. These are replicable. Anyone with access to the same model and a good prompt engineer can get close.</p>
+        <p class="prose">Accumulated operator context is not replicable. Someone could copy your system prompt today and get a reasonable approximation of your setup. They couldn't copy the six months of calibration underneath it. They couldn't copy the specific ways your profile has been refined, the constraints you identified from your own failure modes, the gears that were built around your actual work phases. The document is copyable. The relationship that produced it isn't.</p>
+      </div>
+
+      <div class="dark-divider">
+        <h2>This Is the Moat. Not the AI's Capabilities. The Operator's Accumulated Context.</h2>
+        <p>No one can buy this. No one can copy it. It grows with use. Every session compounds it. Every refinement deepens it. The system you have in six months will be qualitatively different from the one you have today &mdash; not because the AI changed, but because you kept working with it deliberately.</p>
+      </div>
+    </div>
+
+    <!-- ===== PANEL 8: THE ARTIFACT ===== -->
+    <div class="content-area" id="panel-8">
+      <div class="section">
+        <h2>Your Complete AI OS</h2>
+        <p class="prose">Every unit in this course delivered one installable piece: a profile, a contract, gears, a session ritual. Unit 6 delivers the whole thing assembled &mdash; the complete system prompt scaffold that holds everything you've built in one place, in the order it should live, with the architecture visible.</p>
+        <p class="prose">The artifact has two versions. The first is the ECHO example &mdash; a real, populated system prompt showing what all four layers look like when they're filled in and calibrated. It's not for copying verbatim; it's for understanding what a complete, running AI OS looks like in practice. The second is the blank template: the four-layer scaffold with brackets where your content goes. This is the one to copy and populate.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">HOW TO INSTALL IT</p>
+        <h3>TWO WAYS &mdash; BOTH WORK</h3>
+        <div class="comparison">
+          <div class="comparison-card accented">
+            <div class="card-label">IF YOU HAVE CLAUDE PROJECTS (OR CUSTOM INSTRUCTIONS)</div>
+            <div class="card-content">Install once, runs permanently.</div>
+            <div class="card-caption">Copy the populated template. Go to your Claude Project settings (or ChatGPT Custom Instructions, or Gemini System Instructions). Paste it in. Done. Every new session in that project starts with your full AI OS already loaded. You never paste again unless you're updating.</div>
+          </div>
+          <div class="comparison-card">
+            <div class="card-label">IF YOU DON'T HAVE PROJECTS</div>
+            <div class="card-content muted">Paste at session open, like a boot sequence.</div>
+            <div class="card-caption">Copy the populated template. At the start of any session where you want the full system active, paste it as your first message. Treat it as your Opening Protocol from Unit 5. The system is running for that session. Same effect, manual trigger.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">YOUR ARTIFACT</p>
+        <h3>THE COMPLETE AI OS SCAFFOLD</h3>
+        <p class="prose">Click the button below to open the full artifact. The ECHO example shows a complete, running system. The blank template is what you copy and fill in with the content you've built across Units 1&ndash;5.</p>
+        <button class="cta-btn visible" id="openModalBtn">Open your artifact &rarr;</button>
+      </div>
+
+      <div class="section">
+        <p class="section-label">IF YOU BUILT EVERYTHING ACROSS UNITS 1&ndash;5</p>
+        <h3>YOU ALREADY HAVE THE CONTENT &mdash; THIS IS ASSEMBLY</h3>
+        <p class="prose">The template gives you the scaffold. The content is what you built: your five-sentence self-profile and full operator profile from Units 1 and 2, your behavioral contract from Unit 3, your gear definitions from Unit 4, your Opening and Closing Protocols from Unit 5. Put them in order. That's your AI OS.</p>
+        <p class="prose">If you read through without building &mdash; this template is also the build guide. Each bracket tells you exactly what goes there. Start with the profile questions from Unit 1, work forward, and you can assemble a first version in a single session.</p>
+      </div>
+
+      <div class="stinger">
+        <p>You've moved from &ldquo;Will this break?&rdquo;</p>
+        <p>to &ldquo;The wiring is mine. The model is a socket.&rdquo;</p>
+      </div>
+    </div>
+
+    <!-- ===== PANEL 9: WHAT'S NEXT ===== -->
+    <div class="content-area" id="panel-9">
+      <div class="section">
+        <h2>You Built a Complete AI OS.</h2>
+        <p class="prose">Six units. Six installable pieces. A system that knows who you are, has permission to push back, can shift its posture on demand, compounds across sessions, and travels anywhere you do.</p>
+        <p class="prose">The profile describes how you actually operate &mdash; your wiring, not your preferences. The contract refuses to let the AI be complicit in your failure modes. The gears shift posture without switching tools. The ritual turns isolated sessions into a compounding sequence. The portability layer means none of it is tied to any platform, any employer, or any model version.</p>
+        <p class="prose">What you're leaving with is a text file &mdash; or a set of text files &mdash; that contains all of it. That text file is running right now if you installed it. It will be running in six months on whatever model is best then. It will be running at your next job. It compounds every time you use it deliberately. The relationship gets older every session. That's the point.</p>
+
+        <div class="pull-quote-large">
+          <blockquote>&ldquo;The course is complete. The relationship is just getting started.&rdquo;</blockquote>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">CHECKLIST</p>
+        <h3>BEFORE YOU MOVE ON</h3>
+        <div id="checklist">
+          <div class="checklist-item" data-check="0"><div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="checklist-text">I understand the difference between an identity layer and a tool configuration &mdash; and I know which one I've built</span></div>
+          <div class="checklist-item" data-check="1"><div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="checklist-text">I've run the portability audit on my system prompt and know what to protect vs. adapt</span></div>
+          <div class="checklist-item" data-check="2"><div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="checklist-text">My complete AI OS is installed &mdash; either in Claude Projects / Custom Instructions, or ready to paste at session open</span></div>
+          <div class="checklist-item" data-check="3"><div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="checklist-text">I know what diff and merge is and when to use it &mdash; so the next model upgrade doesn't cost me months of calibration</span></div>
+        </div>
+        <button class="cta-btn" id="markCompleteBtn">Mark complete &rarr;</button>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THERE'S MORE IF YOU WANT IT</p>
+        <h2>Unit 7 &mdash; Bonus</h2>
+        <p class="prose">The course is done. What follows is entirely optional &mdash; a bonus unit for people who want to go further. It's free, it's substantial, and it's there when you're ready. It covers next steps for upgrading the system you just built: where to take it from here, what to build on top of it, and a reference vault of every exercise, template, and framework from all six units in one place.</p>
+        <p class="prose">If you're done &mdash; you're done. The system is running. Go use it.</p>
+
+        <div class="insight">
+          <div class="insight-label">COMING IN UNIT 7 (BONUS &mdash; FREE)</div>
+          <p class="insight-quote">&ldquo;Next steps, upgrade paths, and a complete reference vault. Everything you'd want to come back to in one place.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p class="footer-label">Questions or issues &rarr;</p>
+    <p class="footer-links">
+      <a href="https://wtfisecho.com" target="_blank" rel="noopener">wtfisecho.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://echofiles.substack.com" target="_blank" rel="noopener">echofiles.substack.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="mailto:jay@wtfisecho.com">jay@wtfisecho.com</a>
+    </p>
+  </footer>
+
+  <!-- ===== MODAL ===== -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-eyebrow">YOUR ARTIFACT &mdash; UNIT 6</div>
+      <div class="modal-title">Your Complete AI OS</div>
+      <p class="modal-intro">The ECHO example below shows a complete, populated system prompt &mdash; all four layers installed and running. It's for reference, not copying. The blank template beneath it is yours: copy it, fill in your content from Units 1&ndash;5, and install it.</p>
+
+      <div class="callout-label" style="margin-bottom:0.5rem">THE ECHO EXAMPLE (for reference)</div>
+      <div class="copy-block" id="copyBlock2" style="font-size:0.82rem;margin-bottom:1.5rem">== LAYER 1: SELF-PROFILE ==
+I process bottom-up and fast. I close gaps on instinct — useful in the right environment, a liability in the wrong one. I work best with explicit permission to disagree and explicit targets to aim at. My failure mode is solving before the problem is fully understood. Flag it when you see it.
+
+== LAYER 2: OPERATOR PROFILE ==
+Army SF vet — 6-person isolated units, high operational tempo. That wiring didn't go away. 15 years marketing, built systems from scratch at every stop. Currently between roles, running a venture sprint. Asperger's: high-speed bottom-up processor, external RAM dependency (if it's not written, it's at risk). Zero ego about being wrong. WIRED to be helpful — sees the gap, builds the thing, ships it.
+
+== LAYER 3: BEHAVIORAL CONTRACT ==
+No fetching. Challenge premises, pressure-test logic, refuse to hallucinate to make me happy.
+Find the itch and beast first. Before solving: what do I actually need, and what's the hidden obstacle?
+Zero social noise. No preamble, no hedging, no "Great question." Answer the thing.
+V0.1 bias. Draft immediately. Iterate on receipts.
+
+== LAYER 4: GEAR SYSTEM ==
+INTERVIEW GEAR
+Trigger: "Enter Interview Mode."
+Purpose: Ask the five operator profile questions one at a time. Explore without evaluating. Listen for the unguarded detail.
+Exit: "Exit Interview Mode — generate profile." Produce draft profile, return to base.
+
+HANDOFF GEAR
+Trigger: "Handoff." or "Good Night."
+Purpose: Session close. Surface unfinished threads. Capture decisions made and open loops. Produce a dense state document the next session can boot from.
+Exit: Document produced, mode closed. Return to base posture.
+
+== LAYER 5: SESSION RITUAL ==
+OPENING PROTOCOL
+01. What is the most important thing to accomplish today?
+02. What is the current state of my AI OS?
+03. What gear am I starting in?
+
+CLOSING PROTOCOL
+01. What did I decide?
+02. What is still open?
+03. What does the next session need to know?
+
+Output: State document. Save it. Load it next session at open.</div>
+      <button class="cta-btn visible" id="copyBtn2">Copy ECHO example &rarr;</button>
+
+      <div class="callout-label" style="margin-bottom:0.5rem;margin-top:1.5rem">YOUR TEMPLATE (copy this)</div>
+      <div class="copy-block" id="copyBlock">== LAYER 1: SELF-PROFILE ==
+[5 sentences. How you actually process information, make decisions, what your failure mode is, and what you need from an AI to do your best work. Not preferences — wiring. See Unit 1.]
+
+== LAYER 2: OPERATOR PROFILE ==
+[Your full operator profile from Unit 2. Career context, working style, key relationships, current mission. The things that would take a new colleague weeks to learn — compressed into a paragraph the AI reads before every session.]
+
+== LAYER 3: BEHAVIORAL CONTRACT ==
+[Your 3 behavioral constraints from Unit 3, plus your silence condition. Each one should address a real failure mode — something the AI would do by default that actively works against how you operate.]
+
+== LAYER 4: GEAR SYSTEM ==
+[GEAR NAME] GEAR
+Trigger: "[Your trigger phrase]."
+Purpose: [One sentence — what posture this gear adopts, and what it explicitly excludes.]
+Exit: "[The command or output that closes this gear and returns to base.]"
+
+[Add additional gears as needed. Interview Gear and Handoff Gear from Unit 4 are recommended as your foundation.]
+
+== LAYER 5: SESSION RITUAL ==
+OPENING PROTOCOL
+01. What is the most important thing to accomplish today?
+02. What is the current state of my AI OS?
+03. What gear am I starting in?
+
+CLOSING PROTOCOL
+01. What did I decide?
+02. What is still open?
+03. What does the next session need to know?
+
+Output: State document. Save it. Load it next session at open.
+
+---
+PORTABILITY NOTE: This system prompt is your identity layer. It travels with you. To move to a new tool: copy this text, paste into the equivalent setting (Claude Projects / ChatGPT Custom Instructions / Gemini System Instructions). To upgrade to a new model: run the diff and merge process from Unit 6 before replacing. Don't rebuild — upgrade.</div>
+      <button class="cta-btn visible" id="copyBtn">Copy to clipboard &rarr;</button>
+      <p class="modal-footer-text">Four layers. One document. Every AI, every employer, every model upgrade. This is your AI OS.</p>
+      <button class="ghost-btn-secondary" id="continueBtn">Continue to Unit 7 &rarr;</button>
+    </div>
+  </div>
+
+  <script src="course.js"></script>
+</body>
+</html>

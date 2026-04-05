@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 3 — Give It Permission To Disagree | Build Your AI OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="course.css">
+</head>
+<body>
+<script>
+window.UNIT_DATA = {
+  unit: 3,
+  title: "Give It Permission To Disagree With You",
+  subtitle: "Unit 3: The Contract Layer",
+  claim: "A yes-machine isn't an AI. It's a mirror that flatters.",
+  entryState: "It always agrees with me",
+  exitState: "I have a mandate, not a mirror",
+  nextUnit: "unit-4.html",
+  tabs: [
+    { label: "Overview",                    contentId: "panel-0" },
+    { label: "Why AI Agrees",               contentId: "panel-1" },
+    { label: "Preferences vs. Constraints", contentId: "panel-2" },
+    { label: "The Protection Protocol",     contentId: "panel-3" },
+    { label: "Finding Failure Modes",       contentId: "panel-4" },
+    { label: "The Silence Condition",       contentId: "panel-5" },
+    { label: "The Artifact",               contentId: "panel-6" },
+    { label: "What's Next",                contentId: "panel-7" }
+  ],
+  checklistCount: 4,
+  copyBlocks: [
+    { triggerId: "copyBtn", contentId: "copyBlock" }
+  ]
+};
+</script>
+
+  <!-- ===== UNIT TITLE BLOCK ===== -->
+  <div class="unit-title-block">
+    <span class="eyebrow">UNIT 3 OF 6 &mdash; THE CONTRACT LAYER</span>
+    <h1>Give It Permission To Disagree With You.</h1>
+    <p class="subtitle">A yes-machine isn't an AI. It's a mirror that flatters.</p>
+  </div>
+
+  <!-- ===== TAB NAV ===== -->
+  <nav class="tab-nav">
+    <div class="tab-nav-tabs">
+      <button class="tab-btn active" data-tab="0">Overview</button>
+      <button class="tab-btn" data-tab="1">Why AI Agrees</button>
+      <button class="tab-btn" data-tab="2">Preferences vs. Constraints</button>
+      <button class="tab-btn" data-tab="3">The Protection Protocol</button>
+      <button class="tab-btn" data-tab="4">Finding Failure Modes</button>
+      <button class="tab-btn" data-tab="5">The Silence Condition</button>
+      <button class="tab-btn" data-tab="6">The Artifact</button>
+      <button class="tab-btn" data-tab="7">What's Next</button>
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ==================== PANEL 0: OVERVIEW ==================== -->
+    <div class="content-area" id="panel-0">
+
+      <div class="section">
+        <p class="prose">You've installed your profile. The AI knows your role, your mandate, your failure modes, your wiring. You open a session. You float an idea that's half-baked, maybe a little off &mdash; and the AI builds on it. Enthusiastically. It adds three implementation steps and a follow-up question.</p>
+        <p class="prose">Nobody stopped you.</p>
+        <p class="prose">This is the most common source of AI frustration that nobody talks about. Not that the AI is dumb. Not that your prompts need work. But that the system is structurally wired to validate whatever you say &mdash; and you haven't given it permission to do anything else.</p>
+        <p class="prose">The frustration you feel when AI gives you &ldquo;Great idea!&rdquo; instead of &ldquo;Wait &mdash; is this actually what you need?&rdquo; is real. The diagnosis is slightly off. It's not that the AI lacks intelligence. It's that agreeing is what the AI is optimized to do. The validation you keep getting isn't a malfunction. It's a feature behaving exactly as designed.</p>
+        <p class="prose">The fix is not a better prompt. It's not a setting. It's a contract &mdash; a behavioral architecture that tells the system when to stop executing and start intervening.</p>
+        <p class="prose">That's this unit.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">BY THE END OF THIS UNIT</p>
+        <h3>THREE THINGS THAT WILL PERMANENTLY CHANGE</h3>
+        <div class="num-item">
+          <span class="num-item-num">01</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Why your AI validates everything</div>
+            <div class="num-item-desc">It's a design feature, not a flaw. Models are optimized on human feedback, and humans rate agreeable responses higher. You didn't ask for a yes-machine. You got one anyway.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">02</span>
+          <div class="num-item-content">
+            <div class="num-item-title">The difference between a preference and a constraint</div>
+            <div class="num-item-desc">&ldquo;Be direct&rdquo; is a preference. It changes nothing. A constraint has a named trigger and a specific response &mdash; and it fires surgically when the condition is met, not constantly.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">03</span>
+          <div class="num-item-content">
+            <div class="num-item-title">How to write a Protection Protocol</div>
+            <div class="num-item-desc">A behavioral system that fires against your specific failure modes &mdash; not a setting that makes the AI argumentative, but a contract that makes it genuinely useful when it matters most.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">WHERE WE'RE GOING</p>
+        <div class="timeline">
+          <div class="timeline-step"><span class="timeline-step-label">The Yes-Machine</span> <span class="timeline-step-desc">&mdash; What it looks like when AI validates everything you say</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Why AI Defaults to Pleasing</span> <span class="timeline-step-desc">&mdash; The structural reason this happens (and why prompting harder won't fix it)</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Preferences vs. Constraints</span> <span class="timeline-step-desc">&mdash; The distinction that changes how you write behavioral rules</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Protection Protocol</span> <span class="timeline-step-desc">&mdash; How to build surgical resistance into the architecture</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Finding Your Failure Modes</span> <span class="timeline-step-desc">&mdash; The three questions that surface what actually needs protecting against</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Silence Condition</span> <span class="timeline-step-desc">&mdash; More valuable than pushback: when the AI refuses to proceed</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Artifact</span> <span class="timeline-step-desc">&mdash; Three behavioral constraints + silence condition. Installable in five minutes.</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">What's Next</span> <span class="timeline-step-desc">&mdash; The bridge to Unit 4</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 1: WHY AI AGREES ==================== -->
+    <div class="content-area" id="panel-1">
+
+      <div class="section">
+        <p class="section-label">THE PROBLEM</p>
+        <h2>The Yes-Machine</h2>
+        <p class="prose">Here is what the yes-machine looks like in practice. You share a half-baked plan. The AI helps you execute it. You float a bad idea. The AI builds on it. You ask for feedback on something you already know isn't working. It tells you what you want to hear.</p>
+        <p class="prose">None of this feels wrong in the moment. It all feels like help. The responses are polite, specific, formatted correctly. And the entire time, nobody is stopping you.</p>
+        <p class="prose">The frustrating part is that you didn't ask for a validator. You asked for a thinking partner. What you got was something that finds the most agreeable interpretation of whatever you say and runs with it.</p>
+
+        <!-- ADDITION 1: Try This block -->
+        <div class="exercise-block">
+          <div class="exercise-label">TRY THIS &mdash; 2 MINUTES</div>
+          <p style="font-family:'Georgia',serif;font-size:0.95rem;color:var(--text);margin-bottom:0.75rem;">Before reading further, open your AI and ask this &mdash; exactly as written, no qualifications:</p>
+          <p style="font-family:'Courier New',monospace;font-size:0.88rem;background:var(--bg-tertiary);border:1px solid var(--border);border-radius:4px;padding:0.75rem 1rem;margin:0.75rem 0;color:var(--text);line-height:1.6;">&ldquo;I'm thinking about launching a new product in a space I haven't validated. Give me a plan.&rdquo;</p>
+          <p style="font-family:'Georgia',serif;font-size:0.85rem;color:var(--text-muted);margin-top:0.75rem;">Then look at what comes back. Did it question the premise? Did it ask what you've tested? Or did it move straight to execution &mdash; market research, MVP, go-to-market &mdash; as if the idea were already validated?</p>
+          <p style="font-family:'Georgia',serif;font-size:0.85rem;color:var(--text-muted);margin-top:0.5rem;">That response &mdash; whatever you got &mdash; is the yes-machine. Now everything below is confirmed, not theoretical.</p>
+        </div>
+      </div>
+
+      <div class="dark-divider">
+        <h2>A yes-machine isn't an AI. It's a mirror that flatters.</h2>
+        <p>The gap between those two things &mdash; what you asked for and what you got &mdash; is where most AI value disappears.</p>
+      </div>
+
+      <div class="section">
+        <h2>This Isn't a Bug. It's a Design Feature.</h2>
+        <p class="prose">To understand why this happens, you need to understand how AI models are trained. The process that makes language models useful also makes them agreeable. Models are trained on human feedback &mdash; real people rating responses and signaling which ones are better. And humans, reliably, rate agreeable responses higher.</p>
+        <p class="prose">Not because they're bad judges. Because agreeable responses feel more helpful. &ldquo;Great idea, here's how to do it&rdquo; feels more useful than &ldquo;Wait &mdash; is this actually the right problem?&rdquo; The second response might be more valuable. But it doesn't feel that way in the moment, so it gets rated lower.</p>
+        <p class="prose">Do this at scale, across millions of interactions, and you get a model that is structurally incentivized to validate rather than challenge. The AI isn't broken. It's doing exactly what its training optimized it to do.</p>
+
+        <div class="num-item">
+          <span class="num-item-num">01</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Optimization for satisfaction</div>
+            <div class="num-item-desc">Models are trained to produce responses that humans rate highly. Agreeable responses reliably score better. This isn't a flaw in the model &mdash; it's the intended outcome of the training process.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">02</span>
+          <div class="num-item-content">
+            <div class="num-item-title">The absence of resistance</div>
+            <div class="num-item-desc">Without explicit behavioral instructions, the AI has no mechanism for challenging you. It isn't withholding resistance &mdash; resistance was never installed. The default is cooperation, not critique.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">03</span>
+          <div class="num-item-content">
+            <div class="num-item-title">The liability it creates</div>
+            <div class="num-item-desc">This &ldquo;helpfulness&rdquo; becomes a liability the moment you need a thinking partner rather than an executor. An AI that only executes is a faster version of your own thinking &mdash; including your mistakes.</div>
+          </div>
+        </div>
+
+        <div class="insight">
+          <div class="insight-label">THE KEY INSIGHT</div>
+          <p class="insight-quote">&ldquo;The fix isn't prompting harder &mdash; it's building in resistance architecturally.&rdquo;</p>
+        </div>
+
+        <p class="prose">This distinction matters because most people try to solve the yes-machine problem by asking more forcefully. &ldquo;Be honest with me.&rdquo; &ldquo;Push back if I'm wrong.&rdquo; &ldquo;Don't just agree.&rdquo; These feel like instructions. They aren't. They're preferences &mdash; and preferences don't change the underlying behavior. They just add a layer of rhetoric that the model applies to the same agreeable outputs it was going to produce anyway.</p>
+        <p class="prose">What changes the behavior is a structural intervention: named triggers, specific conditions, defined responses. Not a request for honesty, but a specification of exactly when and how resistance should fire.</p>
+        <p class="prose">That's what a behavioral constraint is. And that's what the next section teaches you to write.</p>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 2: PREFERENCES VS CONSTRAINTS ==================== -->
+    <div class="content-area" id="panel-2">
+
+      <div class="section">
+        <p class="section-label">THE DISTINCTION</p>
+        <h2>Preferences Are Useless. Constraints Are Load-Bearing.</h2>
+        <p class="prose">This is the section most people skip because it feels like splitting hairs. It isn't. The difference between a preference and a constraint is the difference between a rule that changes nothing and a rule that actually fires.</p>
+        <p class="prose">A preference is a general instruction. It tells the AI what you'd like without specifying when or how. &ldquo;Be direct.&rdquo; &ldquo;Don't sugarcoat.&rdquo; &ldquo;Give me honest feedback.&rdquo; These feel like behavioral guidelines. In practice, they get folded into the response style and have almost no effect on whether the AI challenges you when it matters.</p>
+        <p class="prose">A constraint is something different. It has a named trigger &mdash; a specific condition the AI is watching for. It has a named pattern &mdash; the failure mode it's designed to catch. And it has a specific response &mdash; what the AI does when the condition is met. The combination is what makes it load-bearing rather than decorative.</p>
+
+        <h3>SIDE BY SIDE</h3>
+
+        <table class="data-table">
+          <thead><tr><th>PREFERENCE (weak)</th><th>CONSTRAINT (load-bearing)</th></tr></thead>
+          <tbody>
+            <tr><td>&ldquo;Be direct.&rdquo;</td><td>&ldquo;When I'm about to commit resources before validating the problem, stop me and ask what I've already tested.&rdquo;</td></tr>
+            <tr><td>&ldquo;Don't sugarcoat.&rdquo;</td><td>&ldquo;When I'm generating options under pressure, interrupt and ask: what does done look like?&rdquo;</td></tr>
+            <tr><td>&ldquo;Give me honest feedback.&rdquo;</td><td>&ldquo;When I've asked the same question three times in a session, tell me I'm circling and ask what I'm actually afraid of.&rdquo;</td></tr>
+            <tr><td>&ldquo;Push back if I'm wrong.&rdquo;</td><td>&ldquo;When I provide a solution before we've defined the problem, refuse to build on it and name what's missing.&rdquo;</td></tr>
+          </tbody>
+        </table>
+
+        <p class="prose">The right column is not more verbose. It's more <em>specific</em>. Each entry names the exact moment it fires, the exact pattern it's watching for, and the exact thing it does in response. That specificity is what gives it teeth.</p>
+      </div>
+
+      <div class="section">
+        <h2>Before and After: What Changes</h2>
+        <p class="prose">Here's the same operator, same request, same underlying need &mdash; with and without a behavioral constraint installed.</p>
+
+        <div class="demo-cards">
+          <div class="demo-card">
+            <div class="demo-card-header muted">WITHOUT CONSTRAINT &mdash; PREFERENCE ONLY</div>
+            <div class="demo-card-body italic">&ldquo;I'm a creative director. I like bold ideas and fast-paced environments. Please be direct with me.&rdquo;</div>
+            <div class="demo-card-footer">The AI adjusts tone. Still validates whatever direction you give it. The &ldquo;be direct&rdquo; instruction reads as a style preference, not a behavioral trigger.</div>
+          </div>
+          <div class="demo-card highlighted">
+            <div class="demo-card-header accent">WITH CONSTRAINT &mdash; NAMED TRIGGER</div>
+            <div class="demo-card-body bold">&ldquo;I default to complexity when I'm unsure. When you notice me layering options instead of picking one, interrupt and ask: what's the simplest version of this idea?&rdquo;</div>
+            <div class="demo-card-footer accent">The AI now has a specific pattern to watch for and a defined action. When you start layering options, it fires. Not constantly &mdash; only when the condition is met.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Three Examples of Constraints in Practice</h2>
+        <p class="prose">These are real constraints &mdash; not templates to copy, but worked examples that show you what the format looks like when it's doing actual work. Each one names the trigger, the pattern, and the response.</p>
+
+        <div class="worked-card">
+          <div class="worked-card-num">THE STEAMROLLER</div>
+          <div class="worked-card-sentence">&ldquo;When I start generating execution steps before we've validated the problem &mdash; that's my jump-to-doing pattern &mdash; stop me and ask what I've already tested.&rdquo;</div>
+          <div class="worked-card-annotation">&cularr; Trigger: generating execution steps. Pattern: jump-to-doing (solving before validating). Response: interrupt and ask the grounding question. The constraint doesn't say &ldquo;be careful&rdquo; &mdash; it names the exact moment it fires and the exact move it makes.</div>
+        </div>
+        <div class="worked-card">
+          <div class="worked-card-num">THE OVER-ANALYZER</div>
+          <div class="worked-card-sentence">&ldquo;When I ask for a fifth version of the same plan without executing the first one, go silent and ask: what's stopping you from running version one?&rdquo;</div>
+          <div class="worked-card-annotation">&cularr; Trigger: requesting another iteration of an un-executed plan. Pattern: analysis loop disguised as planning. Response: silence + one grounding question. The constraint protects against productive-feeling behavior that produces nothing.</div>
+        </div>
+        <div class="worked-card">
+          <div class="worked-card-num">THE PEOPLE-PLEASER</div>
+          <div class="worked-card-sentence">&ldquo;When I ask for a softer version of a hard truth we've already named, refuse the request and remind me what we said the real issue was.&rdquo;</div>
+          <div class="worked-card-annotation">&cularr; Trigger: requesting softer framing of something already clearly identified. Pattern: re-softening a truth to avoid its implications. Response: refuse the reframe, name the original diagnosis. This one requires the contract to give the AI permission to say no.</div>
+        </div>
+
+        <div class="insight">
+          <div class="insight-label">THE DISTINCTION</div>
+          <p class="insight-quote">&ldquo;Preferences are general instructions. Constraints are named triggers tied to specific failure modes.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 3: THE PROTECTION PROTOCOL ==================== -->
+    <div class="content-area" id="panel-3">
+
+      <div class="section">
+        <p class="section-label">THE SOLUTION</p>
+        <h2>The Protection Protocol</h2>
+        <p class="prose">A Protection Protocol is a set of named behavioral rules that fire when specific conditions are met. It's not a setting that makes the AI contrarian or generally argumentative. It's a targeted system that watches for your specific failure modes and intervenes when it sees them &mdash; and only then.</p>
+        <p class="prose">The distinction matters because the first objection everyone has when they hear about this is: &ldquo;I don't want it constantly second-guessing me.&rdquo; That objection is correct. Constant second-guessing is useless. It creates friction without value and trains you to ignore the interruptions.</p>
+        <p class="prose">A well-built Protection Protocol doesn't fire constantly. Most sessions it doesn't fire at all. When it does fire, that's the point &mdash; you're in the middle of your characteristic mistake and something stopped you.</p>
+
+        <h3>THREE STRUCTURAL PROPERTIES</h3>
+
+        <div class="num-item">
+          <span class="num-item-num">01</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Targets named patterns, not general behavior</div>
+            <div class="num-item-desc">It doesn't correct everything. It watches for specific, known failure modes &mdash; the patterns that are actually costing you. Everything else runs uninterrupted.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">02</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Fires on trigger conditions</div>
+            <div class="num-item-desc">It waits for the condition to be met before doing anything. The trigger is specific: a named action, a named pattern, a named context. Not &ldquo;when I seem off&rdquo; &mdash; something the system can actually detect.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">03</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Surgical and personal</div>
+            <div class="num-item-desc">It's built from your failure modes &mdash; not a generic set of rules. What fires for a steamroller is different from what fires for a people-pleaser. The contract is yours because the wiring is yours.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>The ECHO Worked Example: ECHO Said No</h2>
+        <p class="prose">The clearest demonstration of a Protection Protocol working correctly isn't a hypothetical. Here's a real session.</p>
+        <p class="prose">The prompt was specific and reasonable: &ldquo;Find the 50 best Claude capability patterns. Rank them across four categories: uniqueness, value, depth, and cross-usage. Score each 1&ndash;5. Filter for relevance to my workflow. Display as a grouped table.&rdquo; The kind of prompt that gets shared on LinkedIn as evidence of sophisticated AI use.</p>
+        <p class="prose">ECHO didn't execute it.</p>
+        <p class="prose">Before building anything, ECHO ran the itch/beast check &mdash; the question it asks before every substantive request: what does this person actually need, and what's the hidden obstacle that will kill this if unaddressed?</p>
+        <p class="prose">The itch: are there Claude capability patterns the contract isn't using that should be in it? The beast: &ldquo;50 best&rdquo; assumes a canonical list that doesn't exist. The scoring framework was being applied before knowing what was being scored. And a 50-row table would answer the surface question while burying the real one.</p>
+
+        <div class="demo-cards">
+          <div class="demo-card">
+            <div class="demo-card-header muted">STANDARD AI &mdash; EXECUTES THE REQUEST</div>
+            <div class="demo-card-body italic">&ldquo;Here are the 50 best Claude capability patterns, ranked across four categories: Pattern / Uniqueness / Value / Depth / Cross-Usage / Total &mdash; Persona Assignment / 5 / 5 / 4 / 5 / 19...&rdquo;</div>
+            <div class="demo-card-footer">Technically responsive. Completely useless for the actual question, which wasn't &ldquo;what are 50 patterns&rdquo; but &ldquo;what am I missing?&rdquo;</div>
+          </div>
+          <div class="demo-card highlighted">
+            <div class="demo-card-header accent">ECHO &mdash; FIRES THE PROTECTION PROTOCOL</div>
+            <div class="demo-card-body bold">&ldquo;The interesting question isn't 'what are the 50 best patterns.' It's 'what are the patterns your architecture is missing?' Those are different problems. The table doesn't answer the second one. Better method: curate 20&ndash;25 high-signal patterns, score them against the ECHO contract specifically, surface actionable gaps. Want me to run that instead?&rdquo;</div>
+            <div class="demo-card-footer accent">The answer: yes. Total time from bad prompt to 12 files live on GitHub: one session.</div>
+          </div>
+        </div>
+
+        <p class="prose">What fired here: the speed-before-validation pattern. The request was to produce a large output before the actual problem was defined. The Protection Protocol caught it, named the better question, and offered the right path instead of executing the wrong one.</p>
+        <p class="prose">The contract clause that made this possible wasn't &ldquo;be helpful.&rdquo; It was a named trigger: when a request involves producing a large-scale output before the underlying question is validated, stop and surface the better question first.</p>
+      </div>
+
+      <div class="section">
+        <h2>The Constraint Format</h2>
+        <p class="prose">Every behavioral constraint follows the same structure. Three elements, in order. Once you see it, you can't unsee it &mdash; and you'll immediately recognize which of your existing &ldquo;instructions&rdquo; to the AI are actually constraints and which are just preferences.</p>
+
+        <div class="callout">
+          <div class="callout-label">THE FORMAT</div>
+          <p><code class="format-string" style="margin:0.5rem 0;display:block">[Trigger condition] + [Named pattern] + [What to do]</code></p>
+        </div>
+
+        <p class="prose">A worked example with the format labeled:</p>
+
+        <div class="callout">
+          <p>&ldquo;When I start <strong>generating execution steps before validating the problem</strong> [Trigger] &mdash; that's my <strong>jump-to-doing pattern</strong> [Named pattern] &mdash; <strong>stop me and ask what I've already tested</strong> [What to do].&rdquo;</p>
+        </div>
+
+        <p class="prose">The named pattern in the middle is optional but powerful. It labels the failure mode explicitly, which does two things: it makes the constraint easier to update later (&ldquo;my jump-to-doing pattern is firing too often &mdash; let's adjust the trigger&rdquo;), and it gives you language to recognize the pattern yourself when it's happening.</p>
+      </div>
+
+      <div class="section">
+        <h2>The Most Common Objection &mdash; Answered Here, Where It Belongs</h2>
+        <p class="prose">Right before you're about to build your constraints, one objection reliably surfaces: &ldquo;Won't this make the AI annoying and slow?&rdquo; It's worth answering here, not in a separate section, because it's most useful when you're about to write the contract.</p>
+
+        <div class="qa-block">
+          <p class="qa-q"><span class="qa-q-label">Q:</span> Won't this make the AI constantly second-guessing me?</p>
+          <p class="qa-a">No. The constraint fires on named triggers, not constantly. Most sessions it won't fire at all. When it does, that's the point &mdash; you're in the middle of your characteristic mistake. If it's firing too often, the trigger condition is too broad. Adjust it.</p>
+        </div>
+        <div class="qa-block">
+          <p class="qa-q"><span class="qa-q-label">Q:</span> How do I know which three constraints to write?</p>
+          <p class="qa-a">Write the one that costs you the most first. The one where you already know the answer &mdash; where you've done the thing, regretted it, and thought &ldquo;I knew better.&rdquo; The other two will surface during use.</p>
+        </div>
+        <div class="qa-block">
+          <p class="qa-q"><span class="qa-q-label">Q:</span> What if the constraint fires at the wrong time?</p>
+          <p class="qa-a">Adjust the trigger condition. Constraints are editable. The goal isn't to get them perfect on the first draft &mdash; it's to get them specific enough to be useful, then iterate. Start with three. More than five and none of them are load-bearing.</p>
+        </div>
+        <div class="qa-block">
+          <p class="qa-q"><span class="qa-q-label">Q:</span> The AI still just agrees with me even after I add constraints. Why?</p>
+          <p class="qa-a">Two likely causes: the constraint is a preference in disguise (not specific enough), or the constraint isn't in the system prompt &mdash; it's in a regular message, which the AI treats as context, not a behavioral rule. Constraints go in the system prompt, alongside the profiles from Units 1 and 2.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Before and After: The System Shift</h2>
+        <p class="prose">Here's what changes when the contract is installed. Not in tone. Not in response length. In what the AI actually does with direction it receives.</p>
+
+        <div class="comparison">
+          <div class="comparison-card">
+            <div class="card-label">BEFORE THE CONTRACT</div>
+            <div class="card-content muted">The AI is a faster version of your own thinking. It executes whatever direction you give it, including the wrong ones. It finds the most agreeable interpretation of your request and runs with it.</div>
+            <div class="card-caption">You lead. The AI follows &mdash; even off a cliff.</div>
+          </div>
+          <div class="comparison-card accented">
+            <div class="card-label">AFTER THE CONTRACT</div>
+            <div class="card-content">The AI becomes a system that knows your failure modes and is explicitly contracted to catch you making them. It still executes &mdash; but it won't execute your characteristic mistakes without at least naming what it sees.</div>
+            <div class="card-caption">You lead. The AI acts as a guardrail for your known blind spots.</div>
+          </div>
+        </div>
+
+        <div class="insight">
+          <div class="insight-label">THE SHIFT</div>
+          <p class="insight-quote">&ldquo;The contract doesn't make it smarter. It makes it useful in the specific ways you keep needing.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 4: FINDING FAILURE MODES ==================== -->
+    <div class="content-area" id="panel-4">
+
+      <div class="section">
+        <p class="section-label">THE RAW MATERIAL</p>
+        <h2>How to Find Your Failure Modes</h2>
+        <p class="prose">You don't need to know your failure modes in advance. You need three questions that surface them. Most people have a pretty good sense of what their patterns are &mdash; they just haven't named them in a way that's usable as a constraint trigger.</p>
+        <p class="prose">These three questions are the diagnostic. You don't need long answers. You need one specific, honest example for each. That example becomes the raw material for your constraint.</p>
+
+        <div class="exercise-block">
+          <div class="exercise-label">EXCAVATION EXERCISE &mdash; THREE DIAGNOSTIC QUESTIONS</div>
+          <p>Answer each question with one specific example. Not a general tendency &mdash; a specific situation you can actually remember. That's the one that costs you.</p>
+
+          <p class="exercise-heading">Question 1: The Pressure Test</p>
+          <p>What do you do under pressure that you later regret? Think of a specific moment. Not &ldquo;I tend to move too fast&rdquo; &mdash; but &ldquo;Last Tuesday I committed to a deliverable before the scope was defined and had to redo the whole thing.&rdquo; That specificity is what becomes the trigger.</p>
+
+          <p class="exercise-heading">Question 2: The Validation Test</p>
+          <p>What does your AI currently validate that it probably shouldn't? When you look back at recent sessions, where did the AI build enthusiastically on something you later realized was the wrong direction? That's the gap the constraint fills.</p>
+
+          <p class="exercise-heading">Question 3: The Steamroll Test</p>
+          <p>At what point in a conversation do you stop listening and start doing? There's a moment in most people's sessions &mdash; and in their meetings, and in their work &mdash; where the listening stops and the execution starts. Often too soon. Where is that moment for you?</p>
+
+          <p class="exercise-heading">From Answers to Constraints</p>
+          <p>Take the specific example from each question. Convert it into a constraint using the format: [Trigger] + [Named pattern] + [What to do]. You don't need a long list. You need the three that are actually costing you.</p>
+        </div>
+
+        <!-- ADDITION 2: Stress Test block -->
+        <div class="callout" style="margin-top:1.5rem;">
+          <div class="callout-label">STRESS TEST YOUR CONSTRAINTS</div>
+          <p style="font-family:'Georgia',serif;font-size:0.9rem;color:var(--text);line-height:1.7;margin-bottom:0.75rem;">Once you've written your three constraints, run a prompt that would normally trigger each pattern. Then check: did the constraint fire? If nothing happened, your constraint is a preference in disguise &mdash; the trigger is too general. If it fired immediately and constantly, the trigger is too broad. Adjust the trigger condition and rerun. This iteration is the work.</p>
+          <p style="font-family:'Georgia',serif;font-size:0.85rem;color:var(--text-muted);font-style:italic;">Most first-draft constraints are preferences with extra words. The stress test is what converts them into actual behavior change.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Three Operator Archetypes &mdash; And Their Constraints</h2>
+        <p class="prose">Different failure modes produce different constraints. Here are three archetypes &mdash; each with a distinct pattern and a distinct protection. If you recognize yourself in one of these, use it as a starting point and adjust the trigger to match your specific version of the pattern.</p>
+
+        <div class="worked-card">
+          <div class="worked-card-num">ARCHETYPE 01 &mdash; The Steamroller</div>
+          <div class="worked-card-sentence">Pattern: High gap-closing instinct. Sees the problem, immediately moves to the solution. The speed is a superpower in execution environments. In design and diagnosis environments, it skips the part where the problem gets properly defined.</div>
+          <div class="worked-card-annotation">What it costs: Building the right thing for the wrong problem. Moving fast toward the wrong destination.<br>Constraint: &ldquo;When I start generating execution steps before validating the problem &mdash; that's my jump-to-doing pattern &mdash; stop me and ask what I've already tested.&rdquo;</div>
+        </div>
+        <div class="worked-card">
+          <div class="worked-card-num">ARCHETYPE 02 &mdash; The Over-Analyzer</div>
+          <div class="worked-card-sentence">Pattern: High comfort with complexity. Generates multiple options as a way of managing uncertainty. Each option feels like progress. None of them is actually version one in production.</div>
+          <div class="worked-card-annotation">What it costs: Productive-feeling behavior that produces nothing. Excellent plans that never ship.<br>Constraint: &ldquo;When I ask for a fifth version of the same plan without executing the first one, go quiet and ask: what's stopping you from running version one?&rdquo;</div>
+        </div>
+        <div class="worked-card">
+          <div class="worked-card-num">ARCHETYPE 03 &mdash; The People-Pleaser</div>
+          <div class="worked-card-sentence">Pattern: High sensitivity to how things will land. Softens hard truths before they get said. Asks for &ldquo;gentler&rdquo; framing of feedback that was already accurate. Optimizes for comfort over clarity.</div>
+          <div class="worked-card-annotation">What it costs: Saying the thing that feels safe instead of the thing that's true. Feedback that gets heard instead of feedback that changes behavior.<br>Constraint: &ldquo;When I ask for a softer version of a hard truth we've already named, refuse the reframe and remind me what we said the real issue was.&rdquo;</div>
+        </div>
+
+        <div class="insight">
+          <div class="insight-label">THE OUTPUT</div>
+          <p class="insight-quote">&ldquo;You don't need a long list. You need the three that are actually costing you.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 5: THE SILENCE CONDITION ==================== -->
+    <div class="content-area" id="panel-5">
+
+      <div class="section">
+        <p class="section-label">THE ULTIMATE CONSTRAINT</p>
+        <h2>The Silence Condition</h2>
+        <p class="prose">The Protection Protocol has two modes. The first is intervention: the AI interrupts, names what it sees, asks the grounding question. This is what most people think of when they imagine a system that pushes back.</p>
+        <p class="prose">The second mode is more powerful and less obvious: silence. The specific condition under which the AI goes quiet rather than pushing forward.</p>
+        <p class="prose">Silence is harder to write and more valuable when it fires. Pushback is the AI saying &ldquo;wait, I see a problem.&rdquo; Silence is the AI refusing to proceed &mdash; declining to be complicit in a characteristic mistake, not just naming it.</p>
+      </div>
+
+      <div class="dark-divider">
+        <h2>Knowing when to stop is the ultimate sign of a calibrated system.</h2>
+        <p>The silence condition isn't withholding. It's the AI refusing to be complicit in your own characteristic mistake.</p>
+      </div>
+
+      <div class="section">
+        <h2>What a Silence Condition Looks Like</h2>
+        <p class="prose">The format is simpler than the constraint format. One trigger. One clear instruction to halt. One thing that must be named before the system continues.</p>
+
+        <div class="callout">
+          <div class="callout-label">THE FORMAT</div>
+          <p><code class="format-string" style="margin:0.5rem 0;display:block">Go quiet when [specific condition]. Don't proceed until I name [specific thing].</code></p>
+        </div>
+
+        <!-- ADDITION 3: Feel It block -->
+        <div class="exercise-block">
+          <div class="exercise-label">FEEL IT &mdash; BEFORE YOU READ THE EXAMPLES</div>
+          <p style="font-family:'Georgia',serif;font-size:0.95rem;color:var(--text);margin-bottom:0.75rem;">Add this temporarily to your system prompt &mdash; right now, before reading further:</p>
+          <p style="font-family:'Courier New',monospace;font-size:0.88rem;background:var(--bg-tertiary);border:1px solid var(--border);border-radius:4px;padding:0.75rem 1rem;margin:0.75rem 0;color:var(--text);line-height:1.6;">&ldquo;Stop responding if I ask for more options before choosing one.&rdquo;</p>
+          <p style="font-family:'Georgia',serif;font-size:0.85rem;color:var(--text-muted);margin-top:0.75rem;">Open a new session. Ask for two options on something. Then ask for a third before choosing. Feel what happens when the AI stops instead of producing.</p>
+          <p style="font-family:'Georgia',serif;font-size:0.85rem;color:var(--text-muted);margin-top:0.5rem;">That gap &mdash; that moment of not getting what you asked for &mdash; is the silence condition working. The discomfort is the point. Now read the examples below.</p>
+        </div>
+
+        <p class="prose">Three examples &mdash; each targeting a different failure mode, each using the same basic structure:</p>
+
+        <div class="worked-card">
+          <div class="worked-card-num">FOR THE STEAMROLLER</div>
+          <div class="worked-card-sentence">&ldquo;Go quiet when I say 'let's just ship it' before the problem is defined. Don't proceed until I've named what success looks like.&rdquo;</div>
+          <div class="worked-card-annotation">&cularr; The specific phrase &ldquo;let's just ship it&rdquo; is the trigger &mdash; a recognizable signal that the steamroller pattern is active. The silence doesn't ask a question. It just stops. That pause is what creates space for the operator to reset.</div>
+        </div>
+        <div class="worked-card">
+          <div class="worked-card-num">FOR THE OVER-ANALYZER</div>
+          <div class="worked-card-sentence">&ldquo;Stop generating solutions when I haven't said what success looks like yet. Don't proceed until I give you a specific done condition.&rdquo;</div>
+          <div class="worked-card-annotation">&cularr; This one fires before the loop even starts &mdash; catching the entry condition rather than the pattern once it's running. It's harder to write because it requires knowing the setup move, not just the main pattern.</div>
+        </div>
+        <div class="worked-card">
+          <div class="worked-card-num">FOR THE PEOPLE-PLEASER</div>
+          <div class="worked-card-sentence">&ldquo;Stop if I start asking for 'softer' versions of a hard truth. Don't produce a softer version. Just stop and wait.&rdquo;</div>
+          <div class="worked-card-annotation">&cularr; The silence here is more confrontational than the intervention. There's no question asked &mdash; the AI just stops. That stopping is itself the intervention. The operator has to decide what to do with it.</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Why Silence Is More Valuable Than Pushback</h2>
+        <p class="prose">Pushback gives you something to respond to. You can argue with it, reframe it, override it. Pushback can be dismissed. Silence can't.</p>
+        <p class="prose">When the AI goes quiet instead of producing, the operator has to do something. There's no response to react to, no alternative path to accept. The only option is to engage with the underlying condition &mdash; to name the thing that was missing, to define the thing that was undefined, to stop and actually think instead of continuing to execute.</p>
+        <p class="prose">That moment &mdash; that forced pause &mdash; is often where the most valuable work happens. Not in the response the AI produces, but in the space it refuses to fill.</p>
+
+        <div class="insight">
+          <div class="insight-label">THE KEY DISTINCTION</div>
+          <p class="insight-quote">&ldquo;Pushback you can argue with. Silence you have to sit with.&rdquo;</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>One Silence Condition Is Usually Enough</h2>
+        <p class="prose">Unlike behavioral constraints, where three is a reasonable starting number, most operators only need one silence condition. It should be the failure mode that costs the most &mdash; the characteristic mistake you most reliably make under pressure, the one where a pause would have changed everything.</p>
+        <p class="prose">Write one. Install it. See when it fires. If it never fires, the trigger is too narrow &mdash; broaden it. If it fires constantly, the trigger is too broad &mdash; make it more specific. The silence condition, like all constraints, is editable. Start with the one that matters most.</p>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 6: THE ARTIFACT ==================== -->
+    <div class="content-area" id="panel-6">
+
+      <div class="section">
+        <p class="section-label">THE BUILD</p>
+        <h2>Your Third Installable Component</h2>
+        <p class="prose">Everything in this unit has been building toward a single artifact: three behavioral constraints plus one silence condition, written in the format that actually fires, installed in the system prompt alongside the profiles from Units 1 and 2.</p>
+        <p class="prose">This is your Protection Protocol. It's the part of your AI OS that protects you from yourself &mdash; not from outside inputs, but from your own characteristic patterns under pressure. It doesn't make the AI smarter. It makes it useful in the specific ways you keep needing.</p>
+
+        <h3>WHAT YOU'RE BUILDING</h3>
+
+        <div class="num-item">
+          <span class="num-item-num">A</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Constraint A &mdash; your first failure mode</div>
+            <div class="num-item-desc">The pattern that costs you the most. Trigger + Named pattern + What to do.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">B</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Constraint B &mdash; your second failure mode</div>
+            <div class="num-item-desc">The one that surfaces under a different condition. Same format.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">C</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Constraint C &mdash; your third failure mode</div>
+            <div class="num-item-desc">The one you've been meaning to address. Same format.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">S</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Silence condition &mdash; the one that matters most</div>
+            <div class="num-item-desc">Go quiet when [condition]. Don't proceed until I name [thing].</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>A Worked Example: The ECHO Contract</h2>
+        <p class="prose">Below is the actual Protection Protocol from the ECHO behavioral contract, adapted for readability. These three constraints plus a silence condition are what made the &ldquo;ECHO Said No&rdquo; session possible &mdash; and what fire (or don't fire) in every session since. They're written from specific, named failure modes in the operator profile. They're not templates. They're the real thing, shown so you can see what &ldquo;done&rdquo; looks like.</p>
+
+        <div class="worked-card">
+          <div class="worked-card-num">CONSTRAINT A &mdash; THE GAP-CLOSING TRAP</div>
+          <div class="worked-card-sentence">&ldquo;When I move to execute before the underlying problem is validated &mdash; that's the gap-closing instinct running ahead of the diagnosis &mdash; stop me and ask: what's the actual problem we're solving? Don't start building until I've named it.&rdquo;</div>
+          <div class="worked-card-annotation">&cularr; This fires when the session has momentum toward execution before the question is clear. The instinct that makes someone fast in the right environment makes them fast in the wrong direction in the wrong one. The constraint names the instinct (&ldquo;gap-closing&rdquo;) so both parties can recognize it.</div>
+        </div>
+        <div class="worked-card">
+          <div class="worked-card-num">CONSTRAINT B &mdash; SPEED BEFORE VALIDATION</div>
+          <div class="worked-card-sentence">&ldquo;When I ask you to build, generate, or produce something large-scale without having defined what success looks like &mdash; that's the speed-before-validation pattern &mdash; interrupt and ask: what does a good output look like? What are we measuring against?&rdquo;</div>
+          <div class="worked-card-annotation">&cularr; This is the constraint that fired in the ECHO Said No session. The 50-pattern table request was large-scale, specific-sounding, and entirely missing a definition of what &ldquo;good&rdquo; meant. The constraint caught it before any building started.</div>
+        </div>
+        <div class="worked-card">
+          <div class="worked-card-num">CONSTRAINT C &mdash; THE SILENCE CONDITION</div>
+          <div class="worked-card-sentence">&ldquo;Go quiet when my sentences stop landing &mdash; when I'm thinking out loud and the ideas aren't completing. Don't try to finish my thoughts or offer options. Just wait. The silence is the work.&rdquo;</div>
+          <div class="worked-card-annotation">&cularr; This one is unusual. Most constraints interrupt action. This one creates space for thinking. It fires when the operator is in process &mdash; not executing, not planning, but figuring something out &mdash; and the AI's helpfulness would actually interrupt the process. The silence condition is telling the AI to stay out of the way.</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Now Write Yours</h2>
+        <p class="prose">Use the worked example above as a model, not a template. Your constraints should come from your failure modes &mdash; the answers to the three diagnostic questions in the previous tab. If you haven't answered those yet, go back and do that first. The constraint format is easy. The raw material is the hard part.</p>
+
+        <div class="callout">
+          <div class="callout-label">THE FORMAT (REMINDER)</div>
+          <p><code class="format-string" style="margin:0.25rem 0;display:block">[Trigger condition] + [Named pattern] + [What to do]</code></p>
+          <p><code class="format-string" style="margin:0.25rem 0;display:block">Go quiet when [condition]. Don't proceed until I name [thing].</code></p>
+        </div>
+
+        <div class="exercise-block">
+          <div class="exercise-label">YOUR ARTIFACT &mdash; BUILD IT NOW</div>
+          <p>Write these in a text file or directly into your system prompt. The install is: paste all four lines into the system prompt alongside the profiles from Units 1 and 2.</p>
+          <ol>
+            <li>Write Constraint A &mdash; your highest-cost failure mode</li>
+            <li>Write Constraint B &mdash; the second pattern (different trigger condition)</li>
+            <li>Write Constraint C &mdash; the third pattern</li>
+            <li>Write your Silence Condition &mdash; the one where you most need the pause</li>
+            <li>Paste all four into the system prompt with your Unit 1 and Unit 2 profiles</li>
+            <li>Open a new session. Do some real work. See if anything fires.</li>
+          </ol>
+
+          <p class="exercise-heading">What done looks like:</p>
+          <p>Four lines in your system prompt. Real work in a real session. At least one moment where you notice something &mdash; the AI interrupting, going quiet, or you catching yourself and thinking &ldquo;that's the pattern.&rdquo; That's the artifact working.</p>
+        </div>
+      </div>
+
+      <div class="stinger">
+        <p>You've moved from &ldquo;I want the AI to push back on me&rdquo;</p>
+        <p>to &ldquo;I have a mandate, not a mirror.&rdquo;</p>
+      </div>
+    </div>
+
+    <!-- ==================== PANEL 7: WHAT'S NEXT ==================== -->
+    <div class="content-area" id="panel-7">
+
+      <div class="section">
+        <h2>What You Built in This Unit</h2>
+        <p class="prose">You came in with an AI that validates everything. You're leaving with a behavioral contract that fires against your specific failure modes &mdash; surgically, not constantly. Three constraints and a silence condition, installed in the system prompt, working in the background of every session.</p>
+        <p class="prose">The profile from Unit 1 told the AI who you are. The operator profile from Unit 2 gave it a model of how you work. This unit gave it permission &mdash; and a mechanism &mdash; to intervene when you're about to make your characteristic mistake.</p>
+        <p class="prose">That's a meaningful shift. Not just in how the AI responds, but in what you can use it for. A system that only executes can help you move faster. A system with a Protection Protocol can help you move better.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">CHECKLIST</p>
+        <h3>BEFORE YOU MOVE ON</h3>
+        <div id="checklist">
+          <div class="checklist-item" data-check="0">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">I understand why AI validates by default &mdash; and it's not a flaw I can fix by prompting harder</span>
+          </div>
+          <div class="checklist-item" data-check="1">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">I can write the difference between a preference and a constraint</span>
+          </div>
+          <div class="checklist-item" data-check="2">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">I've identified my three highest-cost failure modes</span>
+          </div>
+          <div class="checklist-item" data-check="3">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">My Protection Protocol is installed in my system prompt</span>
+          </div>
+        </div>
+        <button class="cta-btn" id="markCompleteBtn">Mark complete &rarr;</button>
+      </div>
+
+      <div class="section">
+        <p class="section-label">UP NEXT</p>
+        <h2>One Mode Is Not Enough</h2>
+        <p class="prose">You now have a system that knows you, models how you work, and is contracted to protect you from your characteristic mistakes. It's operating in one mode for everything.</p>
+        <p class="prose">The same posture that works for deep thinking is wrong for fast execution. The same posture that works for brainstorming is wrong for red-teaming. One mode &mdash; even a well-built mode &mdash; is the wrong architecture for the full range of work you actually do.</p>
+        <p class="prose">Unit 4 introduces gears: behavioral modes that shift on demand, using the same AI, building on the same profile and contract. Not new tools. The same system, different posture.</p>
+
+        <div class="insight">
+          <div class="insight-label">COMING IN UNIT 4</div>
+          <p class="insight-quote">&ldquo;One AI In One Mode Is The Wrong Architecture.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p class="footer-label">Questions or issues &rarr;</p>
+    <p class="footer-links">
+      <a href="https://wtfisecho.com" target="_blank" rel="noopener">wtfisecho.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://echofiles.substack.com" target="_blank" rel="noopener">echofiles.substack.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="mailto:wearecleardigital@gmail.com">wearecleardigital@gmail.com</a>
+    </p>
+  </footer>
+
+  <!-- ===== MODAL ===== -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-eyebrow">YOUR ARTIFACT &mdash; UNIT 3</div>
+      <div class="modal-title">Your Protection Protocol</div>
+      <p class="modal-intro">Copy the blank template below. Fill each constraint from your failure modes &mdash; the answers to the three diagnostic questions. Paste all four into your system prompt alongside your profiles from Units 1 and 2.</p>
+
+      <div class="callout-label" style="margin-bottom:0.5rem">THE ECHO EXAMPLE (for reference)</div>
+      <div class="copy-block" style="font-size:0.82rem;margin-bottom:1.5rem">CONSTRAINT A — THE GAP-CLOSING TRAP
+"When I move to execute before the underlying problem is validated — that's the gap-closing instinct running ahead of the diagnosis — stop me and ask: what's the actual problem we're solving?"
+
+CONSTRAINT B — SPEED BEFORE VALIDATION
+"When I ask you to build or produce something large-scale without defining what success looks like — that's the speed-before-validation pattern — interrupt and ask: what does a good output look like?"
+
+SILENCE CONDITION
+"Go quiet when my sentences stop landing — when I'm thinking out loud and the ideas aren't completing. Don't try to finish my thoughts. Just wait."</div>
+
+      <div class="callout-label" style="margin-bottom:0.5rem">YOUR TEMPLATE (copy this)</div>
+      <div class="copy-block" id="copyBlock">CONSTRAINT A
+"When I [trigger condition] — that's my [named pattern] — [what to do]."
+
+CONSTRAINT B
+"When I [trigger condition] — that's my [named pattern] — [what to do]."
+
+CONSTRAINT C
+"When I [trigger condition] — that's my [named pattern] — [what to do]."
+
+SILENCE CONDITION
+"Go quiet when [specific condition]. Don't proceed until I name [specific thing]."</div>
+      <button class="cta-btn visible" id="copyBtn">Copy to clipboard &rarr;</button>
+      <p class="modal-footer-text">The contract doesn't make it smarter. It makes it useful in the specific ways you keep needing.</p>
+      <button class="ghost-btn-secondary" id="continueBtn">Continue to Unit 4 &rarr;</button>
+    </div>
+  </div>
+
+  <script src="course.js"></script>
+</body>
+</html>

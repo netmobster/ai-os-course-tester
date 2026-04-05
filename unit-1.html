@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 1 — The Self-Profile | Build Your AI OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="course.css">
+</head>
+<body>
+<script>
+window.UNIT_DATA = {
+  unit: 1,
+  nextUnit: 'unit-2.html'
+};
+</script>
+
+  <!-- ===== UNIT TITLE BLOCK ===== -->
+  <div class="unit-title-block">
+    <span class="eyebrow">UNIT 1 OF 6 &mdash; THE SELF-PROFILE</span>
+    <h1>You're Not Prompting Wrong. You're Asking The Wrong Question.</h1>
+    <p class="subtitle">The real problem isn't your phrasing. It's that the AI doesn't know who you are.</p>
+  </div>
+
+  <!-- ===== TAB NAV (7 tabs, scroll-driven) ===== -->
+  <nav class="tab-nav">
+    <div class="tab-nav-tabs">
+      <button class="tab-btn active" data-tab="0">Overview</button>
+      <button class="tab-btn" data-tab="1">The Problem</button>
+      <button class="tab-btn" data-tab="2">Facts vs. Wiring</button>
+      <button class="tab-btn" data-tab="3">The Demo</button>
+      <button class="tab-btn" data-tab="4">The Artifact</button>
+      <button class="tab-btn" data-tab="5">Worked Example</button>
+      <button class="tab-btn" data-tab="6">What's Next</button>
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </nav>
+
+  <!-- ===== TAB CONTENT (continuous scroll, all visible) ===== -->
+  <main>
+
+    <!-- ==================== TAB 0: Overview ==================== -->
+    <div class="content-area" id="panel-0">
+
+      <div class="section">
+        <p class="prose">You open a new chat. You type your question. And the AI gives you something that could have been written for anyone.</p>
+        <p class="prose">Generic. Safe. Technically correct and completely useless for the specific way your brain works and the specific thing you're trying to do.</p>
+        <p class="prose">The AI doesn't know how you think. That's the whole problem. Not your phrasing. Not your technique. Not the template you haven't found yet. The AI is meeting you for the first time, every time &mdash; and it has no model of who you are.</p>
+        <p class="prose">So you try harder. Better phrasing. More context. Templates from people who swear they've cracked it.</p>
+        <p class="prose">Here's what nobody tells you: the frustration is real, but the diagnosis is wrong. You don't have a prompting problem. You have a context problem. And those require completely different solutions.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">BY THE END OF THIS UNIT</p>
+        <h3>THREE THINGS THAT WILL PERMANENTLY CHANGE</h3>
+        <div class="num-item">
+          <span class="num-item-num">01</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Why prompts are the wrong frame</div>
+            <div class="num-item-desc">The problem was never your phrasing. It was that you were optimizing the wrong variable.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">02</span>
+          <div class="num-item-content">
+            <div class="num-item-title">The difference between facts and wiring</div>
+            <div class="num-item-desc">&ldquo;I work in marketing&rdquo; is data. &ldquo;I spiral under pressure&rdquo; is a model. The AI needs the model.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">03</span>
+          <div class="num-item-content">
+            <div class="num-item-title">What the actual first install is</div>
+            <div class="num-item-desc">Before any tool, gear, or workflow &mdash; there is one artifact that makes everything else work.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">WHERE WE'RE GOING</p>
+        <div class="timeline">
+          <div class="timeline-step"><span class="timeline-step-label">The Wrong Diagnosis</span> <span class="timeline-step-desc">&mdash; What you think the problem is</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Reframe</span> <span class="timeline-step-desc">&mdash; What's actually going on</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Facts vs. Wiring</span> <span class="timeline-step-desc">&mdash; The distinction that changes everything</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Demo</span> <span class="timeline-step-desc">&mdash; Same question, two completely different responses</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Artifact</span> <span class="timeline-step-desc">&mdash; Five sentences. One paste. That's the install.</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">The Worked Example</span> <span class="timeline-step-desc">&mdash; A real profile with annotations</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">What's Next</span> <span class="timeline-step-desc">&mdash; The bridge to Unit 2</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 1: The Problem ==================== -->
+    <div class="content-area" id="panel-1">
+
+      <div class="section">
+        <p class="section-label">THE WRONG DIAGNOSIS</p>
+        <h2>The Wrong Diagnosis</h2>
+        <p class="prose">The entire AI productivity industry is organized around a false premise: that the problem is how you phrase your request. That there's a technique you haven't learned, a template you haven't found, a magic construction that unlocks better responses.</p>
+        <p class="prose">Prompt libraries exist because of this premise. &ldquo;Prompt engineering&rdquo; courses exist because of this premise. Every &ldquo;10x your AI results&rdquo; post on LinkedIn exists because of this premise.</p>
+        <p class="prose">It's wrong. The problem is upstream of the prompt entirely. And until you fix the upstream problem, better prompts are like speaking louder to someone who doesn't speak your language.</p>
+
+        <p class="prose">Here's what most people have already tried &mdash; and why none of it fixed anything:</p>
+
+        <div class="strikethrough-list">
+          <div class="strikethrough-label">WHAT YOU'VE TRIED</div>
+          <ul>
+            <li>Better phrasing</li>
+            <li>Prompt libraries</li>
+            <li>Copying templates from Twitter / LinkedIn</li>
+            <li>Asking more specifically</li>
+            <li>Finding the &ldquo;right&rdquo; AI tool</li>
+          </ul>
+          <div class="strikethrough-footer">None of these fix the upstream problem.</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE REFRAME</p>
+        <h2>The AI Doesn't Know Who You Are</h2>
+        <p class="prose">The AI is giving you generic answers because it has no idea who you are.</p>
+        <p class="prose">Every session starts from zero. You open a chat and the AI is meeting you for the first time. It doesn't know what you do, how you think, what a good output looks like for you, what your failure modes are, or what kind of response will land versus get dismissed. It's making its best guess from the words in front of it &mdash; and those words don't contain a model of you.</p>
+      </div>
+
+      <div class="dark-divider">
+        <h2>You're not prompting badly. You're asking a stranger.</h2>
+      </div>
+
+      <div class="section">
+        <p class="prose">The gap between what you're doing and what you actually need:</p>
+
+        <div class="comparison">
+          <div class="comparison-card">
+            <div class="card-label">WHAT YOU'RE DOING</div>
+            <div class="card-content">Optimizing the prompt</div>
+          </div>
+          <div class="comparison-card accented">
+            <div class="card-label">WHAT YOU ACTUALLY NEED</div>
+            <div class="card-content">A persistent model of you</div>
+          </div>
+        </div>
+
+        <div class="insight">
+          <div class="insight-label">THE INSIGHT</div>
+          <p class="insight-quote">&ldquo;The AI is not broken. It's just meeting you for the first time. Every time.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 2: Facts vs. Wiring ==================== -->
+    <div class="content-area" id="panel-2">
+
+      <div class="section">
+        <p class="section-label">THE DISTINCTION</p>
+        <h2>The Distinction That Changes Everything</h2>
+        <p class="prose">Here's what most people do when they try to fix this: they tell the AI facts about themselves. Their role. Their preferences. Their format requirements.</p>
+        <p class="prose">Facts are almost useless. What the AI actually needs is your wiring &mdash; the structural features of how you operate under pressure. Not what you prefer, but how you function when it matters.</p>
+
+        <p class="prose">The difference is easiest to see side by side:</p>
+
+        <table class="data-table">
+          <thead><tr><th>FACTS &mdash; surface data</th><th>WIRING &mdash; what the AI actually needs</th></tr></thead>
+          <tbody>
+            <tr><td>&ldquo;I work in marketing.&rdquo;</td><td>&ldquo;Under pressure I default to doing before thinking. My first instinct is always to build the thing, and I often build the wrong thing.&rdquo;</td></tr>
+            <tr><td>&ldquo;I like bullet points.&rdquo;</td><td>&ldquo;I reject answers that hedge. If the AI gives me options instead of a recommendation, I ignore it.&rdquo;</td></tr>
+            <tr><td>&ldquo;I'm a morning person.&rdquo;</td><td>&ldquo;I spiral when there's no clear deliverable. Ambiguity turns into endless option-generating.&rdquo;</td></tr>
+          </tbody>
+        </table>
+
+        <div class="insight">
+          <div class="insight-label">THE DISTINCTION</div>
+          <p class="insight-quote">&ldquo;One is data. The other is a model. The AI has been getting the data. It needs the model.&rdquo;</p>
+        </div>
+
+        <p class="prose">Notice the difference. Facts describe surface preferences. Wiring describes the structural patterns that determine whether a response is actually useful &mdash; the decision function, the failure mode, the trust signal.</p>
+      </div>
+
+      <div class="section">
+        <p class="prose">This is worth pausing on before you continue.</p>
+
+        <div class="exercise-block">
+          <div class="exercise-label">EXERCISE &mdash; DO THIS BEFORE MOVING ON</div>
+
+          <p class="exercise-heading">What you're doing:</p>
+          <p>Converting three things you know about yourself into wiring statements.</p>
+
+          <p class="exercise-heading">Why it matters:</p>
+          <p>The quality of your self-profile is almost entirely determined by this distinction. A profile full of facts gives the AI data. A profile full of wiring gives it a model. The responses feel completely different.</p>
+
+          <p class="exercise-heading">The steps:</p>
+          <ol>
+            <li>Write down three things you'd normally put in a system prompt about yourself. (&ldquo;I'm a morning person.&rdquo; &ldquo;I work in marketing.&rdquo; &ldquo;I like concise answers.&rdquo;)</li>
+            <li>For each one, ask: what does this actually mean for how I make decisions or what I need from a response?</li>
+            <li>Rewrite each one as a structural statement about how you operate.</li>
+          </ol>
+
+          <div class="comparison" style="margin-top:1rem">
+            <div class="comparison-card">
+              <div class="card-label">WEAK &mdash; still a fact</div>
+              <div class="card-content muted">&ldquo;I value clear answers.&rdquo;</div>
+              <div class="card-caption">Tells the AI nothing about when or why.</div>
+            </div>
+            <div class="comparison-card accented">
+              <div class="card-label">STRONG &mdash; wiring</div>
+              <div class="card-content">&ldquo;If the AI gives me multiple options without recommending one, I treat the response as a failure &mdash; even if the options are good.&rdquo;</div>
+              <div class="card-caption">Tells the AI exactly how to calibrate.</div>
+            </div>
+          </div>
+
+          <p class="exercise-heading">What done looks like:</p>
+          <p>Each rewritten statement should answer a specific failure mode or decision pattern &mdash; not a preference. &ldquo;I need one recommendation, not a list&rdquo; is wiring because it tells the AI what to do differently. &ldquo;I like concise answers&rdquo; is still a fact &mdash; it doesn't tell the AI when conciseness matters or what makes a response feel too long for you.</p>
+          <p>If you can read your rewritten statement and imagine the AI giving you a noticeably different response &mdash; you've found the wiring.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 3: The Demo ==================== -->
+    <div class="content-area" id="panel-3">
+
+      <div class="section">
+        <p class="section-label">THE DEMO</p>
+        <h2>Same Question. Two Responses.</h2>
+        <p class="prose">Here's the same question &mdash; &ldquo;Help me think through launching a product&rdquo; &mdash; asked with and without a profile loaded. Not the concept. The actual responses.</p>
+
+        <p class="prose">Read both carefully:</p>
+
+        <div class="demo-cards">
+          <div class="demo-card">
+            <div class="demo-card-header muted">NO PROFILE &mdash; DEFAULT AI</div>
+            <div class="demo-card-body italic">&ldquo;There are several approaches you could consider for your product launch. First, you'll want to define your target audience. You might also think about your pricing strategy, your distribution channels, and your marketing mix. Here are some frameworks that could help...&rdquo;</div>
+            <div class="demo-card-footer">Generic. Could be for anyone. Asks clarifying questions because it has no model of you.</div>
+          </div>
+          <div class="demo-card highlighted">
+            <div class="demo-card-header accent">PROFILE LOADED</div>
+            <div class="demo-card-body bold">&ldquo;You bias toward speed and hate abstract frameworks, so skip the strategy deck. Here's the fastest path to your first real signal: ship to 10 users this week, not 100. The risk I'd flag given your pattern: you'll want to build the full thing before you've validated the core problem. Don't.&rdquo;</div>
+            <div class="demo-card-footer accent">Specific. Calibrated. Oriented to how this person works.</div>
+          </div>
+        </div>
+
+        <div class="demo-statement-bar">
+          <p>&ldquo;The prompt didn't change. The context did. The second response isn't smarter AI &mdash; it's the same AI with a brief.&rdquo;</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE RECOGNITION MOMENT</p>
+        <h2>The Question That Breaks The Frame</h2>
+
+        <div class="pull-quote-large">
+          <blockquote>&ldquo;How does it know what a good output looks like for you?&rdquo;</blockquote>
+          <p class="accent-sub">It doesn't. You've never told it.</p>
+        </div>
+
+        <p class="prose">Every response you've ever gotten from AI was built on a guess. A guess about your standards. A guess about your failure modes. A guess about what will land and what will get dismissed. The AI isn't bad at its job &mdash; it's been working without a brief.</p>
+
+        <div class="insight">
+          <div class="insight-label">THE SHIFT</div>
+          <p class="insight-quote">&ldquo;You're not a user. You're an operator. And operators write briefs.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 4: The Artifact ==================== -->
+    <div class="content-area" id="panel-4">
+
+      <div class="section">
+        <p class="section-label">THE ARTIFACT</p>
+        <h2>Your 5-Sentence Self-Profile</h2>
+        <p class="prose-muted">Five sentences. One paste. That's the complete install for this unit.</p>
+        <p class="prose">Here's the format &mdash; and what each sentence is actually doing:</p>
+
+        <div class="num-item">
+          <span class="num-item-num">01</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Sentence 1 &mdash; Role + Mandate</div>
+            <code class="format-string">My role is [role]. My current mandate is [what you're actually trying to do right now].</code>
+            <div class="num-item-desc">Not your job title &mdash; the mission. &ldquo;I'm three months into a new role and my mandate is to not break a $500K/month paid machine while slowly evolving it toward AI-first approaches.&rdquo; The AI now knows what you're optimizing for.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">02</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Sentence 2 &mdash; Active Failure Mode</div>
+            <code class="format-string">I fail most when [your most active failure mode right now].</code>
+            <div class="num-item-desc">Not a theoretical weakness &mdash; the specific thing that cost you in the last six months. &ldquo;I fail most when I jump to building before I've validated the problem. My instinct is to ship first and assess the damage later.&rdquo;</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">03</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Sentence 3 &mdash; Spiral Trigger</div>
+            <code class="format-string">I spiral when [the condition that sends you into unproductive loops].</code>
+            <div class="num-item-desc">&ldquo;I spiral when there's no clear deliverable. Ambiguity is my kryptonite &mdash; I'll generate options forever if I don't know what done looks like.&rdquo;</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">04</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Sentence 4 &mdash; Output Standard</div>
+            <code class="format-string">A useful output for me looks like [what actually makes a response actionable for you].</code>
+            <div class="num-item-desc">This is the sentence most people write poorly. &ldquo;I like concise answers&rdquo; is still a fact. &ldquo;A useful output gives me one clear recommendation with the trade-off named &mdash; I can evaluate a recommendation, I can't evaluate a list&rdquo; is wiring. Make it specific.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">05</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Sentence 5 &mdash; Trust Signal</div>
+            <code class="format-string">I trust a response when [what makes you accept versus dismiss].</code>
+            <div class="num-item-desc">&ldquo;I trust a response when it pushes back on something I said. Agreement makes me suspicious. Friction makes me trust.&rdquo; Without this line, the AI defaults to validation &mdash; even when you need a challenge.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">THE INSTALL</div>
+        <p>In Claude, go to Projects &rarr; New Project &rarr; paste the five sentences as the system prompt. In ChatGPT, use Custom Instructions. In Gemini, use System Instructions. The syntax varies. The architecture is the same everywhere.</p>
+      </div>
+
+      <div class="section">
+        <div class="exercise-block">
+          <div class="exercise-label">YOUR TURN</div>
+
+          <p class="exercise-heading">What you're doing:</p>
+          <p>Writing your 5-sentence self-profile.</p>
+
+          <p class="exercise-heading">Why it matters:</p>
+          <p>This is the install. Everything else in this course builds on it. A rough profile that changes your responses is worth more than a polished one you never finish.</p>
+
+          <p class="exercise-heading">The steps:</p>
+          <ol>
+            <li>Open a blank document or note.</li>
+            <li>Write one sentence for each of the five slots above: role + mandate, active failure mode, spiral trigger, output standard, trust signal.</li>
+            <li>For each sentence, use the test: would the AI respond differently if it knew this? If the answer is no, it's still a fact. Go deeper on that sentence.</li>
+            <li>Paste the finished five sentences into a Claude Project, ChatGPT Custom Instructions, or Gemini System Instructions.</li>
+            <li>Ask a question you'd normally ask. Note what changed.</li>
+          </ol>
+
+          <p class="exercise-heading">What done looks like:</p>
+          <p>A finished profile passes this test &mdash; read each sentence and ask: would the AI respond differently if it knew this? If the answer is yes for all five, the profile is working. If any sentence could apply to most people, it's still a fact. Go deeper on that sentence.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 5: Worked Example ==================== -->
+    <div class="content-area" id="panel-5">
+
+      <div class="section">
+        <p class="section-label">WORKED EXAMPLE</p>
+        <h2>Here's Mine</h2>
+        <p class="prose">A real profile &mdash; with annotations showing what each sentence is doing for the AI. Read it the way you'd read a brief. Not for the person. For the architecture. Notice how each sentence creates a specific instruction the AI can act on.</p>
+
+        <div class="worked-card">
+          <div class="worked-card-num">01</div>
+          <div class="worked-card-sentence">&ldquo;My role is writer, builder, and operator running multiple projects simultaneously. My current mandate is to build a personal AI OS in public and turn the build process itself into a course and newsletter.&rdquo;</div>
+          <div class="worked-card-annotation">&cularr; Tells the AI what I'm optimizing for right now &mdash; not my career, my current mission. Every response gets filtered through this lens.</div>
+        </div>
+        <div class="worked-card">
+          <div class="worked-card-num">02</div>
+          <div class="worked-card-sentence">&ldquo;I fail most when I see a gap and immediately try to fill it &mdash; the impulse to build something is so strong that I often build before I've confirmed the problem is real.&rdquo;</div>
+          <div class="worked-card-annotation">&cularr; The AI now knows to ask &ldquo;have you validated this?&rdquo; before helping me build anything. It fires on my specific pattern, not a generic caution.</div>
+        </div>
+        <div class="worked-card">
+          <div class="worked-card-num">03</div>
+          <div class="worked-card-sentence">&ldquo;I spiral when I'm working without a clear next action. Open loops don't bother me. No next action does.&rdquo;</div>
+          <div class="worked-card-annotation">&cularr; The AI always closes with a concrete next step, not a summary. This one line eliminates a whole category of responses I'd otherwise dismiss.</div>
+        </div>
+        <div class="worked-card">
+          <div class="worked-card-num">04</div>
+          <div class="worked-card-sentence">&ldquo;A useful output gives me a sharp direction, not options. If you give me three choices I'll analyze them for an hour. If you give me one recommendation with the trade-off named, I can move.&rdquo;</div>
+          <div class="worked-card-annotation">&cularr; The AI never gives me a menu. This is the highest-leverage sentence in the profile &mdash; it changes more responses than any other.</div>
+        </div>
+        <div class="worked-card">
+          <div class="worked-card-num">05</div>
+          <div class="worked-card-sentence">&ldquo;I trust a response when it pushes back on something I said. Agreement makes me suspicious. Friction makes me trust.&rdquo;</div>
+          <div class="worked-card-annotation">&cularr; Explicit permission to challenge me. Without this, the AI optimizes for my approval. With it, it optimizes for being useful.</div>
+        </div>
+
+        <p class="prose">Your turn &mdash; write your five sentences now. Don't wait until you have a perfect version. A rough profile that changes your responses is worth more than a polished one you never finish. If you're stuck on any sentence, use this test: would the AI respond differently if it knew this? If not, it's still a fact. Go deeper.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">WHAT CHANGES</p>
+        <h2>Before and After the Install</h2>
+
+        <p class="prose">Here's what shifts once the profile is loaded:</p>
+
+        <table class="data-table">
+          <thead><tr><th>BEFORE</th><th>AFTER</th></tr></thead>
+          <tbody>
+            <tr><td>Generic answers that could be for anyone</td><td>Responses calibrated to how you work</td></tr>
+            <tr><td>Re-explaining context every session</td><td>Sessions that start oriented, not from zero</td></tr>
+            <tr><td>Prompts that work sometimes</td><td>Consistent quality because the model is loaded</td></tr>
+            <tr><td>AI that responds to what you say</td><td>AI that responds to how you work</td></tr>
+            <tr><td>You doing the work of orientation</td><td>The system doing the work of orientation</td></tr>
+          </tbody>
+        </table>
+
+        <div class="insight">
+          <div class="insight-label">THE SHIFT</div>
+          <p class="insight-quote">&ldquo;This isn't a better prompt. It's a different relationship with the tool.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 6: What's Next ==================== -->
+    <div class="content-area" id="panel-6">
+
+      <div class="section">
+        <p class="section-label">THE GROWTH EDGE</p>
+        <h2>This Works. But It's Still Manual.</h2>
+        <p class="prose">The five-sentence profile works. But it's still manual. You wrote it once. It reflects who you were when you wrote it. It doesn't evolve when your role changes, when a new failure mode surfaces, when your trust signal shifts.</p>
+        <p class="prose">There's also a deeper problem: writing a profile requires knowing your own wiring. But most people don't &mdash; not clearly. They produce facts in a wiring-shaped format and wonder why the responses don't change much.</p>
+        <p class="prose">What you actually need isn't a profile you write. It's a profile that gets excavated &mdash; question by question, until the structural features surface on their own.</p>
+
+        <div class="callout">
+          <div class="callout-label">COMING IN UNIT 2</div>
+          <p><strong>Memory Is Not The Same As Knowing You.</strong><br>How to build a persistent model that evolves &mdash; not through memory features, but through excavation.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THREE LOCKED INSIGHTS</p>
+        <h2>What You Now Know</h2>
+        <div class="num-item">
+          <span class="num-item-num">01</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Prompting is the wrong frame &mdash; context is the fix.</div>
+            <div class="num-item-desc">The problem was never your phrasing. It was the absence of a persistent model of you.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">02</span>
+          <div class="num-item-content">
+            <div class="num-item-title">Facts and wiring are different things &mdash; the AI needs the model, not the data.</div>
+            <div class="num-item-desc">&ldquo;I work in marketing&rdquo; is noise. &ldquo;I spiral without a clear deliverable&rdquo; is signal.</div>
+          </div>
+        </div>
+        <div class="num-item">
+          <span class="num-item-num">03</span>
+          <div class="num-item-content">
+            <div class="num-item-title">The 5-sentence profile is the minimum viable install.</div>
+            <div class="num-item-desc">Five sentences. One paste. The first component of your AI OS is now running.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">COMMON QUESTIONS</p>
+        <h2>Four Questions This Unit Generates</h2>
+        <div class="qa-block">
+          <p class="qa-q"><span class="qa-q-label">Q:</span> Does this work on ChatGPT?</p>
+          <p class="qa-a">Yes. Use Custom Instructions or a GPT system prompt. The profile format is platform-agnostic. The delivery mechanism changes; the artifact doesn't.</p>
+        </div>
+        <div class="qa-block">
+          <p class="qa-q"><span class="qa-q-label">Q:</span> How often do I update the profile?</p>
+          <p class="qa-a">When something significant changes &mdash; a new role, a new failure mode, a new standard for output. Not after every session. Think quarterly, not daily.</p>
+        </div>
+        <div class="qa-block">
+          <p class="qa-q"><span class="qa-q-label">Q:</span> Is this the same as a custom instruction?</p>
+          <p class="qa-a">Custom instructions are the feature. The 5-sentence profile is what you put inside it. Most people use custom instructions for preferences. This uses them for wiring.</p>
+        </div>
+        <div class="qa-block">
+          <p class="qa-q"><span class="qa-q-label">Q:</span> What if I don't know what my wiring is?</p>
+          <p class="qa-a">Write the profile anyway. The format is designed to surface what you don't know yet. The act of writing it is part of the install.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">YOUR ONE ACTION</p>
+        <h2>Before You Move to Unit 2</h2>
+        <div id="checklist">
+          <div class="checklist-item" data-check="0">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">Written your 5-sentence self-profile &mdash; all five, not three</span>
+          </div>
+          <div class="checklist-item" data-check="1">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">Installed it in a Claude Project, ChatGPT Custom Instructions, or Gemini System Instructions</span>
+          </div>
+          <div class="checklist-item" data-check="2">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">Asked a question you'd normally ask &mdash; and noted what changed</span>
+          </div>
+          <div class="checklist-item" data-check="3">
+            <div class="checklist-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="checklist-text">Completed the facts-to-wiring exercise: three facts, three wiring versions</span>
+          </div>
+        </div>
+        <button class="cta-btn" id="markCompleteBtn">Mark complete &rarr;</button>
+
+        <div class="callout" style="margin-top:1.5rem">
+          <div class="callout-label">IF THE PROFILE DIDN'T CHANGE THE RESPONSES</div>
+          <p>Two likely culprits. Either the profile is still describing facts rather than wiring &mdash; read sentence 2 again, does it name a specific recent failure or just a general trait? Or sentence 4 is too vague. That's almost always the weak sentence. &ldquo;I like concise answers&rdquo; is a fact. &ldquo;I need one recommendation with the trade-off named, not a list&rdquo; is wiring. Make it specific and re-test.</p>
+        </div>
+      </div>
+
+      <div class="stinger">
+        <p>The AI wasn't giving you bad answers.</p>
+        <p>It was answering a stranger.</p>
+        <p>Your operator profile fixes that.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p class="footer-label">Questions or issues &rarr;</p>
+    <p class="footer-links">
+      <a href="https://wtfisecho.com" target="_blank" rel="noopener">wtfisecho.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://echofiles.substack.com" target="_blank" rel="noopener">echofiles.substack.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="mailto:wearecleardigital@gmail.com">wearecleardigital@gmail.com</a>
+    </p>
+  </footer>
+  <!-- ===== MODAL ===== -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-eyebrow">YOUR ARTIFACT &mdash; UNIT 1</div>
+      <div class="modal-title">The 5-Sentence Self-Profile</div>
+      <p class="modal-intro">Copy the template below. Fill in each sentence with your specific wiring &mdash; not your preferences, your structure. Paste the result into a Claude Project as the system prompt. That's the full install.</p>
+      <div class="copy-block" id="copyBlock">My role is [role]. My current mandate is [what you're actually trying to do right now].
+
+I fail most when [your most active failure mode — specific, not general].
+
+I spiral when [the specific condition that sends you into unproductive loops].
+
+A useful output gives me [what actually makes a response actionable — not format, mechanism].
+
+I trust a response when [what makes you accept vs. dismiss — the mechanism, not "good quality"].</div>
+      <button class="cta-btn visible" id="copyBtn">Copy to clipboard &rarr;</button>
+      <p class="modal-footer-text">The install takes five minutes. What it changes takes longer to fully see.</p>
+      <button class="ghost-btn-secondary" id="continueBtn">Continue to Unit 2 &rarr;</button>
+    </div>
+  </div>
+
+  <script src="course.js"></script>
+</body>
+</html>
