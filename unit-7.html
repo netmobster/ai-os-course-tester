@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unit 7 — Bonus Unit | Build Your AI OS</title>
+  <title>Unit 7 — Bonus | Build Your AI OS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -11,29 +11,256 @@
 </head>
 <body>
 <script>
-window.UNIT_DATA = { unit: 7, nextUnit: '' };
+window.UNIT_DATA = {
+  unit: 7,
+  title: "You Built the Thing.",
+  subtitle: "Unit 7: Bonus — What's Next",
+  claim: "The course is complete. This is what comes after.",
+  entryState: "Now what?",
+  exitState: "I know what I built, what I'll hit next, and where this goes.",
+  nextUnit: "",
+  tabs: [
+    { label: "You Did The Thing",   contentId: "panel-0" },
+    { label: "What You'll Hit Next", contentId: "panel-1" },
+    { label: "The Deeper Stack",     contentId: "panel-2" }
+  ],
+  checklistCount: 0,
+  copyBlocks: []
+};
 </script>
 
   <div class="unit-title-block">
-    <span class="eyebrow">UNIT 7 &mdash; BONUS</span>
-    <h1>Bonus Unit</h1>
+    <span class="eyebrow">UNIT 7 &mdash; BONUS &middot; FREE</span>
+    <h1>You Built the Thing.</h1>
+    <p class="subtitle">Six units. Six installable artifacts. One system that knows you, travels with you, and compounds every time you use it. This is the part that comes after.</p>
   </div>
 
-  <main>
-    <div class="content-area" id="panel-0">
-      <div class="section">
-        <p class="section-label">COMING SOON</p>
-        <h2>Bonus Unit</h2>
-        <p class="prose">This unit is in production. Complete Units 1 and 2 first &mdash; by the time you're done, this will be waiting for you.</p>
-      </div>
+  <nav class="tab-nav">
+    <div class="tab-nav-tabs">
+      <button class="tab-btn active" data-tab="0">You Did The Thing</button>
+      <button class="tab-btn" data-tab="1">What You'll Hit Next</button>
+      <button class="tab-btn" data-tab="2">The Deeper Stack</button>
+      <div class="progress-bar" id="progressBar"></div>
     </div>
+  </nav>
+
+  <main>
+
+    <!-- ===== PANEL 0: YOU DID THE THING ===== -->
+    <div class="content-area" id="panel-0">
+
+      <div class="section">
+        <h2>Let's Name What You Actually Built.</h2>
+        <p class="prose">Most people who "use AI" have a collection of prompts they paste into a blank chat. Some of them are good prompts. The AI doesn't know them. Every session starts from zero. Every answer is a guess at what the person wants, based on what they typed just now.</p>
+        <p class="prose">That is not what you have.</p>
+        <p class="prose">You have a system. The AI knows how you process information — not your preferences, your wiring. It has explicit permission to push back when you're about to step on your own foot. It can shift posture on command depending on what the work requires. It closes sessions deliberately so the next one has something to build on. And it lives in a text file that moves with you — to new tools, new employers, new model versions — without starting over.</p>
+        <p class="prose">Six units of work. Here's what you actually shipped.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE VAULT &mdash; EVERYTHING YOU BUILT</p>
+        <h3>SIX ARTIFACTS. ONE REFERENCE.</h3>
+        <p class="prose">These are the pieces. If you built as you went, they're already in your system. If you read without building, this is the build guide — one artifact per unit, assemble in order.</p>
+
+        <div class="num-item"><span class="num-item-num">01</span><div class="num-item-content"><div class="num-item-title">The Self-Profile &mdash; Unit 1</div><div class="num-item-desc">Five sentences. How you actually process information, make decisions, and what your failure mode is. Not what you wish were true. What's actually true. The AI reads this before everything else.</div></div></div>
+
+        <div class="num-item"><span class="num-item-num">02</span><div class="num-item-content"><div class="num-item-title">The Operator Profile &mdash; Unit 2</div><div class="num-item-desc">The things that would take a new colleague weeks to figure out about you — compressed into a paragraph. Career context, working style, current mission. The difference between an AI that's guessing and one that's oriented.</div></div></div>
+
+        <div class="num-item"><span class="num-item-num">03</span><div class="num-item-content"><div class="num-item-title">The Behavioral Contract &mdash; Unit 3</div><div class="num-item-desc">Three constraints and a silence condition, each addressing a real failure mode — something the AI would do by default that actively works against how you operate. This is the part that gives the AI permission to say no to you.</div></div></div>
+
+        <div class="num-item"><span class="num-item-num">04</span><div class="num-item-content"><div class="num-item-title">The Gear System &mdash; Unit 4</div><div class="num-item-desc">At minimum: the Interview Gear and the Handoff Gear. Trigger phrases that shift the AI's posture on demand. One mode is wrong architecture — your system has at least two. Probably more by now.</div></div></div>
+
+        <div class="num-item"><span class="num-item-num">05</span><div class="num-item-content"><div class="num-item-title">The Session Ritual &mdash; Unit 5</div><div class="num-item-desc">Opening Protocol and Closing Protocol. Three questions each. The state document the Closing Protocol produces is what makes sessions compound instead of restart. You run the ritual. The system gets smarter. That's the compounding argument.</div></div></div>
+
+        <div class="num-item"><span class="num-item-num">06</span><div class="num-item-content"><div class="num-item-title">The Portability Layer &mdash; Unit 6</div><div class="num-item-desc">The complete AI OS scaffold — all five layers in one document, installable anywhere. You know the difference between an identity layer and a tool configuration. You know how to diff and merge on a model upgrade. You don't start over.</div></div></div>
+      </div>
+
+      <div class="dark-divider">
+        <h2>The Arc, Named.</h2>
+        <p>You started thinking the problem was your prompts. You're leaving knowing the problem was the relationship. The prompts were fine. The model just didn't know you. Now it does.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">WHAT CHANGED</p>
+        <h3>ENTRY TO EXIT &mdash; THE FULL COURSE ARC</h3>
+        <div class="timeline">
+          <div class="timeline-step"><span class="timeline-step-label">Unit 1 entry</span> <span class="timeline-step-desc">&mdash; "My prompts aren't good enough" &rarr; "I've been talking to a stranger"</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Unit 2 entry</span> <span class="timeline-step-desc">&mdash; "Memory features aren't good enough" &rarr; "I have a model, not a log"</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Unit 3 entry</span> <span class="timeline-step-desc">&mdash; "It always agrees with me" &rarr; "I have a mandate, not a mirror"</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Unit 4 entry</span> <span class="timeline-step-desc">&mdash; "I need more specialized tools" &rarr; "Same AI, different posture"</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Unit 5 entry</span> <span class="timeline-step-desc">&mdash; "It forgets everything" &rarr; "I close the loop, it compounds"</span></div>
+          <div class="timeline-step"><span class="timeline-step-label">Unit 6 entry</span> <span class="timeline-step-desc">&mdash; "Will this break?" &rarr; "The wiring is mine. The model is a socket."</span></div>
+        </div>
+
+        <div class="pull-quote-large">
+          <blockquote>&ldquo;The course is complete. The relationship is just getting started.&rdquo;</blockquote>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">ONE HONEST NOTE</p>
+        <h3>YOU READ IT OR YOU BUILT IT. BOTH ARE VALID. ONE IS MORE USEFUL.</h3>
+        <p class="prose">If you built every artifact as you went: you have a running system right now. Use it. Keep running the closing ritual. Let it compound. Come back to Unit 7 Tab 2 when you hit the walls it describes.</p>
+        <p class="prose">If you read through without building: the vault above is your build guide. One artifact per unit, in order, in a single session. You can have the full system installed today. The course doesn't expire. Neither does the offer to build it.</p>
+        <p class="prose">Either way — Tab 2 is the honest conversation about what comes after.</p>
+      </div>
+
+    </div>
+
+    <!-- ===== PANEL 1: WHAT YOU'LL HIT NEXT ===== -->
+    <div class="content-area" id="panel-1">
+
+      <div class="section">
+        <h2>This System Works. Here's What Will Still Frustrate You.</h2>
+        <p class="prose">The system you built is real and it works. What follows isn't a warning that you did it wrong — it's an honest map of the walls people hit after they have a working AI OS. You will hit some of these. Probably not all of them. But naming them now means you recognize them when they show up instead of concluding that something's broken.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE WALLS</p>
+
+        <div class="demo-cards" style="grid-template-columns:1fr 1fr">
+          <div class="demo-card">
+            <div class="demo-card-header muted">WALL 1 &mdash; PROFILE DRIFT</div>
+            <div class="demo-card-body italic">The profile that was accurate in month one isn't quite right in month four. Your work changed, your role changed, something about how you operate shifted — and the AI is still responding to who you were, not who you are now.</div>
+            <div class="demo-card-footer">Fix: run a profile update session. Re-run the Unit 2 interview with yourself. Diff the new answers against the old profile. Update what's stale. This is maintenance, not failure — it means the system is calibrated closely enough that drift is noticeable.</div>
+          </div>
+          <div class="demo-card">
+            <div class="demo-card-header muted">WALL 2 &mdash; CONTEXT CEILING</div>
+            <div class="demo-card-body italic">You've been doing the closing ritual. State documents exist. But the AI still can't carry context across sessions the way you wish it could — you're pasting the state doc at session open and it's working, but it feels manual. You want it to just know.</div>
+            <div class="demo-card-footer">This is a real limitation of how current AI tools work, not a system design problem. The ritual bridges it as well as it can be bridged today. Tab 3 has one path forward if this is the thing that's most frustrating.</div>
+          </div>
+          <div class="demo-card">
+            <div class="demo-card-header muted">WALL 3 &mdash; GEAR GAP</div>
+            <div class="demo-card-body italic">You find yourself doing something repeatedly that doesn't fit cleanly into Interview or Handoff. A recurring type of work — research passes, meeting prep, writing mode, whatever — that needs a different posture and you're reinventing it every time.</div>
+            <div class="demo-card-footer">Build the gear. You have the pattern from Unit 4. Name it, define the trigger, define what it excludes, define the exit. Add it to your system prompt. This is the system expanding to fit you — which is exactly what it's designed to do.</div>
+          </div>
+          <div class="demo-card highlighted">
+            <div class="demo-card-header accent">WALL 4 &mdash; THE PROFILE IS STILL TOO THIN</div>
+            <div class="demo-card-body bold">Six units in, the profile describes your wiring. It doesn't describe your history, your career context, the specific relationships that matter in your work, the current mission and its real constraints. The AI knows how you operate. It doesn't fully know what you're operating on.</div>
+            <div class="demo-card-footer accent">This is the most common wall. The profile you built is a foundation, not a ceiling. The next upgrade is making it richer — and there's a specific tool for that.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE MOST COMMON UPGRADE</p>
+        <h3>THE PROFILER &mdash; IF WALL 4 IS YOUR WALL</h3>
+        <p class="prose">The profile you built in Units 1 and 2 gives the AI your wiring: how you process, how you fail, what you need. What it doesn't give the AI is the full picture of who you are operating in the world — your career arc, your current context, the relationships that shape your work, the thing you're actually trying to build.</p>
+        <p class="prose">The ECHO Profiler is a structured intake tool that generates a much richer operator profile than a self-directed session typically produces. It interviews you across six dimensions: career history, working style, current mission, key relationships, failure patterns, and what a great AI partner looks like for you specifically. The output is a document — your full operator profile — that you can install in your system prompt and update over time.</p>
+        <p class="prose">It's free to try. It runs in about 20 minutes. Most people find it surfaces things about how they work that they hadn't explicitly named yet.</p>
+
+        <div class="insight">
+          <div class="insight-label">THE NEXT STEP IF THIS IS YOUR WALL</div>
+          <p class="insight-quote">&ldquo;The profile you built here is accurate. The Profiler makes it richer. Richer means more of your actual context in the AI's working model of you &mdash; which means less re-explanation, fewer misreads, faster calibration.&rdquo;</p>
+        </div>
+
+        <div style="margin-top:2rem;text-align:center">
+          <a href="https://wtfisecho.com/echo-profiler" target="_blank" rel="noopener" class="cta-btn visible" style="display:inline-block;text-decoration:none">Try the ECHO Profiler &rarr;</a>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">THE HONEST PART</p>
+        <h3>WHAT THIS COURSE DIDN'T COVER</h3>
+        <p class="prose">Six units is a lot of work. It's also not everything. A few things that are real and weren't in scope:</p>
+        <div class="num-item"><span class="num-item-num">01</span><div class="num-item-content"><div class="num-item-title">Multi-model strategy</div><div class="num-item-desc">When to use different AI tools for different tasks, and how your profile adapts across them. Unit 6 covered portability — it didn't cover the question of whether you should be running more than one model as part of your stack.</div></div></div>
+        <div class="num-item"><span class="num-item-num">02</span><div class="num-item-content"><div class="num-item-title">Team and organizational AI OS</div><div class="num-item-desc">What you've built is personal. Making it work at team scale — shared context, shared gears, AI that knows how your team operates not just how you operate — is a different problem. It's a solvable one, but it wasn't this course.</div></div></div>
+        <div class="num-item"><span class="num-item-num">03</span><div class="num-item-content"><div class="num-item-title">Agentic work</div><div class="num-item-desc">The system you built is for you-plus-AI in a conversation. Agentic AI — where the AI runs sequences of tasks without constant input — requires a different architecture. The profile and contract you built here are a good foundation for it. Getting there from here is a separate build.</div></div></div>
+      </div>
+
+    </div>
+
+    <!-- ===== PANEL 2: THE DEEPER STACK ===== -->
+    <div class="content-area" id="panel-2">
+
+      <div class="section">
+        <h2>There Is a Deeper Version of This.</h2>
+        <p class="prose">What you built in this course is the foundation layer. A profile, a contract, gears, a ritual, and a portability strategy. It works. A lot of people stop here, which is the right call — the system at this layer is already a significant upgrade over how most people use AI, and it compounds on its own if you run the ritual.</p>
+        <p class="prose">There is a deeper version. It's called ECHO. It's not for everyone, and we'd rather you not spend twenty minutes looking at it if you're not the right fit — so here's an honest description of what it is and who it's for.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">WHAT ECHO IS</p>
+        <h3>THE SAME ARCHITECTURE, DEEPER</h3>
+        <p class="prose">ECHO is a fully developed AI operating system built on the same principles as this course: operator profile, behavioral contract, gear system, session protocols. The difference is depth and elaboration — the gear library is significantly larger, the session protocols are more sophisticated, the state management is more structured, and the whole system is designed to be maintained and evolved over time rather than installed and run without modification.</p>
+
+        <div class="comparison">
+          <div class="comparison-card">
+            <div class="card-label">THIS COURSE</div>
+            <div class="card-content muted">The foundation layer.</div>
+            <div class="card-caption">Profile, contract, 2+ gears, ritual, portability. Everything you need to run a working AI OS. Installs in one session. Travels anywhere. Compounds over time. This is the right level for most people and most workflows.</div>
+          </div>
+          <div class="comparison-card accented">
+            <div class="card-label">ECHO</div>
+            <div class="card-content">The full operating system.</div>
+            <div class="card-caption">Deeper gear library, session protocols with state management, a structured evolution process for the operator profile over time, and the accumulated calibration of a system that's been in daily production use. Designed for people whose work with AI is serious enough to warrant the investment.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">WHO IT'S FOR</p>
+        <h3>THREE HONEST SIGNALS</h3>
+        <div class="demo-cards" style="grid-template-columns:1fr 1fr 1fr">
+          <div class="demo-card">
+            <div class="demo-card-header muted">SIGNAL 1 &mdash; YOU HIT THE WALLS</div>
+            <div class="demo-card-body italic">You're running the ritual. The system is compounding. But you're at the context ceiling, or the gear gap keeps showing up, or the profile-is-too-thin problem is the one you can't stop noticing. You've maxed out what this course's architecture gives you.</div>
+            <div class="demo-card-footer">ECHO is the next layer.</div>
+          </div>
+          <div class="demo-card">
+            <div class="demo-card-header muted">SIGNAL 2 &mdash; AI IS A SERIOUS PART OF YOUR WORK</div>
+            <div class="demo-card-body italic">Not a tool you use sometimes — a genuine part of how you operate daily. You think about the AI relationship the way you think about other professional relationships: worth investing in, worth maintaining, worth evolving over time.</div>
+            <div class="demo-card-footer">You're in the right tier of commitment for ECHO.</div>
+          </div>
+          <div class="demo-card highlighted">
+            <div class="demo-card-header accent">SIGNAL 3 &mdash; YOU WANT IT BUILT OUT FOR YOU</div>
+            <div class="demo-card-body bold">The course gives you the architecture. ECHO installation means working with someone who's done this extensively to build your system out properly — profile depth, gear set, session protocols designed for your actual work. Not starting from the template. Starting from you.</div>
+            <div class="demo-card-footer accent">This is the signal that separates self-install from ECHO proper.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">HOW TO FIND OUT MORE</p>
+        <h3>THE HONEST CTA</h3>
+        <p class="prose">ECHO isn't a product you buy off a shelf. It's a system that gets built for you, installed, and handed off — with training on how to run and evolve it. Pricing and fit depend on your context and what you actually need. The right way to figure out if it makes sense is a conversation.</p>
+        <p class="prose">If you're curious: email <a href="mailto:wearecleardigital@gmail.com" style="color:inherit">wearecleardigital@gmail.com</a> with a line about your work and what's frustrating you about AI right now. That's the whole form. No sales process, no automated sequence — an actual conversation about whether this is the right thing for you.</p>
+
+        <div class="insight">
+          <div class="insight-label">THE HONEST VERSION</div>
+          <p class="insight-quote">&ldquo;Most people who finished this course don't need ECHO. The system they built here works. A few of them do — and for them, the difference between the course layer and ECHO is significant. The email is how you figure out which category you're in.&rdquo;</p>
+        </div>
+
+        <div style="margin-top:2rem;text-align:center">
+          <a href="mailto:wearecleardigital@gmail.com" class="cta-btn visible" style="display:inline-block;text-decoration:none">Get in touch about ECHO &rarr;</a>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">AND THAT'S THE COURSE</p>
+        <h3>A FINAL NOTE</h3>
+        <p class="prose">You came in thinking the problem was prompts. The problem was never prompts. It was that you were talking to an AI that didn't know you, in sessions that didn't compound, on a platform you might not control forever.</p>
+        <p class="prose">You're leaving with a system that knows how you operate, has explicit permission to push back, shifts posture on demand, compounds over time, and lives in a document you own. That's a fundamentally different relationship with AI than almost anyone around you has.</p>
+        <p class="prose">Use it. Run the ritual. Let it get old. The calibration accumulates whether you're thinking about it or not — as long as you close the sessions deliberately. Do that, and the system you have in six months will be qualitatively different from the one you have today.</p>
+
+        <div class="stinger">
+          <p>You started with "I've been asking the wrong question."</p>
+          <p>You're leaving with an operating system.</p>
+          <p>That's the whole thing.</p>
+        </div>
+      </div>
+
+    </div>
+
   </main>
 
   <footer class="footer">
-    <p class="footer-label">Questions or issues &rarr;</p>
+    <p class="footer-label">Questions about ECHO or the course &rarr;</p>
     <p class="footer-links">
-      <a href="https://wtfisecho.com" target="_blank" rel="noopener">wtfisecho.com</a> &nbsp;&middot;&nbsp;
-      <a href="https://echofiles.substack.com" target="_blank" rel="noopener">echofiles.substack.com</a> &nbsp;&middot;&nbsp;
+      <a href="https://wtfisecho.com" target="_blank" rel="noopener">wtfisecho.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://echofiles.substack.com" target="_blank" rel="noopener">echofiles.substack.com</a>
+      &nbsp;&middot;&nbsp;
       <a href="mailto:wearecleardigital@gmail.com">wearecleardigital@gmail.com</a>
     </p>
   </footer>
