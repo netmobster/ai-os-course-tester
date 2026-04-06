@@ -11,6 +11,44 @@
   <style>
     html, body { margin: 0; padding: 0; overflow: hidden; height: 100%; }
     #courseFrame { display: block; width: 100%; height: calc(100vh - 60px); border: none; margin-top: 60px; }
+
+    /* ===== PARENT-LEVEL MODAL (escapes iframe) ===== */
+    #parentModalBackdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 500;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1rem;
+      overflow-y: auto;
+    }
+    #parentModalBackdrop.open { display: flex; }
+    #parentModal {
+      background: #fff;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 100%;
+      padding: 2rem;
+      position: relative;
+      margin: auto;
+      font-family: 'Inter', sans-serif;
+    }
+    /* inherit course styles for modal content */
+    #parentModal .modal-eyebrow { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: #FF4500; margin-bottom: 0.5rem; }
+    #parentModal .modal-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #0D1B2A; margin-bottom: 1rem; }
+    #parentModal .modal-intro { font-family: 'Georgia', serif; font-size: 0.95rem; color: #5A6473; margin-bottom: 1.5rem; line-height: 1.6; }
+    #parentModal .callout-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: #FF4500; margin-bottom: 0.35rem; }
+    #parentModal .copy-block { background: #F7F6F2; border: 1px solid rgba(13,27,42,0.18); border-radius: 8px; padding: 1.25rem; font-family: 'Courier New', monospace; font-size: 0.82rem; line-height: 1.8; color: #0D1B2A; white-space: pre-wrap; margin-bottom: 1rem; max-height: 260px; overflow-y: auto; }
+    #parentModal .cta-btn { background: #FF4500; color: #fff; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 6px; border: none; cursor: pointer; display: inline-block; margin-bottom: 0.5rem; }
+    #parentModal .cta-btn:hover { background: #E03D00; }
+    #parentModal .ghost-btn-secondary { background: transparent; color: #FF4500; border: 1.5px solid #FF4500; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; display: inline-block; margin-top: 0.75rem; text-decoration: none; }
+    #parentModal .ghost-btn-secondary:hover { background: #FF4500; color: #fff; }
+    #parentModal .ghost-btn-secondary.disabled { color: #8A929B; border-color: rgba(13,27,42,0.18); cursor: default; pointer-events: none; }
+    #parentModal .modal-footer-text { font-size: 0.8rem; color: #8A929B; margin-top: 1rem; text-align: center; }
+    #parentModalClose { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.3rem; color: #5A6473; cursor: pointer; line-height: 1; }
+    #parentModalClose:hover { color: #0D1B2A; }
   </style>
 </head>
 <body>
@@ -81,6 +119,14 @@
     </div>
   </aside>
 
+  <!-- ===== PARENT-LEVEL MODAL ===== -->
+  <div id="parentModalBackdrop">
+    <div id="parentModal">
+      <button id="parentModalClose">&times;</button>
+      <div id="parentModalContent"></div>
+    </div>
+  </div>
+
   <script>
     const courseFrame = document.getElementById('courseFrame');
     const outlineBtn = document.getElementById('outlineBtn');
@@ -88,6 +134,9 @@
     const drawerBackdrop = document.getElementById('drawerBackdrop');
     const drawerClose = document.getElementById('drawerClose');
     const drawerCards = document.querySelectorAll('.drawer-card');
+    const parentModalBackdrop = document.getElementById('parentModalBackdrop');
+    const parentModalContent = document.getElementById('parentModalContent');
+    const parentModalClose = document.getElementById('parentModalClose');
 
     /* Drawer open/close */
     function openDrawer() { drawer.classList.add('open'); drawerBackdrop.classList.add('open'); }
@@ -100,10 +149,7 @@
     drawerCards.forEach(card => {
       card.addEventListener('click', () => {
         const src = card.dataset.src;
-        if (src) {
-          courseFrame.src = src;
-          closeDrawer();
-        }
+        if (src) { courseFrame.src = src; closeDrawer(); }
       });
     });
 
@@ -114,6 +160,58 @@
       });
     }
 
+    /* Parent modal open/close */
+    function openParentModal(html) {
+      parentModalContent.innerHTML = html;
+      parentModalBackdrop.classList.add('open');
+
+      // Wire up copy buttons inside the parent modal
+      parentModalContent.querySelectorAll('[id^="copyBtn"]').forEach(btn => {
+        const blockId = btn.id === 'copyBtn2' ? 'copyBlock2' : 'copyBtn' === btn.id ? 'copyBlock' : null;
+        if (!blockId) return;
+        const block = parentModalContent.querySelector('#' + blockId);
+        if (block) {
+          btn.addEventListener('click', () => {
+            navigator.clipboard.writeText(block.textContent).then(() => {
+              btn.textContent = 'Copied!';
+              setTimeout(() => { btn.textContent = 'Copy to clipboard \u2192'; }, 2000);
+            });
+          });
+        }
+      });
+
+      // Wire up close button inside modal content
+      const innerClose = parentModalContent.querySelector('#modalClose');
+      if (innerClose) innerClose.addEventListener('click', closeParentModal);
+
+      // Wire up continue button
+      const continueBtn = parentModalContent.querySelector('#continueBtn');
+      if (continueBtn) {
+        continueBtn.addEventListener('click', () => {
+          closeParentModal();
+          // Navigate iframe to next unit
+          const src = continueBtn.dataset.nextUnit || 'unit-7.html';
+          courseFrame.src = src;
+        });
+      }
+
+      // Wire up cert button
+      const certBtn = parentModalContent.querySelector('#certBtn');
+      if (certBtn) {
+        certBtn.onclick = () => window.open('certificate.html', '_blank');
+      }
+    }
+
+    function closeParentModal() {
+      parentModalBackdrop.classList.remove('open');
+      parentModalContent.innerHTML = '';
+    }
+
+    parentModalClose.addEventListener('click', closeParentModal);
+    parentModalBackdrop.addEventListener('click', (e) => {
+      if (e.target === parentModalBackdrop) closeParentModal();
+    });
+
     /* Listen for messages from iframe */
     window.addEventListener('message', (e) => {
       if (e.data && e.data.type === 'unitReady') {
@@ -121,6 +219,12 @@
       }
       if (e.data && e.data.type === 'navigate') {
         courseFrame.src = e.data.target;
+      }
+      if (e.data && e.data.type === 'openModal') {
+        openParentModal(e.data.html || '');
+      }
+      if (e.data && e.data.type === 'closeModal') {
+        closeParentModal();
       }
     });
 

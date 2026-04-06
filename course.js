@@ -11,7 +11,6 @@ const progressBar = document.getElementById('progressBar');
 let isScrolling = false;
 
 if (TAB_COUNT > 0 && progressBar) {
-  /* Active tab via IntersectionObserver */
   const observer = new IntersectionObserver((entries) => {
     if (isScrolling) return;
     let best = null;
@@ -27,7 +26,6 @@ if (TAB_COUNT > 0 && progressBar) {
       if (idx !== -1) setActiveTab(idx);
     }
   }, { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] });
-
   panels.forEach((p) => observer.observe(p));
 }
 
@@ -35,7 +33,6 @@ function setActiveTab(index) {
   tabBtns.forEach((btn, i) => btn.classList.toggle('active', i === index));
 }
 
-/* Click scrolls to panel */
 tabBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
     const idx = parseInt(btn.dataset.tab, 10);
@@ -49,7 +46,6 @@ tabBtns.forEach((btn) => {
   });
 });
 
-/* Scroll progress bar */
 function updateProgress() {
   if (!progressBar) return;
   const scrollTop = window.scrollY;
@@ -58,7 +54,6 @@ function updateProgress() {
   progressBar.style.width = Math.min(pct, 100) + '%';
 }
 
-/* Update active tab on scroll */
 function updateActiveOnScroll() {
   if (isScrolling || TAB_COUNT === 0) return;
   const headerHeight = 48 + 16;
@@ -99,18 +94,49 @@ checklistItems.forEach((item) => {
   });
 });
 
-/* ===== MODAL ===== */
-const modalBackdrop = document.getElementById('modalBackdrop');
+/* ===== MODAL — bubble to parent so it escapes the iframe ===== */
+// Collect modal content once so parent can render it
+function getModalHTML() {
+  const modal = document.getElementById('modal');
+  return modal ? modal.innerHTML : '';
+}
+
+function openModal() {
+  // Try to bubble to parent first
+  if (window.parent && window.parent !== window) {
+    const modal = document.getElementById('modal');
+    window.parent.postMessage({
+      type: 'openModal',
+      html: modal ? modal.innerHTML : '',
+      unit: window.UNIT_DATA ? window.UNIT_DATA.unit : null
+    }, '*');
+  } else {
+    // Fallback: render inline (standalone page)
+    const backdrop = document.getElementById('modalBackdrop');
+    if (backdrop) backdrop.classList.add('open');
+  }
+}
+
+function closeModal() {
+  if (window.parent && window.parent !== window) {
+    window.parent.postMessage({ type: 'closeModal' }, '*');
+  } else {
+    const backdrop = document.getElementById('modalBackdrop');
+    if (backdrop) backdrop.classList.remove('open');
+  }
+}
+
 const modalClose = document.getElementById('modalClose');
-
-function openModal() { if (modalBackdrop) modalBackdrop.classList.add('open'); }
-function closeModal() { if (modalBackdrop) modalBackdrop.classList.remove('open'); }
-
 if (markCompleteBtn) markCompleteBtn.addEventListener('click', openModal);
 const openModalBtn = document.getElementById('openModalBtn');
 if (openModalBtn) openModalBtn.addEventListener('click', openModal);
 if (modalClose) modalClose.addEventListener('click', closeModal);
-if (modalBackdrop) modalBackdrop.addEventListener('click', (e) => { if (e.target === modalBackdrop) closeModal(); });
+
+// Also handle the local backdrop click for standalone mode
+const modalBackdrop = document.getElementById('modalBackdrop');
+if (modalBackdrop) modalBackdrop.addEventListener('click', (e) => {
+  if (e.target === modalBackdrop) closeModal();
+});
 
 /* ===== COPY BUTTONS ===== */
 function wireCopyButton(btnId, blockId) {
@@ -126,17 +152,12 @@ function wireCopyButton(btnId, blockId) {
   }
 }
 
-/* Unit 1 copy block */
 wireCopyButton('copyBtn', 'copyBlock');
-
-/* Unit 2 copy blocks */
 wireCopyButton('copyExcavation', 'excavationPrompt');
 wireCopyButton('copyModal', 'modalCopyBlock');
-
-/* Unit 6 second copy block */
 wireCopyButton('copyBtn2', 'copyBlock2');
 
-/* ===== FONT SIZE CONTROL (postMessage from index) ===== */
+/* ===== FONT SIZE CONTROL ===== */
 let currentFontSize = 1.05;
 const PROSE_SELECTORS = [
   '.prose', '.prose-muted', '.content-area p',
@@ -158,6 +179,11 @@ window.addEventListener('message', (e) => {
     currentFontSize = Math.max(0.5, currentFontSize + (e.data.delta * 0.1));
     applyFontSize();
   }
+  // Parent telling us to close local modal (standalone fallback)
+  if (e.data && e.data.type === 'closeModalLocal') {
+    const backdrop = document.getElementById('modalBackdrop');
+    if (backdrop) backdrop.classList.remove('open');
+  }
 });
 
 /* ===== UNIT READY SIGNAL ===== */
@@ -167,7 +193,7 @@ window.addEventListener('load', () => {
   }
 });
 
-/* ===== CONTINUE BUTTON (navigate to next unit) ===== */
+/* ===== CONTINUE BUTTON ===== */
 const continueBtn = document.getElementById('continueBtn');
 if (continueBtn) {
   if (window.UNIT_DATA && window.UNIT_DATA.nextUnit) {
